@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-let Location = require('../models/users.model.js'); 
+let Location = require('../models/location.model.js'); 
 
 /* GET users listing. */
 

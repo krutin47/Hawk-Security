@@ -17,6 +17,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // job pages added
 import Job_form from './components/Career/job_form'; 
 import Job_display from './components/Career/job_display';
+import Location_add from './components/Location/Add_location';
 
 
 class App extends Component{
@@ -37,6 +38,7 @@ class App extends Component{
 				<Route path='/Forgot_password' component={Forgot_password} />
 				<Route path='/job_form' component={Job_form} />
 				<Route path='/job_display' component={Job_display} />
+				<Route path='/location_add' component={Location_add} />
 			</Router>
 		);
 	}
