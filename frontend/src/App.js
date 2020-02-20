@@ -9,7 +9,7 @@ class App extends Component{
     render() {
 		return (
 			<Router>
-                {/* <Route exact path='/' component={Home} /> */}
+                <Route exact path='/' component={Home} />
 				
 				<Route path='/admin_schedule_display' component={Admin_schedule_display} />
 				<Route path='/user_schedule_display' component={User_schedule_display} />
