@@ -3,18 +3,20 @@ import { FormErrors } from './FormError';
 import { Button, FormGroup, FormControl, Form, Alert } from "react-bootstrap";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './logintheme.css';
+import './User_updateProfile.css';
 
-class Login extends Component {
+class UserUpdateProfile extends Component {
 
   constructor (props) {
     super(props);
     this.state = {
       email: '',
       password: '',
+      licence_number: '',
       formErrors: {email: '', password: ''},
       emailValid: false,
       passwordValid: false,
+      licenceValid: false,
       formValid: false
     }
   }
@@ -84,16 +86,17 @@ class Login extends Component {
         <form>
           <div className="login-container jumbotron">
             <div className="row">
-              <div className="col-md-12">
+            <div className="col-md-12">
                 <div className="form-label-group">
-                  <FormGroup controlId="email_id" bsSize="large">
-                    <Form.Label>Email</Form.Label>
+                  <FormGroup controlId="userName" bsSize="large">
+                    
+                    <Form.Label>User Name</Form.Label>  
                     <FormControl
                       autoFocus
-                      type="email"
+                      type="text"
                       // value={email}
                       // onChange={e => setEmail(e.target.value)}
-                      placeholder="Please Enter Your Email ID"
+                      placeholder="Lorem Ipsum"
                     />
                     
                     {/* <label>Email</label>
@@ -103,15 +106,36 @@ class Login extends Component {
                   </FormGroup>
                 </div>
               </div>
+              <div className="col-md-12">  
+                <div className="form-label-group">
+                  <FormGroup controlId="email_id" bsSize="large">
+                    
+                    <Form.Label>Email</Form.Label>  
+                    <FormControl
+                      autoFocus
+                      type="email"
+                      // value={email}
+                      // onChange={e => setEmail(e.target.value)}
+                      placeholder="Lorem@ipsum.com"
+                    />
+                    
+                    {/* <label>Email</label>
+                    <input type="emailID" formControlName="emailID" className="form-control" required autofocus />  
+                    <span className="invalid-feedback" > Invalid Email </span> */}
+                  
+                  </FormGroup>
+                </div>
+              </div>
+              
               <div className="col-md-12">
                 <div className="form-label-group">
-                  <FormGroup controlId="password" bsSize="large">
-                    <Form.Label>Password</Form.Label>
+                  <FormGroup controlId="licence_number" bsSize="large">
+                    <Form.Label>Licence No</Form.Label>
                     <FormControl
                       // value={password}
                       // onChange={e => setPassword(e.target.value)}
-                      type="password"
-                      placeholder="Please Enter Your Password"
+                      type="text"
+                      placeholder="LorRmIpsum123"
                     />
                   </FormGroup>
                   {/* <label>Password</label>
@@ -121,8 +145,27 @@ class Login extends Component {
               </div>
               
               <div className="col-md-12">
+                <div className="form-label-group">
+                  <FormGroup controlId="password" bsSize="large">
+                    <Form.Label>Password</Form.Label>
+                    <FormControl
+                      // value={password}
+                      // onChange={e => setPassword(e.target.value)}
+                      type="password"
+                      placeholder="loremIpasum"
+                    />
+                  </FormGroup>
+                  {/* <label>Password</label>
+                  <input type="password" formControlName="password" className="form-control"  required autofocus />
+                  <span className="invalid-feedback"> Invalid Password </span> */}
+                </div>
+              </div>
+
+
+              
+              <div className="col-md-12">
                 <br/>
-                <Button className="btn btn-success pull-right" block bsSize="large" type="submit" disabled={!this.state.formValid}>Login </Button>
+                <Button className="btn btn-success pull-right" block bsSize="large" type="submit" disabled={!this.state.formValid}>Update</Button>
                   {/* <button className="btn btn-success pull-right" type="submit" >Login</button> */}
               </div>
             </div>
@@ -146,4 +189,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default UserUpdateProfile;

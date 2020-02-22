@@ -7,6 +7,11 @@ import Availability_display from './components/Availability/availability_dsiplay
 import Admin_schedule_display from './components/Schedule/admin_schedule_display';
 import User_schedule_display from './components/Schedule/user_schedule_display';
 import Login from './components/Profile Management/Login/login';
+import Register from './components/Profile Management/Registration/register'
+import User_update_profile from './components/Profile Management/Update/User_updateProfile';
+import Admin_update_profile from './components/Profile Management/Update/Admin_updateProfile';
+import Remove_profile from './components/Profile Management/Update/RemoveProfile';
+import Forgot_password from './components/Profile Management/ForgotPassword/ForgotPassword';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component{
@@ -20,6 +25,11 @@ class App extends Component{
 				<Route path='/availability_display' component={Availability_display}/>
 				<Route path='/admin_schedule_form' component={Admin_schedule_form} />
 				<Route path='/login' component={Login} />
+				<Route path='/register' component={Register} />
+				<Route path='/User_update_profile' component={User_update_profile} />
+				<Route path='/Admin_update_profile' component={Admin_update_profile} />
+				<Route path='/Remove_profile' component={Remove_profile} />
+				<Route path='/Forgot_password' component={Forgot_password} />
 
 				
 			</Router>

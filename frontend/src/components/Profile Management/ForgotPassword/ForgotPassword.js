@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { FormErrors } from './FormError';
+import React, { Component, ReactSVG } from 'react';
+//import { FormErrors } from './FormError';
 import { Button, FormGroup, FormControl, Form, Alert } from "react-bootstrap";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './logintheme.css';
+import './ForgotPassword.css';
 
-class Login extends Component {
+class ForgotPassword extends Component {
 
   constructor (props) {
     super(props);
@@ -84,58 +84,45 @@ class Login extends Component {
         <form>
           <div className="login-container jumbotron">
             <div className="row">
-              <div className="col-md-12">
-                <div className="form-label-group">
-                  <FormGroup controlId="email_id" bsSize="large">
-                    <Form.Label>Email</Form.Label>
-                    <FormControl
-                      autoFocus
-                      type="email"
-                      // value={email}
-                      // onChange={e => setEmail(e.target.value)}
-                      placeholder="Please Enter Your Email ID"
-                    />
+                <div className="col-md-12">
+                
+                </div>
+                <div className="col-md-12">
+                    <div className="form-label-group">
+                    <FormGroup controlId="email_id" bsSize="large">
+                        
+                        <Form.Label>Email</Form.Label>  
+                        <FormControl
+                        autoFocus
+                        type="email"
+                        // value={email}
+                        // onChange={e => setEmail(e.target.value)}
+                        placeholder="Please Enter Your Email ID"
+                        />        
+                        {/* <label>Email</label>
+                        <input type="emailID" formControlName="emailID" className="form-control" required autofocus />  
+                        <span className="invalid-feedback" > Invalid Email </span> */}
                     
-                    {/* <label>Email</label>
-                    <input type="emailID" formControlName="emailID" className="form-control" required autofocus />  
-                    <span className="invalid-feedback" > Invalid Email </span> */}
-                  
-                  </FormGroup>
+                    </FormGroup>
+                    </div>
                 </div>
-              </div>
-              <div className="col-md-12">
-                <div className="form-label-group">
-                  <FormGroup controlId="password" bsSize="large">
-                    <Form.Label>Password</Form.Label>
-                    <FormControl
-                      // value={password}
-                      // onChange={e => setPassword(e.target.value)}
-                      type="password"
-                      placeholder="Please Enter Your Password"
-                    />
-                  </FormGroup>
-                  {/* <label>Password</label>
-                  <input type="password" formControlName="password" className="form-control"  required autofocus />
-                  <span className="invalid-feedback"> Invalid Password </span> */}
-                </div>
-              </div>
               
-              <div className="col-md-12">
-                <br/>
-                <Button className="btn btn-success pull-right" block bsSize="large" type="submit" disabled={!this.state.formValid}>Login </Button>
-                  {/* <button className="btn btn-success pull-right" type="submit" >Login</button> */}
-              </div>
+                <div className="col-md-12">
+                    <br/>
+                    <Button className="btn btn-success pull-right" block bsSize="large" type="submit" disabled={!this.state.formValid}>Submit</Button>
+                    {/* <button className="btn btn-success pull-right" type="submit" >Login</button> */}
+                </div>
             </div>
 
             <div className="row">
               <div className="col-md-12">
                 <div>
                   <br/>
-                  <div className="alert alert-success display_none">Login Successful!</div>
+                  <div className="alert alert-success display_none">Email sent Successfully!</div>
                 </div>
                 <div>
                   <br/>
-                  <div  className="alert alert-danger display_none">Wrong credentials!</div>
+                  <div  className="alert alert-danger display_none">Wrong Email address!</div>
               </div>
             </div>
           </div>
@@ -146,4 +133,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default ForgotPassword;

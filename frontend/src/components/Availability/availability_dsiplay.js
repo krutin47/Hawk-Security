@@ -9,7 +9,7 @@ function availability_display() {
                     <div class="text-center uppercase pb40">
                         <h3>Employees' Availability</h3>
                     </div>
-                        <Table striped>
+                        <Table striped >
                             <thead>
                                 <tr class="row">
                                     <th class="col">#ID</th>
