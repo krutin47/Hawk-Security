@@ -6,12 +6,12 @@ import Admin_schedule_form from './components/Schedule/admin_schedule_form';
 import Availability_display from './components/Availability/availability_dsiplay';
 import Admin_schedule_display from './components/Schedule/admin_schedule_display';
 import User_schedule_display from './components/Schedule/user_schedule_display';
-import Login from './components/Profile Management/Login/login';
-import Register from './components/Profile Management/Registration/register'
-import User_update_profile from './components/Profile Management/Update/User_updateProfile';
-import Admin_update_profile from './components/Profile Management/Update/Admin_updateProfile';
-import Remove_profile from './components/Profile Management/Update/RemoveProfile';
-import Forgot_password from './components/Profile Management/ForgotPassword/ForgotPassword';
+import Login from './components/ProfileManagement/Login/login';
+import Register from './components/ProfileManagement/Registration/register'
+import User_update_profile from './components/ProfileManagement/Update/User_updateProfile';
+import Admin_update_profile from './components/ProfileManagement/Update/Admin_updateProfile';
+import Remove_profile from './components/ProfileManagement/Update/RemoveProfile';
+import Forgot_password from './components/ProfileManagement/ForgotPassword/ForgotPassword';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component{
