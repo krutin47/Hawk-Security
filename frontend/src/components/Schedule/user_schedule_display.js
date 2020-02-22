@@ -4,6 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 // import ListGrid from "react-listgrid";
 import listWeekPlugin from '@fullcalendar/list';
 import './user_schedule_display.css'
+import { Link } from 'react-router-dom';
 
 
 export default class user_schedule_display extends React.Component {
@@ -18,7 +19,30 @@ export default class user_schedule_display extends React.Component {
   }
   render() {
     return (
-        
+      <React.Fragment>
+      <div className="headerMain">
+      <div className="wrapper clearfix">
+          <div className="siteNavigation fr">
+              <Link to="/User_update_profile">UPDATE PROFILE</Link>
+          </div>
+      </div>
+    </div>
+    <div className="headerMain">
+      <div className="wrapper clearfix">
+          <div className="siteNavigation fr">
+              <Link to="/Remove_profile">REMOVE PROFILE</Link>
+          </div>
+      </div>
+    </div>
+    <div className="headerMain">
+      <div className="wrapper clearfix">
+          <div className="siteNavigation fr">
+              <Link to="/availability_form">AVAILABILITY FORM</Link>
+          </div>
+      </div>
+    </div>
+    
+
         <div class="container">
             <FullCalendar  
               defaultView ="dayGridMonth" 
@@ -32,7 +56,7 @@ export default class user_schedule_display extends React.Component {
               events={ this.state.calendarEvents }
             />
         </div>
-      
+        </React.Fragment>
     )
   }
 

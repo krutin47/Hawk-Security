@@ -1,67 +1,31 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../main.css';
-
-
-// const styles = makeStyles(theme => ({
-//   root: {
-//     display: 'flex',
-//     '& > *': {
-//       margin: theme.spacing(7),
-//       width: theme.spacing(70),
-//       height: theme.spacing(77),
-//     },
-//     paddingTop: theme.spacing(8),
-//   },
-
-//   paper: {
-//     display: 'flex',
-//     flexDirection: 'column',
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     backgroundColor: '#dddddd',
-//     boxShadow: "2px 2px 6px 0 rgba(0,0,0,0.2)",
-//     transition: "0.4s",
-//     "&:hover":{
-//       boxShadow: "22px 30px 60px 0 rgba(0,0,0,0.2)",
-//     }
-//   },   
-// }));
+import { Link } from 'react-router-dom';
 
 
 function Home() {
-  // const classes = styles();
 
   return (
     <React.Fragment>
-      {/* <AppBar position="fixed">
-          <Toolbar>
-            <Typography variant="h5" color="inherit">
-              <pre>  Hack Security</pre>
-            </Typography>
-          </Toolbar>
-      </AppBar> */}
-    {/* <div className={classes.root} align="center"> */}
-      
-      
-    
-    <header>
-    <div className="headerMain">
-      <div className="wrapper clearfix">
-        <div className="siteLogo fl">
-          <a href="home.html"><img src={require('../../assets/images/Sitelogo.png')} alt=""/></a>
-        </div>
-        <a className="expandMenu"><i></i><i></i><i></i></a>
-        <div className="siteNavigation fr">
-          <ul className="parent">
-            <li><a href="javascript:void(0)" routerLink="/profile">PROFILE</a></li>
-            <li><a href="javascript:void(0)" routerLink="/availiblity">AVAILABLITY</a></li>
-            <li><a href="javascript:void(0)" routerLink="/paystub">PAYSTUB</a></li>
-          </ul>
+      <header>
+      <div className="headerMain">
+        <div className="wrapper clearfix">
+          <div className="siteLogo fl">
+            <Link to="/"><img src={require('../../assets/images/Sitelogo.png')} alt=""/></Link>
+          </div>
+          <a className="expandMenu"><i></i><i></i><i></i></a>
+          <div className="siteNavigation fr">
+            <ul className="parent">
+              <li><Link to="/admin_schedule_display">ADMIN PROFILE</Link></li>
+              <li><Link to="/user_schedule_display">USER PROFILE</Link></li>
+              <li><Link to="/register">REGISTER</Link></li>
+              <li><Link to="/login">LOGIN</Link></li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-</header>
+  </header>
 
 {/* <!--Banner Section--> */}
 <section className="BannerSection overlay ">

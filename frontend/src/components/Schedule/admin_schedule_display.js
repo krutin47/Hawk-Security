@@ -3,6 +3,7 @@ import DatePicker from "react-datepicker";
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Box } from '@material-ui/core';
 import "./admin_schedule_theme.css"
+import { Link } from 'react-router-dom';
  
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -33,10 +34,39 @@ class Admin_schedule_display extends React.Component {
     
     return (
         <React.Fragment>
-          <br /> <br/> 
+          <div className="headerMain">
+            <div className="wrapper clearfix">
+                <div className="siteNavigation fr">
+                    <Link to="/admin_schedule_form">UPLOAD SCHEDULE</Link>
+                </div>
+            </div>
+          </div>
+          <div className="headerMain">
+            <div className="wrapper clearfix">
+                <div className="siteNavigation fr">
+                    <Link to="/Admin_update_profile">UPDATE PROFILE</Link>
+                </div>
+            </div>
+          </div>
+          <div className="headerMain">
+            <div className="wrapper clearfix">
+                <div className="siteNavigation fr">
+                    <Link to="/Admin_update_profile">REMOVE PROFILE</Link>
+                </div>
+            </div>
+          </div>
+          <div className="headerMain">
+            <div className="wrapper clearfix">
+                <div className="siteNavigation fr">
+                    <Link to="/availability_display">DISPLAY AVAILABILITY</Link>
+                </div>
+            </div>
+          </div>
+              
+          
             <div class="container justify-content-md-center">
               <div class="row justify-content-md-center">
-                <div class="select_date_div col-md-auto">
+              <div class="select_date_div col-md-auto">
                   <p>Select Date</p>
                 </div>
                 <div class="col-md-auto justify-content-md-center padding_div">
@@ -53,7 +83,6 @@ class Admin_schedule_display extends React.Component {
                 </div>
               </div>
             </div>
-          
         </React.Fragment>
     );
   }

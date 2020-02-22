@@ -30,8 +30,6 @@ class App extends Component{
 				<Route path='/Admin_update_profile' component={Admin_update_profile} />
 				<Route path='/Remove_profile' component={Remove_profile} />
 				<Route path='/Forgot_password' component={Forgot_password} />
-
-				
 			</Router>
 		);
 	}

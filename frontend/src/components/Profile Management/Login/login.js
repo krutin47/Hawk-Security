@@ -4,6 +4,7 @@ import { Button, FormGroup, FormControl, Form, Alert } from "react-bootstrap";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './logintheme.css';
+import { Link } from 'react-router-dom';
 
 class Login extends Component {
 
@@ -81,6 +82,14 @@ class Login extends Component {
       //   <button type="submit" className="btn btn-primary" disabled={!this.state.formValid}>Sign up</button>
       // </form>
       <div>
+        <div className="headerMain">
+      <div className="wrapper clearfix">
+          <div className="siteNavigation fr">
+              <Link to="/Forgot_password">Forgot Password</Link>
+          </div>
+      </div>
+    </div>
+    
         <form>
           <div className="login-container jumbotron">
             <div className="row">
