@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../main.css';
 
-function Availability_form() {
+function availability_form() {
     return (
         <React.Fragment>
             <section class="pb70 sectionBox">
@@ -102,4 +102,4 @@ function Availability_form() {
     )
 }
 
-export default Availability_form
+export default availability_form
