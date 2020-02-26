@@ -5930,6 +5930,7 @@
   .Logos { display: inline-block; width: 20%; margin-right: -4px; vertical-align: middle; padding: 0 15px; text-align: center }
   .Logos img { width: 170px; }
   .siteLogo  img {
+    background-color: #fff;
     width: 166px;
   }
   
@@ -6141,4 +6142,6 @@
   }
   .fadeInUp { -webkit-animation-name: fadeInUp; animation-name: fadeInUp; }
   
-  
+  td.fc-event-container > a:nth-child(1) > div {
+    color: #fff;
+  }
