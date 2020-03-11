@@ -1,0 +1,7 @@
+footer > div:nth-child(1) {
+    background-color: #6351ce;
+}
+
+hr {
+    width: 60px;
+}

@@ -13,6 +13,7 @@ import Admin_update_profile from './components/ProfileManagement/Update/Admin_up
 import Remove_profile from './components/ProfileManagement/Update/RemoveProfile';
 import Forgot_password from './components/ProfileManagement/ForgotPassword/ForgotPassword';
 import Add_location from './components/Location/Add_location';
+import Coming_soon from './components/Coming_Soon/coming_soon';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // job pages added
@@ -41,6 +42,7 @@ class App extends Component{
 				<Route path='/job_display' component={Job_display} />
 				<Route path='/location_add' component={Location_add} />
 				<Route path='/Add_location' component={Add_location} />
+				<Route path='/Coming_soon' component={Coming_soon} />
 			</Router>
 		);
 	}

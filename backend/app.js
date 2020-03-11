@@ -60,8 +60,10 @@ connection.once('open', () => {
 })
 
 // defining routes 
-
+const employeeRouter = require('./routes/profileManagement');
 const usersRouter = require('./routes/location');
+
+app.use('/employee', employeeRouter);
 app.use('/location', usersRouter);
 
 const jobsRouter = require('./routes/jobs');
