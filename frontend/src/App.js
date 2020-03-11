@@ -13,6 +13,7 @@ import Admin_update_profile from './components/ProfileManagement/Update/Admin_up
 import Remove_profile from './components/ProfileManagement/Update/RemoveProfile';
 import Forgot_password from './components/ProfileManagement/ForgotPassword/ForgotPassword';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 // job pages added
 import Job_form from './components/Career/job_form'; 
 import Job_display from './components/Career/job_display';

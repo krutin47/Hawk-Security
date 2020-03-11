@@ -14,6 +14,7 @@
     font-weight: normal;
     font-style: normal;
   }
+<<<<<<< HEAD
 
   .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -38,6 +39,8 @@
     width: 100%;
     font-size: 18px;
   }
+=======
+>>>>>>> 36236e4abc6cff02b75d5fd36fb0115c0f0f0e27
   
   .fa {
     display: inline-block;
