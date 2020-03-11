@@ -15,7 +15,6 @@ import Forgot_password from './components/ProfileManagement/ForgotPassword/Forgo
 import Add_location from './components/Location/Add_location';
 import Coming_soon from './components/Coming_Soon/coming_soon';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 // job pages added
 import Job_form from './components/Career/job_form'; 
 import Job_display from './components/Career/job_display';
