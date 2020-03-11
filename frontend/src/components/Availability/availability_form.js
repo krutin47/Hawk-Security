@@ -4,6 +4,9 @@ import '../../main.css';
 function availability_form() {
     return (
         <React.Fragment>
+
+            {/* Header Section */}
+
             <header class="altBg">
                  <div class="headerMain">
                     <div class="wrapper clearfix">
@@ -22,6 +25,9 @@ function availability_form() {
                     </div>
                 </div>
             </header>
+
+            {/* Form Section */}
+
             <section class="pb70 sectionBox">
                 <div class="wrapper smallWrapper">
                     <div class="text-center uppercase">
@@ -106,6 +112,8 @@ function availability_form() {
                     </div>
                 </div>
             </section>
+
+            {/* Footer Section */}
 
             <footer className="footerSection">
                 <div className="footerTop p70-0 ">

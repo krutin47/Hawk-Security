@@ -12,7 +12,8 @@ function job_display() {
             </div>
           </div> */}
 
-        
+        {/* job card design  */}
+        {/* Job card Start */}
             <div className="card">
   <img src="/w3images/jeans3.jpg" alt="Denim Jeans"/>
   <h1>Tailored Jeans</h1>
