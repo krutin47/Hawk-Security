@@ -12,6 +12,7 @@ function job_display() {
             </div>
           </div> */}
 
+<<<<<<< HEAD
         {/* job card design  */}
         {/* Job card 1 Start */}
             <div className="card">
@@ -173,6 +174,16 @@ function job_display() {
   <p><button>Add to Cart</button></p>
 </div>
 {/* Job card 3 End */}
+=======
+        
+            <div className="card">
+  <img src="/w3images/jeans3.jpg" alt="Denim Jeans"/>
+  <h1>Tailored Jeans</h1>
+  <p>$19.99</p>
+  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
+  <p><button>Add to Cart</button></p>
+</div>
+>>>>>>> job adding UI
         </React.Fragment>    
     )
 }

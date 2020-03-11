@@ -1,8 +1,13 @@
 import React, { Component, ReactSVG } from 'react';
+<<<<<<< HEAD
 import { Button, FormGroup, FormControl, Form, Alert } from "react-bootstrap";
 import Nav_Header from '../../Home/Nav_Header';
 import Footer from '../../Home/Footer';
 import { Link } from 'react-router-dom';
+=======
+//import { FormErrors } from './FormError';
+import { Button, FormGroup, FormControl, Form, Alert } from "react-bootstrap";
+>>>>>>> job adding UI
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './ForgotPassword.css';
@@ -16,6 +21,7 @@ class ForgotPassword extends Component {
       password: '',
       formErrors: {email: '', password: ''},
       emailValid: false,
+<<<<<<< HEAD
       emailTouch: false,
       passwordValid: false,
       passwordTouch: false,
@@ -36,10 +42,27 @@ class ForgotPassword extends Component {
     let fieldValidationErrors = this.state.formErrors;
     console.log('fieldValidationErrors:', fieldValidationErrors);
     console.log('this.state.formErrors:', this.state.formErrors);
+=======
+      passwordValid: false,
+      formValid: false
+    }
+  }
+  
+  handleUserInput = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    this.setState({[name]: value},
+                  () => { this.validateField(name, value) });
+  }
+  
+  validateField(fieldName, value) {
+    let fieldValidationErrors = this.state.formErrors;
+>>>>>>> job adding UI
     let emailValid = this.state.emailValid;
     let passwordValid = this.state.passwordValid;
   
     switch(fieldName) {
+<<<<<<< HEAD
         case 'email':
             this.state.emailTouch = true;
             emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
@@ -49,11 +72,25 @@ class ForgotPassword extends Component {
             break;
     }
     
+=======
+      case 'email':
+        emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+        fieldValidationErrors.email = emailValid ? '' : ' is invalid';
+        break;
+      case 'password':
+        passwordValid = value.length >= 6;
+        fieldValidationErrors.password = passwordValid ? '': ' is too short';
+        break;
+      default:
+        break;
+    }
+>>>>>>> job adding UI
     this.setState({formErrors: fieldValidationErrors,
                     emailValid: emailValid,
                     passwordValid: passwordValid
                   }, this.validateForm);
   }
+<<<<<<< HEAD
 
   validateForm() {
     this.setState({formValid: this.state.emailValid && this.state.passwordValid});
@@ -135,11 +172,94 @@ class ForgotPassword extends Component {
         {/* Footer Component */}
         <Footer/>
         {/* Footer Component End */}
+=======
+  
+  validateForm() {
+    this.setState({formValid: this.state.emailValid && this.state.passwordValid});
+  }
+  
+  errorClass(error) {
+    return(error.length === 0 ? '' : 'has-error');
+  }
+  
+  render () {
+    return (
+      // <form className="demoForm">
+      //   <h2>Sign up</h2>
+      //   <div className="panel panel-default">
+      //     <FormErrors formErrors={this.state.formErrors} />
+      //   </div>
+      //   <div className={`form-group ${this.errorClass(this.state.formErrors.email)}`}>
+      //     <label htmlFor="email">Email address</label>
+      //     <input type="email" required className="form-control" name="email"
+      //       placeholder="Email"
+      //       value={this.state.email}
+      //       onChange={this.handleUserInput}  />
+      //   </div>
+      //   <div className={`form-group ${this.errorClass(this.state.formErrors.password)}`}>
+      //     <label htmlFor="password">Password</label>
+      //     <input type="password" className="form-control" name="password"
+      //       placeholder="Password"
+      //       value={this.state.password}
+      //       onChange={this.handleUserInput}  />
+      //   </div>
+      //   <button type="submit" className="btn btn-primary" disabled={!this.state.formValid}>Sign up</button>
+      // </form>
+      <div>
+        <form>
+          <div className="login-container jumbotron">
+            <div className="row">
+                <div className="col-md-12">
+                
+                </div>
+                <div className="col-md-12">
+                    <div className="form-label-group">
+                    <FormGroup controlId="email_id" bsSize="large">
+                        
+                        <Form.Label>Email</Form.Label>  
+                        <FormControl
+                        autoFocus
+                        type="email"
+                        // value={email}
+                        // onChange={e => setEmail(e.target.value)}
+                        placeholder="Please Enter Your Email ID"
+                        />        
+                        {/* <label>Email</label>
+                        <input type="emailID" formControlName="emailID" className="form-control" required autofocus />  
+                        <span className="invalid-feedback" > Invalid Email </span> */}
+                    
+                    </FormGroup>
+                    </div>
+                </div>
+              
+                <div className="col-md-12">
+                    <br/>
+                    <Button className="btn btn-success pull-right" block bsSize="large" type="submit" disabled={!this.state.formValid}>Submit</Button>
+                    {/* <button className="btn btn-success pull-right" type="submit" >Login</button> */}
+                </div>
+            </div>
+
+            <div className="row">
+              <div className="col-md-12">
+                <div>
+                  <br/>
+                  <div className="alert alert-success display_none">Email sent Successfully!</div>
+                </div>
+                <div>
+                  <br/>
+                  <div  className="alert alert-danger display_none">Wrong Email address!</div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </form>
+>>>>>>> job adding UI
       </div>
     )
   }
 }
 
+<<<<<<< HEAD
 export default ForgotPassword;
 
 {/* <div className="row">
@@ -154,3 +274,6 @@ export default ForgotPassword;
         </div>
       </div>
     </div> */}
+=======
+export default ForgotPassword;
+>>>>>>> job adding UI
