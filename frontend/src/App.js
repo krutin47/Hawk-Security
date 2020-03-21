@@ -1,33 +1,38 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Admin_schedule_details from './components/admin_schedule/admin_schedule_details';
-import User_schedule_view from './components/user_schedule/user_schedule_view';
-import Login from './components/Profile Management/Login/login';
-import Register from './components/Profile Management/Register/Register'
-import ForgotPassword from './components/Profile Management/Forgot Password/ForgotPassword'
-import UserUpdateProfile from './components/Profile Management/Update Profile/User_updateProfile'
-import AdminUpdateProfile from './components/Profile Management/Update Profile/Admin_updateProfile'
-import RemoveProfile from './components/Profile Management/Remove Profile/RemoveProfile'
+import Home from './components/Home/Home';
+import Availability_form from './components/Availability/availability_form';
+import Admin_schedule_form from './components/Schedule/admin_schedule_form';
+import Availability_display from './components/Availability/availability_display';
+import Admin_schedule_display from './components/Schedule/admin_schedule_display';
+import User_schedule_display from './components/Schedule/user_schedule_display';
+import Login from './components/ProfileManagement/Login/login';
+import Register from './components/ProfileManagement/Registration/register'
+import User_update_profile from './components/ProfileManagement/Update/User_updateProfile';
+import Admin_update_profile from './components/ProfileManagement/Update/Admin_updateProfile';
+import Remove_profile from './components/ProfileManagement/Update/RemoveProfile';
+import Forgot_password from './components/ProfileManagement/ForgotPassword/ForgotPassword';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component{
-  render() {
-    return (
-      <Router>
-                {/* <Route exact path='/' component={Home} /> */}
-        
-        <Route path='/admin_schedule_details' component={Admin_schedule_details} />
-        <Route path='/user_schedule_view' component={User_schedule_view} />
-        <Route path='/login' component={Login} />
-        <Route path='/register' component={Register} />
-        <Route path='/forgot_password' component={ForgotPassword} />
-        <Route path='/user_update_profile' component={UserUpdateProfile} />
-        <Route path='/admin_update_profile' component={AdminUpdateProfile} />
-        <Route path='/remove_profile' component={RemoveProfile} />
-      
-      </Router>
-    );
-  }
+    render() {
+		return (
+			<Router>
+                <Route exact path='/' component={Home} />
+				<Route path='/availability_form' component={Availability_form} />
+				<Route path='/admin_schedule_display' component={Admin_schedule_display} />
+				<Route path='/user_schedule_display' component={User_schedule_display} />
+				<Route path='/availability_display' component={Availability_display}/>
+				<Route path='/admin_schedule_form' component={Admin_schedule_form} />
+				<Route path='/login' component={Login} />
+				<Route path='/register' component={Register} />
+				<Route path='/User_update_profile' component={User_update_profile} />
+				<Route path='/Admin_update_profile' component={Admin_update_profile} />
+				<Route path='/Remove_profile' component={Remove_profile} />
+				<Route path='/Forgot_password' component={Forgot_password} />
+			</Router>
+		);
+	}
 }
 
 export default App;
