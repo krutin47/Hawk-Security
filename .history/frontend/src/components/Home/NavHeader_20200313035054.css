@@ -1,0 +1,8 @@
+#quote {
+    text-align: center;
+    margin-left: 2rem;
+}
+  
+#quote:hover {
+    z-index: inherit;
+}

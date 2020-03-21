@@ -1,0 +1,7 @@
+footer:first-child {
+    background-color: #6351ce;
+}
+
+footer > div.container.text-center.text-md-left.mt-5 > div > div.col-md-3.col-lg-4.col-xl-3.mx-auto.mb-4 > hr {
+    width: 60px;
+}

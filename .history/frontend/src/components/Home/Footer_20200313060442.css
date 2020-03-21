@@ -1,0 +1,26 @@
+footer > div:nth-child(1) {
+    background-color: #044e7f;
+}
+
+hr {
+    width: 70px;
+    height: 0.05rem;
+    background-color: #044e7f;
+}
+
+#root > footer{
+    background-color: #eeeff1;
+}
+
+a {
+    color: #7a858c;
+}
+
+#root > footer > div.footer-copyright.text-center.py-3 > a > u {
+    color: #044e7f;
+}
+
+#root > footer > div:nth-child(1) > div > div,
+#root > footer > div:nth-child(1) > div > div > div.col-md-6.col-lg-5.text-center.text-md-left.mb-4.mb-md-0 > h6 {
+    color: #eeeff1
+}
