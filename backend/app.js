@@ -61,11 +61,16 @@ connection.once('open', () => {
 
 // defining routes 
 
-const usersRouter = require('./routes/location');
-app.use('/location', usersRouter);
+const locationRouter = require('./routes/location');
+app.use('/location', locationRouter);
+
+const shiftRouter = require('./routes/shift_details');
+app.use('/shift_details', shiftRouter); 
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
+
+
 
 // module.exports = app;

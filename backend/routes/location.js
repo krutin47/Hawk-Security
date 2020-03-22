@@ -7,7 +7,7 @@ let Location = require('../models/location.model.js');
 
 router.route('/').get((req, res) => {
   Location.find()
-    .then(users => res.json(users))
+    .then(Location => res.json(Location))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
@@ -19,7 +19,7 @@ router.route('/add').post((req, res) => {
   const newlocation = new Location({ Location_ID: location_Id, Name: name, Address: address });
 
   newlocation.save()
-    .then(() => res.json('Location added!' + newlocation))
+    .then(() => res.json('Location added.........!  ' + newlocation))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
