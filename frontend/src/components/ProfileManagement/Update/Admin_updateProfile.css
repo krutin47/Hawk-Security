@@ -114,7 +114,7 @@ label {
 
 #root > div > div > div > div.form_container > form > div > div > div > div > p {
   margin: 0 15px 5px;
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 
 @media (min-width: 426px) and (max-width: 768px) {
