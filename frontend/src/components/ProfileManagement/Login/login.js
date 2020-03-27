@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import Nav_Header from '../../Home/Nav_Header';
-import LoginForm from './LoginForm';
-import Footer from '../../Home/Footer';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './logintheme.css';
 import { Link } from 'react-router-dom';
+
+import NavHeader from '../../Navbar/NavHeader';
+import LoginForm from './LoginForm';
+import Footer from '../../Footer/Footer';
 
 class Login extends Component {
 
@@ -13,7 +12,7 @@ class Login extends Component {
       <div>
         
         {/* Header Section */}
-        <Nav_Header/>
+        {/* <NavHeader/> */}
         {/* Hadder End */}
 
         {/* Body Section */}

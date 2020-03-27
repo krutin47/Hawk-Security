@@ -39,7 +39,7 @@ button.btn {
   align-content: center;
 }
 
-.login_container {
+.updateProfile__Container {
   max-width: 850px;
   min-width: 800px;
   max-height: 600px;
@@ -118,7 +118,7 @@ label {
 }
 
 @media (min-width: 426px) and (max-width: 768px) {
-  .login_container {
+  .updateProfile__Container {
     max-width: 400px;
     min-width: 60vw;
     min-height: 60vh;
@@ -134,7 +134,7 @@ label {
 }
 
 @media (min-width: 0px) and (max-width: 426px) {
-  .login_container {
+  .updateProfile__Container {
     max-width: 100%;
     min-width: 100vw;
     min-height: 60vh;
@@ -151,7 +151,7 @@ label {
 }
 
 @media (min-width: 769px) {
-  .login_container {
+  .updateProfile__Container {
     flex-flow: row nowrap;
     overflow: hidden;
   }

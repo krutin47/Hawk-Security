@@ -1,10 +1,9 @@
-import React, { Component, ReactSVG } from 'react';
-import { Button, FormGroup, FormControl, Form, Alert } from "react-bootstrap";
-import Nav_Header from '../../Home/Nav_Header';
-import Footer from '../../Home/Footer';
+import React, { Component } from 'react';
+import { Button, Alert } from "react-bootstrap";
+import Nav_Header from '../../Navbar/NavHeader';
+import Footer from '../../Footer/Footer';
 import { Link } from 'react-router-dom';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './ForgotPassword.css';
 
 class ForgotPassword extends Component {
@@ -41,7 +40,7 @@ class ForgotPassword extends Component {
   
     switch(fieldName) {
         case 'email':
-            this.state.emailTouch = true;
+            this.setState({emailTouch: true});
             emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
             fieldValidationErrors.email = emailValid ? '' : ' is invalid';
             break;

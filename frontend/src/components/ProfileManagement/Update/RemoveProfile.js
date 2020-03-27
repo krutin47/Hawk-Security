@@ -1,7 +1,7 @@
-import React, { Component, ReactSVG } from 'react';
-import { Button, FormGroup, FormControl, Form, Alert } from "react-bootstrap";
-import Nav_Header from '../../Home/Nav_Header';
-import Footer from '../../Home/Footer';
+import React, { Component } from 'react';
+import { Button, Alert } from "react-bootstrap";
+import Nav_Header from '../../Navbar/NavHeader';
+import Footer from '../../Footer/Footer';
 import { Link } from 'react-router-dom';
 
 import './RemoveProfile.css';

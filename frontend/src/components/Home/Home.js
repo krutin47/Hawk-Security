@@ -1,8 +1,8 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../main.css';
-import Nav_header from './Nav_Header';
-import Footer from './Footer';
+import Nav_header from '../Navbar/NavHeader';
+import Footer from '../Footer/Footer';
 import { Link } from 'react-router-dom';
 
 

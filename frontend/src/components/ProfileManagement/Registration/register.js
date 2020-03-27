@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import RegistrationForm from './RegistrationForm';
-import Nav_Header from '../../Home/Nav_Header';
-import Footer from '../../Home/Footer';
+import NavHeader from '../../Navbar/NavHeader';
+import Footer from '../../Footer/Footer';
 
 class Register extends Component {
 
@@ -12,14 +12,14 @@ class Register extends Component {
       <div>
         
         {/* Header Section */}
-        <Nav_Header/>
+        <NavHeader/>
         {/* Hadder End */}
 
         {/* Body Section */}
         <div className="full_window">
           
           {/* Login Container */}
-          <div className="login_container">
+          <div className="register_container">
             
             {/* Imaage View */}
             <div className="image_view">

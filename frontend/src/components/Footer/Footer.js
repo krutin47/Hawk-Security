@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import './Footer.css'
 
-class Footer extends React.Component {
+class Footer extends Component {
     constructor(props) {
         super(props);
     }

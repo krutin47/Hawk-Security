@@ -20,7 +20,7 @@ export default class user_schedule_display extends React.Component {
   render() {
     return (
       <React.Fragment>
-      <div className="headerMain">
+      {/* <div className="headerMain">
       <div className="wrapper clearfix">
           <div className="siteNavigation fr">
               <Link to="/User_update_profile">UPDATE PROFILE</Link>
@@ -41,9 +41,9 @@ export default class user_schedule_display extends React.Component {
           </div>
       </div>
     </div>
-    
+     */}
 
-        <div class="container">
+        <div className="container">
             <FullCalendar  
               defaultView ="dayGridMonth" 
               header={{
@@ -59,6 +59,4 @@ export default class user_schedule_display extends React.Component {
         </React.Fragment>
     )
   }
-
- 
 }

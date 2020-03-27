@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Nav_Header from '../../Home/Nav_Header';
-import Footer from '../../Home/Footer';
+import Nav_Header from '../../Navbar/NavHeader';
+import Footer from '../../Footer/Footer';
 import AdminUpdateProfileForm from "./Admin_updateProfileForm";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -22,7 +22,7 @@ class AdminUpdateProfile extends Component {
         <div className="full_window">
           
           {/* Login Container */}
-          <div className="login_container">
+          <div className="updateProfile__Container">
             
             {/* Imaage View */}
             <div className="image_view">
