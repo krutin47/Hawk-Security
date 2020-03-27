@@ -11,70 +11,16 @@ const shiftdetailSchema = new Schema({
   EMP_ID: {
       type: String
   },
-  START_DATE: {
+  Name: {
       type: String
   },
-  MON_START:{
-      type: String
+  StartscheduledDateTime: {
+      type: Date
   },
-  MON_END:{
-      type: String
+  EndscheduledDateTime: {
+      type: Date
   },
-  MON_LOC:{
-      type: String
-  },
-  TUE_START:{
-      type: String
-  },
-  TUE_END:{
-      type: String
-  },
-  TUE_LOC:{
-      type: String
-  },
-  WED_START:{
-      type: String
-  },
-  WED_END: {
-      type: String
-  },
-  WED_LOC:{
-      type: String
-  },
-  THURS_START:{
-      type: String
-  },
-  THURS_END:{
-      type: String
-  },
-  THURS_LOC: {
-      type: String
-  },
-  FRI_START: {
-      type: String
-  },
-  FRI_END: {
-      type: String
-  },
-  FRI_LOC: {
-      type: String
-  },
-  SAT_START: {
-      type: String
-  },
-  SAT_END: {
-      type: String
-  },
-  SAT_LOC: {
-      type: String
-  },
-  SUN_START: {
-      type: String
-  },
-  SUN_END: {
-      type: String
-  },
-  SUN_LOC: {
+  location: {
       type: String
   }
 },
@@ -83,6 +29,6 @@ const shiftdetailSchema = new Schema({
 });
 
 
-const ShiftDetails = mongoose.model('shift_details', shiftdetailSchema);
+const ShiftDetails = mongoose.model('shifts', shiftdetailSchema);
 
 module.exports = ShiftDetails;
