@@ -35,17 +35,22 @@ const empSchema = new Schema({
         trim: true,
         minlength: 1
     },
-    Address:{
+    address:{
         type: String,
+        minlength: 0,
+        maxlength: 50,
     },
-    Phone:{
-        type: String, 
+    phone:{
+        type: Number,
+        minlength: 10,
+        maxlength: 14,
     },
-    Gender:{
-        type: String, 
+    gender:{
+        type: String,
+        maxlength: 6,
     },
     DOB:{
-        type: String, 
+        type: Date,
     }
 }, {
     timestamps: true,
