@@ -4,64 +4,66 @@ import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import PropTypes from "prop-types";
+import EmpNavbar from './EmpNavbar';
+import AdminNavbar from './AdminNavbar'
 
 
 //importing CSS
 import './NavHeader.css'
 
 // TODO :: update the User Navbar according to your need..
-function UserNavbar(props) {
-    console.log("props ----------> ", props);
+// function UserNavbar(props) {
+//     console.log("props ----------> ", props);
     
-    return (
-        <header>
-            <div className="headerMain">
-                <div className="wrapper clearfix">
-                    <div className="siteLogo fl">
-                        <Link to="/"><img src={require('../../assets/images/Sitelogo.png')} alt=""/></Link>
-                    </div>
-                    <a className="expandMenu"><i></i><i></i><i></i></a>
-                    <div className="siteNavigation fr">
-                        <ul className="parent">
-                            <li><Link to="/">HOME</Link></li>
-                            <li><Link to="/availability_form">AVAILABILITY FORM</Link></li>
-                            {/* // TODO: make below three in drop down list */}
-                            <li><Link to="/User_update_profile">UPDATE PROFILE</Link></li>
-                            <li><Link to="/Remove_profile">REMOVE PROFILE</Link></li>
-                            <li><Link onClick={props.logoutUser()}>LOGOUT</Link></li>
-                            {/* //TODO: Logout Button needs be Added */}
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </header>
-    );
-}
+//     return (
+//         <header>
+//             <div className="headerMain">
+//                 <div className="wrapper clearfix">
+//                     <div className="siteLogo fl">
+//                         <Link to="/"><img src={require('../../assets/images/Sitelogo.png')} alt=""/></Link>
+//                     </div>
+//                     <a className="expandMenu"><i></i><i></i><i></i></a>
+//                     <div className="siteNavigation fr">
+//                         <ul className="parent">
+//                             <li><Link to="/">HOME</Link></li>
+//                             <li><Link to="/availability_form">AVAILABILITY FORM</Link></li>
+//                             {/* // TODO: make below three in drop down list */}
+//                             <li><Link to="/User_update_profile">UPDATE PROFILE</Link></li>
+//                             <li><Link to="/Remove_profile">REMOVE PROFILE</Link></li>
+//                             <li><Link onClick={props.logoutUser()}>LOGOUT</Link></li>
+//                             {/* //TODO: Logout Button needs be Added */}
+//                         </ul>
+//                     </div>
+//                 </div>
+//             </div>
+//         </header>
+//     );
+// }
 
 // //TODO :: update the Admin Navbar according to your need..
-function AdminNavbar(props) {
-    return (
-        <header>
-            <div className="headerMain">
-                <div className="wrapper clearfix">
-                    <div className="siteLogo fl">
-                        <Link to="/"><img src={require('../../assets/images/Sitelogo.png')} alt=""/></Link>
-                    </div>
-                    <a className="expandMenu"><i></i><i></i><i></i></a>
-                    <div className="siteNavigation fr">
-                        <ul className="parent">
-                            {/* //TODO: Add the respective Link And Logout Button */}
-                            <li><Link to="/admin_schedule_display">ADMIN PROFILE</Link></li>
-                            <li><Link to="/user_schedule_display">USER PROFILE</Link></li>
-                            <li><Link to="/register">REGISTER</Link></li>
-                            <li><Link to="/login">LOGIN</Link></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </header>
-    );
-}
+// function AdminNavbar(props) {
+//     return (
+//         <header>
+//             <div className="headerMain">
+//                 <div className="wrapper clearfix">
+//                     <div className="siteLogo fl">
+//                         <Link to="/"><img src={require('../../assets/images/Sitelogo.png')} alt=""/></Link>
+//                     </div>
+//                     <a className="expandMenu"><i></i><i></i><i></i></a>
+//                     <div className="siteNavigation fr">
+//                         <ul className="parent">
+//                             {/* //TODO: Add the respective Link And Logout Button */}
+//                             <li><Link to="/admin_schedule_display">ADMIN PROFILE</Link></li>
+//                             <li><Link to="/user_schedule_display">USER PROFILE</Link></li>
+//                             <li><Link to="/register">REGISTER</Link></li>
+//                             <li><Link to="/login">LOGIN</Link></li>
+//                         </ul>
+//                     </div>
+//                 </div>
+//             </div>
+//         </header>
+//     );
+// }
 
 function GuestNavbar(props) {
     return (
@@ -191,10 +193,10 @@ class NavHeader extends Component {
         
         if (this.state.isLoggedIn) {
             if(this.state.isAdmin) {
-                return <AdminNavbar />;
+                return <AdminNavbar  {...this.state}/>;
             } else if (this.state.isEmployee) {
                 console.log("UserNavbar true");
-                return <UserNavbar />;
+                return <EmpNavbar  {...this.state}/>;
             }
         } else {
             console.log("guestNavbaar");

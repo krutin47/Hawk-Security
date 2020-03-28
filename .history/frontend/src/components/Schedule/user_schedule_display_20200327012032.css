@@ -4,8 +4,7 @@
 
 .fullcalander__container {
     width: 100vw;
-    height: max-content;
-    margin: 10% 0 5% 0;
-    padding: 0% 7%; 
+    height: 100vh;
+    margin-top: 10%;
     overflow: visible;
 }

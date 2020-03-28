@@ -2,17 +2,13 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { logoutUser } from "../../actions/authActions";
 import PropTypes from "prop-types";
-
 
 //importing CSS
 import './NavHeader.css'
 
 // TODO :: update the User Navbar according to your need..
 function UserNavbar(props) {
-    console.log("props ----------> ", props);
-    
     return (
         <header>
             <div className="headerMain">
@@ -28,7 +24,7 @@ function UserNavbar(props) {
                             {/* // TODO: make below three in drop down list */}
                             <li><Link to="/User_update_profile">UPDATE PROFILE</Link></li>
                             <li><Link to="/Remove_profile">REMOVE PROFILE</Link></li>
-                            <li><Link onClick={props.logoutUser()}>LOGOUT</Link></li>
+                            <li onClick={this.prop.logoutUser()}>LOGOUT</li>
                             {/* //TODO: Logout Button needs be Added */}
                         </ul>
                     </div>
@@ -38,7 +34,7 @@ function UserNavbar(props) {
     );
 }
 
-// //TODO :: update the Admin Navbar according to your need..
+//TODO :: update the Admin Navbar according to your need..
 function AdminNavbar(props) {
     return (
         <header>
@@ -96,28 +92,11 @@ class NavHeader extends Component {
             isAdmin: false,
             isEmployee: false,
             isGuest: true,
-            errors: {},
-            auth: {},
-            logoutUser: {} 
+            errors: {}
         };
-
-        this.onClickLogout = this.onClickLogout.bind(this);
     }
-
-    onClickLogout(e) {
-        e.preventDefault();
-
-        this.props.logoutUser();
-    }
-
 
     componentDidMount() {
-
-        this.setState({
-            auth: this.props.auth,
-            logoutUser: this.props.logoutUser()
-        })
-
         if(this.props.auth.isAuthenticated) {
             this.setState({ 
                 isLoggedIn: true,
@@ -205,7 +184,6 @@ class NavHeader extends Component {
 }
 
 NavHeader.propTypes = {
-    logoutUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired
 };

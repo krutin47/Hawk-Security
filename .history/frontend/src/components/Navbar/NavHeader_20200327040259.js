@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import PropTypes from "prop-types";
 
-
 //importing CSS
 import './NavHeader.css'
 
@@ -38,7 +37,7 @@ function UserNavbar(props) {
     );
 }
 
-// //TODO :: update the Admin Navbar according to your need..
+//TODO :: update the Admin Navbar according to your need..
 function AdminNavbar(props) {
     return (
         <header>
@@ -97,8 +96,7 @@ class NavHeader extends Component {
             isEmployee: false,
             isGuest: true,
             errors: {},
-            auth: {},
-            logoutUser: {} 
+            auth: {}
         };
 
         this.onClickLogout = this.onClickLogout.bind(this);
@@ -115,7 +113,6 @@ class NavHeader extends Component {
 
         this.setState({
             auth: this.props.auth,
-            logoutUser: this.props.logoutUser()
         })
 
         if(this.props.auth.isAuthenticated) {
@@ -191,10 +188,10 @@ class NavHeader extends Component {
         
         if (this.state.isLoggedIn) {
             if(this.state.isAdmin) {
-                return <AdminNavbar />;
+                return <AdminNavbar  {...this.state}/>;
             } else if (this.state.isEmployee) {
                 console.log("UserNavbar true");
-                return <UserNavbar />;
+                return <UserNavbar  {...this.state}/>;
             }
         } else {
             console.log("guestNavbaar");
@@ -209,6 +206,10 @@ NavHeader.propTypes = {
     auth: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired
 };
+
+UserNavbar.prototype = {
+    logoutUser: PropTypes.func.isRequired
+}
 
 const mapStateToProps = state => ({
     auth: state.auth,

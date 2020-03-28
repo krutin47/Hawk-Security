@@ -4,6 +4,8 @@ import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import PropTypes from "prop-types";
+import EmpNavbar from './EmpNavbar';
+import AdminNavbar from './AdminNavbar'
 
 
 //importing CSS

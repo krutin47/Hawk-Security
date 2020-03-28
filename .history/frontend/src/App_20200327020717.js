@@ -37,7 +37,6 @@ import PrivateRoute from "./components/private-route/PrivateRoute";
 //import CSS that you want Globally in your App and it's child components.
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
-import './main.css'
 
 
 // Check for token to keep user logged in

@@ -22,7 +22,7 @@ export default class user_schedule_display extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className="fullcalander__container">
+        <div className="container">
             <FullCalendar  
               defaultView ="dayGridMonth" 
               header={{

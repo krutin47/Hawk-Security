@@ -5,7 +5,6 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import listWeekPlugin from '@fullcalendar/list';
 import './user_schedule_display.css'
 import { Link } from 'react-router-dom';
-import Footer from '../Footer/Footer';
 
 
 export default class user_schedule_display extends React.Component {
@@ -22,7 +21,7 @@ export default class user_schedule_display extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className="fullcalander__container">
+        <div className="container">
             <FullCalendar  
               defaultView ="dayGridMonth" 
               header={{
@@ -35,7 +34,6 @@ export default class user_schedule_display extends React.Component {
               events={ this.state.calendarEvents }
             />
         </div>
-        <Footer/>
       </React.Fragment>
     )
   }
