@@ -75,10 +75,12 @@ app.use('/shift_details', shiftRouter);
 const availRouter = require('./routes/avail_display');
 app.use('/availability_display', availRouter);
 
+const employeeRouter = require('./routes/profileManagement');
+app.use('/employee', employeeRouter);
+
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
-
 
 
 // module.exports = app;
