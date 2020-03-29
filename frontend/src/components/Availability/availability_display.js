@@ -41,7 +41,7 @@ class availability_display extends Component {
     
     tableData() {
       return this.state.availList.map(currentdata => {
-        return <AvailDetails avail={currentdata} key={currentdata._id}/>;
+        return <AvailDetails avail={currentdata}/>;
       })
     }
   
@@ -53,6 +53,7 @@ class availability_display extends Component {
                         <div class="text-center uppercase pb40">
                             <h3>Employees' Availability</h3>
                         </div>
+                        <div class="container">
                             <Table striped>
                                 <thead>
                                     <tr class="row text-left">
@@ -77,6 +78,7 @@ class availability_display extends Component {
                                     { this.tableData() }
                                 </tbody>
                             </Table>
+                        </div>
                     </div>
                 </section>
             </React.Fragment>
