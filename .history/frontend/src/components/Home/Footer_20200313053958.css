@@ -1,0 +1,12 @@
+footer > div:nth-child(1) {
+    background-color: #044e7f;
+}
+
+hr {
+    width: 60px;
+    background-color: #044e7f;
+}
+
+#root > footer > div.container.text-center.text-md-left.mt-5 {
+    background-color: #044e7f;
+}
