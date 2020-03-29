@@ -66,15 +66,16 @@ app.use(passport.initialize());
 // Passport config
 require("./config/passport")(passport);
 
-// defining routes 
-const employeeRouter = require('./routes/profileManagement');
-const usersRouter = require('./routes/location');
+const locationRouter = require('./routes/location');
+app.use('/location', locationRouter);
 
-app.use('/employee', employeeRouter);
-app.use('/location', usersRouter);
+const shiftRouter = require('./routes/shift_details');
+app.use('/shift_details', shiftRouter); 
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
+
+
 
 // module.exports = app;
