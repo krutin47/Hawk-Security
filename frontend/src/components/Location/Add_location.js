@@ -44,7 +44,7 @@ class Location_add extends React.Component {
         e.preventDefault();
     
         const location = {
-            Location_ID: this.state.locationid,
+          Location_ID: this.state.locationid,
           Name: this.state.name,          
           Address: this.state.address          
         }

@@ -58,7 +58,6 @@ const availSchema = new Schema({
   versionKey: false
 });
 
-
-const AvailDetails = mongoose.model('availability', availSchema);
+const AvailDetails = mongoose.model('avail_details', availSchema);
 
 module.exports = AvailDetails;

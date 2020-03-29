@@ -72,6 +72,9 @@ app.use('/location', locationRouter);
 const shiftRouter = require('./routes/shift_details');
 app.use('/shift_details', shiftRouter); 
 
+const availRouter = require('./routes/avail_display');
+app.use('/availability_display', availRouter);
+
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
