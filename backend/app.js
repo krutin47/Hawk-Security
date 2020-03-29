@@ -1,6 +1,7 @@
 // var createError = require('http-errors');
 var express = require('express');
 const cors = require('cors');
+const passport = require("passport");
 // var path = require('path');
 // var cookieParser = require('cookie-parser');
 // var logger = require('morgan');
@@ -59,7 +60,11 @@ connection.once('open', () => {
   console.log("MongoDB database connection established successfully");
 })
 
-// defining routes 
+// Passport middleware
+app.use(passport.initialize());
+
+// Passport config
+require("./config/passport")(passport);
 
 const locationRouter = require('./routes/location');
 app.use('/location', locationRouter);
