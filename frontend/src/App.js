@@ -28,7 +28,14 @@ import Admin_schedule_form from './components/Schedule/admin_schedule_form';
 import Admin_schedule_display from './components/Schedule/admin_schedule_display';
 
 import Remove_profile from './components/ProfileManagement/Update/RemoveProfile';
-import Forgot_password from './components/ProfileManagement/ForgotPassword/ForgotPassword';
+
+// import Forgot_password from './components/ProfileManagement/ForgotPassword/ForgotPassword';
+
+import Availability_form from './components/Availability/availability_form';
+import Availability_display from './components/Availability/availability_display';
+
+import PrivateRoute from "./components/private-route/PrivateRoute";
+
 import Add_location from './components/Location/Add_location';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -64,21 +71,49 @@ if (localStorage.jwtToken) {
 class App extends Component{
     render() {
 		return (
-			<Router>
-                <Route exact path='/' component={Home} />
-				<Route path='/availability_form' component={Availability_form} />
-				<Route path='/admin_schedule_display' component={Admin_schedule_display} />
-				<Route path='/user_schedule_display' component={User_schedule_display} />
-				<Route path='/availability_display' component={Availability_display}/>
-				<Route path='/admin_schedule_form' component={Admin_schedule_form} />
-				<Route path='/login' component={Login} />
-				<Route path='/register' component={Register} />
-				<Route path='/User_update_profile' component={User_update_profile} />
-				<Route path='/Admin_update_profile' component={Admin_update_profile} />
-				<Route path='/Remove_profile' component={Remove_profile} />
-				<Route path='/Forgot_password' component={Forgot_password} />
-				<Route path='/Add_location' component={Add_location} />
-			</Router>
+			<Provider store={store}>
+				<Router>
+					{/* creating Toasts in the Application */}
+					<ToastContainer />
+					
+					{/* This will load the Navbar to all the Components */}
+					<NavHeader />
+					
+					{/* Home Component */}
+					<Route exact path='/' component={Home} />
+					
+					{/* Authentication Components */}
+					<Route path='/login' component={Login} />
+					<Route path='/register' component={Register} />
+					<Route path='/Forgot_password' component={Forgot_password} />
+					
+					{/* Employee Dashboard Component */}
+					{/* <Route path='/employee_dashboard' component={EmpDashboard} /> */}
+					<Route path='/user_schedule_display' component={User_schedule_display} />
+					<Route path='/User_update_profile' component={User_update_profile} />
+					
+					{/* Admin Dashboard Components */}
+					<Route path='/admin_dashboard' component={AdminDashboard} />
+					<Route path='/admin_schedule_display' component={Admin_schedule_display} />
+					<Route path='/admin_schedule_form' component={Admin_schedule_form} />
+					<Route path='/Admin_update_profile' component={Admin_update_profile} />
+					
+					{/* This will be common Component for Admin and Employee */}
+					<Route path='/Remove_profile' component={Remove_profile} />
+					
+					{/* I don't have Knowledge regurding this thus in last(Misc) */}
+					<Route path='/availability_form' component={Availability_form} />
+					<Route path='/availability_display' component={Availability_display}/>
+					<Route path='/Add_location' component={Add_location} />
+					{/* Private Routes */}
+					<Switch>
+              			<PrivateRoute exact path="/employee_dashboard" component={EmpDashboard} />
+            		</Switch>
+
+					{/* This will load the Footer To all Components */}
+					<Footer />
+				</Router>
+			</Provider>
 		);
 	}
 }
