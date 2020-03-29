@@ -29,12 +29,14 @@ import Admin_schedule_display from './components/Schedule/admin_schedule_display
 
 import Remove_profile from './components/ProfileManagement/Update/RemoveProfile';
 
+// import Forgot_password from './components/ProfileManagement/ForgotPassword/ForgotPassword';
+
 import Availability_form from './components/Availability/availability_form';
 import Availability_display from './components/Availability/availability_display';
 
 import PrivateRoute from "./components/private-route/PrivateRoute";
 
-//import CSS that you want Globally in your App and it's child components.
+import Add_location from './components/Location/Add_location';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import './main.css'
@@ -102,7 +104,7 @@ class App extends Component{
 					{/* I don't have Knowledge regurding this thus in last(Misc) */}
 					<Route path='/availability_form' component={Availability_form} />
 					<Route path='/availability_display' component={Availability_display}/>
-					
+					<Route path='/Add_location' component={Add_location} />
 					{/* Private Routes */}
 					<Switch>
               			<PrivateRoute exact path="/employee_dashboard" component={EmpDashboard} />
