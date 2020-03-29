@@ -1,54 +1,89 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Table } from 'reactstrap';
+import axios from 'axios';
 
-function availability_display() {
-    return (
-        <React.Fragment>
-            <section class="sectionBox">
-                <div class="wrapper smallWrapper">
-                    <div class="text-center uppercase pb40">
-                        <h3>Employees' Availability</h3>
+const AvailDetails = props => (
+    <tr class="row">
+        <td class="col">{props.avail.EMP_ID}</td>
+        <td class="col">{props.avail.MON_START}</td>
+        <td class="col">{props.avail.MON_END}</td>
+        <td class="col">{props.avail.TUE_START}</td>
+        <td class="col">{props.avail.TUE_END}</td>
+        <td class="col">{props.avail.WED_START}</td>
+        <td class="col">{props.avail.WED_END}</td>
+        <td class="col">{props.avail.THURS_START}</td>
+        <td class="col">{props.avail.THURS_END}</td>
+        <td class="col">{props.avail.FRI_START}</td>
+        <td class="col">{props.avail.FRI_END}</td>
+        <td class="col">{props.avail.SAT_START}</td>
+        <td class="col">{props.avail.SAT_END}</td>
+        <td class="col">{props.avail.SUN_START}</td>
+        <td class="col">{props.avail.SUN_END}</td>
+    </tr>
+  )
+  
+class availability_display extends Component {
+    constructor(props) {
+      super(props);
+
+      this.state = {availList: []};
+    }
+  
+    componentDidMount() {
+      axios.get('http://localhost:5000/availability_display')
+        .then(response => {
+          this.setState({ availList: response.data })
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+    }
+    
+    tableData() {
+      return this.state.availList.map(currentdata => {
+        return <AvailDetails avail={currentdata}/>;
+      })
+    }
+  
+    render(){
+        return (
+            <React.Fragment>
+                <section class="sectionBox">
+                    <div class="wrapper smallWrapper">
+                        <div class="text-center uppercase pb40">
+                            <h3>Employees' Availability</h3>
+                        </div>
+                        <div class="container">
+                            <Table striped>
+                                <thead>
+                                    <tr class="row text-left">
+                                        <th class="col">Name</th>
+                                        <th class="col" colspan="2">MON</th>
+                                        {/* <th class="col">MON_END</th> */}
+                                        <th class="col pl-5" colspan="2">TUE</th>
+                                        {/* <th class="col">TUE_END</th> */}
+                                        <th class="col pl-5" colspan="2">WED</th>
+                                        {/* <th class="col">WED_END</th> */}
+                                        <th class="col pl-5" colspan="2">THURS</th>
+                                        {/* <th class="col">THURS_END</th> */}
+                                        <th class="col pl-5" colspan="2">FRI</th>
+                                        {/* <th class="col">FRI_END</th> */}
+                                        <th class="col pl-5" colspan="2">SAT</th>
+                                        {/* <th class="col">SAT_END</th> */}
+                                        <th class="col pl-5" colspan="2">SUN</th>
+                                        {/* <th class="col">SUN_END</th> */}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    { this.tableData() }
+                                </tbody>
+                            </Table>
+                        </div>
                     </div>
-                        <Table striped>
-                            <thead>
-                                <tr class="row">
-                                    <th class="col">#ID</th>
-                                    <th class="col">First Name</th>
-                                    <th class="col">Last Name</th>
-                                    <th class="col">Email</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="row">
-                                    <td class="col">1</td>
-                                    <td class="col">Milap</td>
-                                    <td class="col">Bhandari</td>
-                                    <td class="col">@mila</td>
-                                </tr>
-                                <tr class="row">
-                                    <td class="col">2</td>
-                                    <td class="col">Nikita</td>
-                                    <td class="col">Patel</td>
-                                    <td class="col">@niki</td>
-                                </tr>
-                                <tr class="row">
-                                    <td class="col">3</td>
-                                    <td class="col">Yash</td>
-                                    <td class="col">Shah</td>
-                                    <td class="col">@yas</td>
-                                </tr>
-                                <tr class="row">
-                                    <td class="col">4</td>
-                                    <td class="col">Krutin</td>
-                                    <td class="col">Trivedi</td>
-                                    <td class="col">@krut</td>
-                                </tr>
-                            </tbody>
-                        </Table>
-                </div>
-            </section>
-        </React.Fragment>
-    )
+                </section>
+            </React.Fragment>
+        )
+    }
 }
 
-export default availability_display
+export default availability_display;
