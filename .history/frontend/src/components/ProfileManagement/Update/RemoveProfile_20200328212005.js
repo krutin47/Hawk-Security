@@ -11,22 +11,6 @@ class RemoveProfile extends Component {
 
   constructor (props) {
     super(props);
-    this.state = {
-      auth: {},
-      errors: {}
-    }
-
-    this.onClickYes = this.onClickYes.bind(this);
-    this.onClickNo = this.onClickNo.bind(this);
-  }
-
-  componentDidMount(){
-    
-    this.setState({
-      auth: this.props.auth,
-      errors: this.props.errors
-    })
-
   }
 
   onClickYes(e) {
@@ -36,11 +20,10 @@ class RemoveProfile extends Component {
 
   onClickNo(e) {
     e.preventDefault();
-    this.props.history.push("/");
+    this.props.history.pop();
   }
     
   render () {
-    console.log(this.props);
     return (
       <div>
         {/* Body Section */}
@@ -91,7 +74,6 @@ class RemoveProfile extends Component {
     )
   }
 }
-
 RemoveProfile.propTypes = {
   removeUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,

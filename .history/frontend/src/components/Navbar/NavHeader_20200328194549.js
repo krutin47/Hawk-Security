@@ -22,6 +22,7 @@ function UserNavbar(props) {
                     <a className="expandMenu"><i></i><i></i><i></i></a>
                     <div className="siteNavigation fr">
                         <ul className="parent">
+                            <li><Link to="/">HOME</Link></li>
                             <li><Link to="/availability_form">AVAILABILITY FORM</Link></li>
                             {/* // TODO: make below three in drop down list */}
                             <li><Link to="/User_update_profile">UPDATE PROFILE</Link></li>
@@ -72,9 +73,9 @@ function GuestNavbar(props) {
                     <a className="expandMenu"><i></i><i></i><i></i></a>
                     <div className="siteNavigation fr">
                         <ul className="parent">
-                            <li><Link to="/">HOME</Link></li>
-                            <li><a href="#_service_">SERVICES</a></li>
-                            <li><a href="#contact_us">CONTCT US</a></li>
+                            <li><Link to="/admin_schedule_display">HOME</Link></li>
+                            <li><Link to="/user_schedule_display">SERVICES</Link></li>
+                            <li><Link href="#contact_us">CONTCT US</Link></li>
                             <li><Link to="/login"><strong id="quote">SIGN IN</strong></Link></li>
                         </ul>
                     </div>

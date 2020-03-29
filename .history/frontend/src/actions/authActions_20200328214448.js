@@ -112,7 +112,7 @@ export const logoutUser = () => dispatch => {
 // Remove user
 export const removeUser = (userId) => dispatch => {
   axios.
-    delete("/employee/delete:" + userId)
+    delete("/employee/:" + userId)
     .then(res => {
       console.log(res);
       toast.success("You are DELETED..!!", {

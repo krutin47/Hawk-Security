@@ -28,15 +28,16 @@ button.btn {
   background-color: #ffd700;
 }
 
-.full_window {
+.max_window {
   margin-top: 12vh;
-  width: 100vw;
-  height: 88vh;
+  width: 100%;
+  height: fit-content;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   align-content: center;
+  padding: 5%;
 }
 
 .updateProfile__Container {

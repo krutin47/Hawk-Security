@@ -36,7 +36,7 @@ class RemoveProfile extends Component {
 
   onClickNo(e) {
     e.preventDefault();
-    this.props.history.push("/");
+    this.props.history.pop();
   }
     
   render () {

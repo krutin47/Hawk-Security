@@ -11,22 +11,6 @@ class RemoveProfile extends Component {
 
   constructor (props) {
     super(props);
-    this.state = {
-      auth: {},
-      errors: {}
-    }
-
-    this.onClickYes = this.onClickYes.bind(this);
-    this.onClickNo = this.onClickNo.bind(this);
-  }
-
-  componentDidMount(){
-    
-    this.setState({
-      auth: this.props.auth,
-      errors: this.props.errors
-    })
-
   }
 
   onClickYes(e) {
@@ -40,7 +24,6 @@ class RemoveProfile extends Component {
   }
     
   render () {
-    console.log(this.props);
     return (
       <div>
         {/* Body Section */}

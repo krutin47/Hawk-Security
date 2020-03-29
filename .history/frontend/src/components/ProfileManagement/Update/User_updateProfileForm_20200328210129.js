@@ -121,7 +121,7 @@ class UserUpdateProfileForm extends React.Component {
                                     placeholder="Please Enter Your address ID"
                                     value={this.state.address}
                                     onChange={this.handleUserInput}  />
-                                {this.state.formErrors.address}
+                                {errorMessage_address}
                             </div>
                         </div>
                     </div>
@@ -135,7 +135,7 @@ class UserUpdateProfileForm extends React.Component {
                                     placeholder="Please Enter Your phone"
                                     value={this.state.phone}
                                     onChange={this.handleUserInput}  />
-                                {this.state.formErrors.phone}
+                                {errorMessage_phone}
                             </div>
                         </div>
                     </div>
@@ -145,11 +145,11 @@ class UserUpdateProfileForm extends React.Component {
                             <div>
                                 <label htmlFor="gender">Confirm Password</label>
                                 {/* // TODO: change class dynamically to manipulate the border of the input */}
-                                <input className={`form-group ${this.errorClass(this.state.formErrors.gender)}`} type="password" className="form-control" name="gender"
+                                <input className={`form-group ${this.errorClass(this.state.formErrors.password)}`} type="password" className="form-control" name="gender"
                                     placeholder="Please Confirm Your Password"
                                     value={this.state.gender}
                                     onChange={this.handleUserInput}  />
-                                {this.state.formErrors.gender}
+                                {errorMessage_gender}
                             </div>
                         </div>
                     </div>

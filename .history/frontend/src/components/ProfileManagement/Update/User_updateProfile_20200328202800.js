@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import RegistrationForm from './RegistrationForm';
-import NavHeader from '../../Navbar/NavHeader';
-import Footer from '../../Footer/Footer';
 
-class Register extends Component {
+import UserUpdateProfileForm from "./User_updateProfileForm";
+
+import './User_updateProfile.css';
+
+class UserUpdateProfile extends Component {
 
   render () {
     return (
 
       <div>
         {/* Body Section */}
-        <div className="full_window">
+        <div className="max_window">
           
           {/* Login Container */}
-          <div className="register_container">
+          <div className="updateProfile__Container">
             
             {/* Imaage View */}
             <div className="image_view">
@@ -26,16 +26,12 @@ class Register extends Component {
               
               {/* Register Text */}
               <div className="login_text">
-                <b>Register</b>
+                <b>Update Profile</b>
               </div>
               
               {/* Register Form Component */}
-              <RegistrationForm/>
+              <UserUpdateProfileForm/>
               
-              {/* Login Link */}
-              <div className="register_navigation">
-                <Link to="/login"><u>Already have an account? Login Here</u></Link>
-              </div>
             </div>
           </div>
         </div>
@@ -45,4 +41,4 @@ class Register extends Component {
   }
 }
 
-export default Register;
+export default UserUpdateProfile;

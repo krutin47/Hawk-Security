@@ -15,9 +15,6 @@ class RemoveProfile extends Component {
       auth: {},
       errors: {}
     }
-
-    this.onClickYes = this.onClickYes.bind(this);
-    this.onClickNo = this.onClickNo.bind(this);
   }
 
   componentDidMount(){

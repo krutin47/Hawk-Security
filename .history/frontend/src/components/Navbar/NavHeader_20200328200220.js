@@ -73,8 +73,12 @@ function GuestNavbar(props) {
                     <div className="siteNavigation fr">
                         <ul className="parent">
                             <li><Link to="/">HOME</Link></li>
-                            <li><a href="#_service_">SERVICES</a></li>
-                            <li><a href="#contact_us">CONTCT US</a></li>
+                            <li><Link to="">SERVICES</Link></li>
+                            <li><Link to="/#contact_us">CONTCT US</Link></li>
+                            <li><Link to={{
+                                            pathname: "/courses",
+                                            hash: "#the-hash",
+                                        }}>CONTCT US</Link></li>
                             <li><Link to="/login"><strong id="quote">SIGN IN</strong></Link></li>
                         </ul>
                     </div>

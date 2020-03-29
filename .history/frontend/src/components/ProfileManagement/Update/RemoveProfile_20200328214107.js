@@ -16,7 +16,7 @@ class RemoveProfile extends Component {
       errors: {}
     }
 
-    this.onClickYes = this.onClickYes.bind(this);
+    this.onClickNo = this.onClickYes.bind(this);
     this.onClickNo = this.onClickNo.bind(this);
   }
 
@@ -36,7 +36,7 @@ class RemoveProfile extends Component {
 
   onClickNo(e) {
     e.preventDefault();
-    this.props.history.push("/");
+    this.props.history.pop();
   }
     
   render () {

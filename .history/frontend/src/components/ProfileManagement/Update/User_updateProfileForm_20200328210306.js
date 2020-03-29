@@ -145,7 +145,7 @@ class UserUpdateProfileForm extends React.Component {
                             <div>
                                 <label htmlFor="gender">Confirm Password</label>
                                 {/* // TODO: change class dynamically to manipulate the border of the input */}
-                                <input className={`form-group ${this.errorClass(this.state.formErrors.gender)}`} type="password" className="form-control" name="gender"
+                                <input className={`form-group ${this.errorClass(this.state.formErrors.password)}`} type="password" className="form-control" name="gender"
                                     placeholder="Please Confirm Your Password"
                                     value={this.state.gender}
                                     onChange={this.handleUserInput}  />

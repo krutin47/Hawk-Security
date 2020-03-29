@@ -15,18 +15,17 @@ router.route('/').get((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/: id').get((req, res) => {
+router.route('/:id').get((req, res) => {
   Employee.findById(req.params.id)
     .then(employee => res.json(employee))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/delete:id').delete((req, res) => {
-  console.log(req.params.id);
-  Employee.findOneAndDelete(req.params.id)
-    .exec()
-    .then(() => res.json('employee deleted.' + req.params.id))
-    .catch(err => res.status(400).json('Error: ' + err));
+router.route('/:id').delete((req, res) => {
+    Employee.findOneAndRemove(req.params.id)
+      .exec()
+      .then(() => res.json('employee deleted.'))
+      .catch(err => res.status(400).json('Error: ' + err));
   });
 
 router.route('/login').post((req, res) => {

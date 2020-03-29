@@ -15,7 +15,7 @@ router.route('/').get((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/: id').get((req, res) => {
+router.route('/:id').get((req, res) => {
   Employee.findById(req.params.id)
     .then(employee => res.json(employee))
     .catch(err => res.status(400).json('Error: ' + err));

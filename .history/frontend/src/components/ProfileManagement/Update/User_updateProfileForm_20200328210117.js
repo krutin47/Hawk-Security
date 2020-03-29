@@ -83,6 +83,26 @@ class UserUpdateProfileForm extends React.Component {
     }
 
     render(){
+
+        let errorMessage_address;
+        let errorMessage_password;
+        let errorMessage_gender;
+        if(this.state.addressTouch) {
+            (this.state.addressValid)
+            ? errorMessage_address = 
+            : errorMessage_address = 
+        }
+        if(this.state.phoneTouch) {
+            (this.state.phoneValid)
+            ? errorMessage_phone = <p className="isValid">Awesome! phone is valid</p>
+            : errorMessage_phone = <p className="has-error">Please Enter a valid phone</p>
+        }
+        if(this.state.genderTouch) {
+            (this.state.passwordValid)
+            ? errorMessage_gender = <p className="isValid">Great! confirm Password is same</p>
+            : errorMessage_gender = <p className="has-error">Password did not match</p>
+        }
+
         return(
             <form>  
                 <div className="row">
@@ -121,7 +141,7 @@ class UserUpdateProfileForm extends React.Component {
                                     placeholder="Please Enter Your address ID"
                                     value={this.state.address}
                                     onChange={this.handleUserInput}  />
-                                {this.state.formErrors.address}
+                                {errorMessage_address}
                             </div>
                         </div>
                     </div>
@@ -135,7 +155,7 @@ class UserUpdateProfileForm extends React.Component {
                                     placeholder="Please Enter Your phone"
                                     value={this.state.phone}
                                     onChange={this.handleUserInput}  />
-                                {this.state.formErrors.phone}
+                                {errorMessage_phone}
                             </div>
                         </div>
                     </div>
@@ -145,11 +165,11 @@ class UserUpdateProfileForm extends React.Component {
                             <div>
                                 <label htmlFor="gender">Confirm Password</label>
                                 {/* // TODO: change class dynamically to manipulate the border of the input */}
-                                <input className={`form-group ${this.errorClass(this.state.formErrors.gender)}`} type="password" className="form-control" name="gender"
+                                <input className={`form-group ${this.errorClass(this.state.formErrors.password)}`} type="password" className="form-control" name="gender"
                                     placeholder="Please Confirm Your Password"
                                     value={this.state.gender}
                                     onChange={this.handleUserInput}  />
-                                {this.state.formErrors.gender}
+                                {errorMessage_gender}
                             </div>
                         </div>
                     </div>
