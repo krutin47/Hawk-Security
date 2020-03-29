@@ -13,24 +13,19 @@ router.route('/').get((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-// router.route('/add').post((req, res) => {
-//   const id =  req.body.id;
-//   const emp_id =  req.body.EMP_ID;
-//   const  =  req.body.START_DATE;
- 
-
-
-//   const newlocation = new Location({ Location_ID: location_Id, Name: name, Address: address });
-
-//   newlocation.save()
-//     .then(() => res.json('Location added!' + newlocation))
-//     .catch(err => res.status(400).json('Error: ' + err));
-// });
+router.route('/empshifts/:empid').get((req, res) => {
+    const empid = req.params.empid;
+    console.log(empid)
+    Shiftdetails.find({EMP_ID: empid})
+      .then(Shiftdetails => res.json(Shiftdetails))
+      .catch(err => res.status(400).json('Error: ' + err));
+  });
 
 router.route('/:date').get((req, res) => {
 
     const scheduleDate = new Date(req.params.date);
     const nextDate = new Date(scheduleDate)
+    
     nextDate.setDate(nextDate.getDate() + 1)
     Shiftdetails.find({
         StartscheduledDateTime: {
@@ -48,5 +43,7 @@ router.route('/:date').get((req, res) => {
        
      });
 });
+
+
 
 module.exports = router;
