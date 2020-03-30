@@ -56,7 +56,7 @@ class LoginForm extends React.Component {
     handleUserInput = (e) => {
         const name = e.target.name;
         const value = e.target.value;
-        console.log(name + ' ---> ', value);
+        // console.log(name + ' ---> ', value);
         this.setState({[name]: value},
                       () => { this.validateField(name, value) });
     }
