@@ -31,7 +31,7 @@ class LoginForm extends React.Component {
         if (nextProps.auth.isAuthenticated) {
             if(nextProps.auth.user.role == 1) {
                 this.props.history.push("/employee_dashboard"); // push user to Employee dashboard when Employee login
-            } else if (nextProps.auth.user.bind == 2){
+            } else if (nextProps.auth.user.role == 2){
                 this.props.history.push("/admin_dashboard"); // push user to Admin dashboard when Admin login
             }
         }
@@ -47,7 +47,7 @@ class LoginForm extends React.Component {
         if (this.props.auth.isAuthenticated) {
             if(this.props.auth.user.role == 1) {
                 this.props.history.push("/employee_dashboard"); // push user to Employee dashboard when Employee login
-            } else if (this.props.auth.user.bind == 2){
+            } else if (this.props.auth.user.role == 2){
                 this.props.history.push("/admin_dashboard"); // push user to Admin dashboard when Admin login
             }
         }
@@ -102,6 +102,8 @@ class LoginForm extends React.Component {
     onSubmitForm(e){
         e.preventDefault();
 
+        console.log("am i being called.....????????");
+        
         // if(this.state.formValid) {
 
             const employee = {
