@@ -11,8 +11,7 @@ import './NavHeader.css'
 
 
 function UserNavbar(props) {
-    console.log("props ----------> ", props);
-    
+    console.log("props ----------> ", props); 
     return (
         <header>
             <div className="headerMain">
@@ -26,10 +25,9 @@ function UserNavbar(props) {
                             <li><Link to="/user_schedule_display">HOME</Link></li>
                             <li><Link to="/availability_form">AVAILABILITY</Link></li>
                             {/* // TODO: make below three in drop down list */}
-                            <li><Link to="/User_update_profile">UPDATE PROFILE</Link></li>
+                            <li><Link to="/User_update_profile">UPDATE PROFILE</Link></li>                           
                             <li><Link to="/Remove_profile">REMOVE PROFILE</Link></li>
-                           
-                            {/* <li><Link onClick={props.logoutUser()}>LOGOUT</Link></li> */}
+                            <li><Link onClick={props.logoutUser}>LOGOUT</Link></li>
                             {/* //TODO: Logout Button needs be Added */}
                         </ul>
                     </div>
@@ -57,6 +55,10 @@ function AdminNavbar(props) {
                             <li><Link to="/add_location">Locations</Link></li>
                             <li><Link to="/job_create">Add Job</Link></li>
                             {/* <li><Link onClick={props.logoutUser()}>LOGOUT</Link></li> */}
+                           
+                            
+                            <li><Link to="/register">REGISTER</Link></li>
+                            <li><Link onClick={props.logoutUser}>LOGOUT</Link></li>
                         </ul>
                     </div>
                 </div>
@@ -76,10 +78,10 @@ function GuestNavbar(props) {
                     <a className="expandMenu"><i></i><i></i><i></i></a>
                     <div className="siteNavigation fr">
                         <ul className="parent">
-                            <li><Link to="/Home">HOME</Link></li>
+                            <li><Link to="/">HOME</Link></li>
                             <li><Link to="/job_display">Jobs</Link></li>
-                            <li><Link to="/">SERVICES</Link></li>
                             <li><Link href="#contact_us">CONTCT US</Link></li>
+                            <li><a href="#_service_">SERVICES</a></li>
                             <li><Link to="/login"><strong id="quote">SIGN IN</strong></Link></li>
                         </ul>
                     </div>
@@ -190,19 +192,17 @@ class NavHeader extends Component {
     }
 
     render() {
-        console.log(this.state);
-        
+        // console.log(this.state);
         if (this.state.isLoggedIn) {
             if(this.state.isAdmin) {
                 return <AdminNavbar />;
             } else if (this.state.isEmployee) {
-                console.log("UserNavbar true");
-                return <UserNavbar />;
+                console.log("I am in the UserNavbar");
+                return <UserNavbar {...this.props}/>;
             }
         } else {
-            console.log("guestNavbaar");
-            
-            return <GuestNavbar />;
+            console.log("I am in the guestNavbaar");
+            return <GuestNavbar {...this.props}/>;
         }
     }
 }

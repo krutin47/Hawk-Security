@@ -10,11 +10,6 @@ class Login extends Component {
   render () {
     return (
       <div>
-        
-        {/* Header Section */}
-        {/* <NavHeader/> */}
-        {/* Hadder End */}
-
         {/* Body Section */}
         <div className="full_window">
           

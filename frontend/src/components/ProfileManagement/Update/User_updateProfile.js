@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import Nav_Header from '../../Navbar/NavHeader';
-import Footer from '../../Footer/Footer';
+
 import UserUpdateProfileForm from "./User_updateProfileForm";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './User_updateProfile.css';
+import './updateProfile.css';
 
 class UserUpdateProfile extends Component {
 
@@ -13,13 +10,8 @@ class UserUpdateProfile extends Component {
     return (
 
       <div>
-        
-        {/* Header Section */}
-        <Nav_Header/>
-        {/* Hadder End */}
-
         {/* Body Section */}
-        <div className="full_window">
+        <div className="max_window">
           
           {/* Login Container */}
           <div className="updateProfile__Container">

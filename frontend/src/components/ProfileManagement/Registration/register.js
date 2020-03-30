@@ -10,11 +10,6 @@ class Register extends Component {
     return (
 
       <div>
-        
-        {/* Header Section */}
-        <NavHeader/>
-        {/* Hadder End */}
-
         {/* Body Section */}
         <div className="full_window">
           

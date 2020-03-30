@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Button, Alert } from "react-bootstrap";
-import Nav_Header from '../../Navbar/NavHeader';
-import Footer from '../../Footer/Footer';
-import { Link } from 'react-router-dom';
+import { Button } from "react-bootstrap";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { removeUser } from "../../../actions/authActions";
 
 import './RemoveProfile.css';
 
@@ -10,16 +11,42 @@ class RemoveProfile extends Component {
 
   constructor (props) {
     super(props);
+    this.state = {
+      auth: {},
+      errors: {}
+    }
+
+    this.onClickYes = this.onClickYes.bind(this);
+    this.onClickNo = this.onClickNo.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(!nextProps.auth.isAuthenticated) {
+      this.props.history.push("/");
+    }
+  }
+
+  componentDidMount(){
+    this.setState({
+      auth: this.props.auth,
+      errors: this.props.errors
+    })
+  }
+
+  onClickYes(e) {
+    e.preventDefault();
+    this.props.removeUser(this.props.auth.user.id);
+  }
+
+  onClickNo(e) {
+    e.preventDefault();
+    this.props.history.goBack();
   }
     
   render () {
+    console.log(this.props);
     return (
       <div>
-        
-        {/* Header Section */}
-        <Nav_Header/>
-        {/* Hadder End */}
-
         {/* Body Section */}
         <div className="full_window">
           
@@ -44,10 +71,16 @@ class RemoveProfile extends Component {
                     <div className="container">
                       <div className="row">
                         <div className="col">
-                          <Button className="btn btn-success pull-right" block bsSize="large" type="submit" >Yes</Button>
+                          <Button className="btn btn-success pull-right" block 
+                            bsSize="large" 
+                            type="submit" 
+                            onClick= {this.onClickYes}>Yes</Button>
                         </div>
                         <div className="col">
-                          <Button className="btn btn-danger pull-right" block bsSize="large" type="button" >No</Button>
+                          <Button className="btn btn-danger pull-right" block 
+                            bsSize="large" 
+                            type="button" 
+                            onClick= {this.onClickNo}>No</Button>
                         </div>
                       </div>
                     </div>
@@ -65,4 +98,15 @@ class RemoveProfile extends Component {
   }
 }
 
-export default RemoveProfile;
+RemoveProfile.propTypes = {
+  removeUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+
+export default connect(mapStateToProps, { removeUser })(withRouter(RemoveProfile));
