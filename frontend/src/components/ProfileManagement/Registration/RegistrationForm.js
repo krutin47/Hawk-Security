@@ -118,7 +118,7 @@ class RegistrationForm extends React.Component {
                 passwordValid = value.length >= 6;
                 fieldValidationErrors.password = passwordValid 
                     ? <p className="isValid">Awesome! Password is valid</p>
-                    : <p className="has-error">Please Enter a valid Password</p>;
+                    : <p className="has-error">Please Enter Password with more then 6 letter</p>;
                 if(this.state.confirmPasswordTouch) {
                     confirmPasswordValid = (this.state.password == this.state.confirmPassword) ? true : false ;
                     fieldValidationErrors.confirmPassword = confirmPasswordValid

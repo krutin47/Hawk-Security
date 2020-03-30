@@ -51,9 +51,6 @@ class Login extends Component {
         </div>
         {/* Body End */}
 
-        {/* Footer Component */}
-        <Footer/>
-        {/* Footer Component End */}
       </div>
     )
   }

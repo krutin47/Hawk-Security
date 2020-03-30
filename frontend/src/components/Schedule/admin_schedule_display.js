@@ -94,6 +94,8 @@ class Admin_schedule_display extends React.Component {
                       selected={this.state.date}
                       onChange={this.onChangeDate}
                     />
+                   
+                    
                   </div>
                   <br/> <br/>
                   <div class="col col-lg-2">

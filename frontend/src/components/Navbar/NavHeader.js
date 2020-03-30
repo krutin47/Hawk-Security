@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 //importing CSS
 import './NavHeader.css'
 
-// TODO :: update the User Navbar according to your need..
+
 function UserNavbar(props) {
     console.log("props ----------> ", props);
     
@@ -18,16 +18,17 @@ function UserNavbar(props) {
             <div className="headerMain">
                 <div className="wrapper clearfix">
                     <div className="siteLogo fl">
-                        <Link to="/"><img src={require('../../assets/images/Sitelogo.png')} alt=""/></Link>
+                        <Link to="/Home"><img src={require('../../assets/images/Sitelogo.png')} alt=""/></Link>
                     </div>
                     <a className="expandMenu"><i></i><i></i><i></i></a>
                     <div className="siteNavigation fr">
                         <ul className="parent">
-                            <li><Link to="/">HOME</Link></li>
-                            <li><Link to="/availability_form">AVAILABILITY FORM</Link></li>
+                            <li><Link to="/user_schedule_display">HOME</Link></li>
+                            <li><Link to="/availability_form">AVAILABILITY</Link></li>
                             {/* // TODO: make below three in drop down list */}
                             <li><Link to="/User_update_profile">UPDATE PROFILE</Link></li>
                             <li><Link to="/Remove_profile">REMOVE PROFILE</Link></li>
+                           
                             {/* <li><Link onClick={props.logoutUser()}>LOGOUT</Link></li> */}
                             {/* //TODO: Logout Button needs be Added */}
                         </ul>
@@ -51,10 +52,11 @@ function AdminNavbar(props) {
                     <div className="siteNavigation fr">
                         <ul className="parent">
                             {/* //TODO: Add the respective Link And Logout Button */}
-                            <li><Link to="/admin_schedule_display">ADMIN PROFILE</Link></li>
-                            <li><Link to="/user_schedule_display">USER PROFILE</Link></li>
-                            <li><Link to="/register">REGISTER</Link></li>
-                            <li><Link to="/login">LOGIN</Link></li>
+                            <li><Link to="/admin_schedule_display">Home</Link></li>
+                            <li><Link to="/availability_display">availabilities</Link></li>
+                            <li><Link to="/add_location">Locations</Link></li>
+                            <li><Link to="/job_create">Add Job</Link></li>
+                            {/* <li><Link onClick={props.logoutUser()}>LOGOUT</Link></li> */}
                         </ul>
                     </div>
                 </div>
@@ -74,8 +76,9 @@ function GuestNavbar(props) {
                     <a className="expandMenu"><i></i><i></i><i></i></a>
                     <div className="siteNavigation fr">
                         <ul className="parent">
-                            <li><Link to="/admin_schedule_display">HOME</Link></li>
-                            <li><Link to="/user_schedule_display">SERVICES</Link></li>
+                            <li><Link to="/Home">HOME</Link></li>
+                            <li><Link to="/job_display">Jobs</Link></li>
+                            <li><Link to="/">SERVICES</Link></li>
                             <li><Link href="#contact_us">CONTCT US</Link></li>
                             <li><Link to="/login"><strong id="quote">SIGN IN</strong></Link></li>
                         </ul>

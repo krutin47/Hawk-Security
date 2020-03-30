@@ -9,6 +9,7 @@ import Footer from '../Footer/Footer';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import axios from 'axios';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 
 class user_schedule_display extends React.Component {
@@ -29,6 +30,7 @@ class user_schedule_display extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
+      modal: false,
       calendarEvents : []
     };
     
@@ -65,17 +67,19 @@ class user_schedule_display extends React.Component {
     this.setState({ modal: !this.state.modal });
   };
 
-  handleEventClick = ({ event, el }) => {
-    this.toggle();
-    this.setState({ event });
+  // handleEventClick = ({ calendarEvents, el }) => {
+  //   this.toggle();
+  //   this.setState({ calendarEvents });
+  // };
+  handleEventClick = ({ calendarEvents, el }) => {
+    this.setState({calendarEvents: calendarEvents, modal: true})
   };
-
 
   render() {
 
     console.log(this.props.auth.user.id);
 
- console.log(this.state);
+  console.log(this.state.calendarEvents);
     return (
       <React.Fragment>
         <div className="fullcalander__container">
@@ -91,13 +95,21 @@ class user_schedule_display extends React.Component {
             events={this.state.calendarEvents}
             ref={this.calendarComponentRef}
             // weekends={this.state.calendarWeekends}
-            // events={this.state.event}
+            
             // eventClick={this.handleEventClick}
             nowIndicator='true'
 
           />
+              {/* <Modal
+              isOpen={this.state.modal}
+              toggle={this.toggle}
+            >
+              <ModalHeader toggle={this.toggle}>
+                shift: {this.state.calendarEvents.title}
+              </ModalHeader>
+              </Modal> */}
         </div>
-        <Footer />
+       
       </React.Fragment>
     )
   }

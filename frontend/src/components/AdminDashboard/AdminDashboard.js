@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Admin_schedule_display from '../Schedule/admin_schedule_display';
 
 export class AdminDashboard extends Component {
     constructor(props) {
@@ -11,7 +12,17 @@ export class AdminDashboard extends Component {
     render() {
         return (
             <div>
-                
+                {/* Navbar component */}
+                {/* <NavHeader /> */}
+                {/* Navbar component End */}
+
+                {/* Body Div */}
+                <Admin_schedule_display />
+                {/* Body End */}
+
+                {/* Footer */}
+                {/* <Footer /> */}
+                {/* Footer End */}
             </div>
         )
     }
