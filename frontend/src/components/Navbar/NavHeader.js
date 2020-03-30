@@ -28,7 +28,7 @@ function UserNavbar(props) {
                             {/* // TODO: make below three in drop down list */}
                             <li><Link to="/User_update_profile">UPDATE PROFILE</Link></li>
                             <li><Link to="/Remove_profile">REMOVE PROFILE</Link></li>
-                            <li><Link onClick={props.logoutUser()}>LOGOUT</Link></li>
+                            {/* <li><Link onClick={props.logoutUser()}>LOGOUT</Link></li> */}
                             {/* //TODO: Logout Button needs be Added */}
                         </ul>
                     </div>
