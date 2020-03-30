@@ -11,11 +11,11 @@ import { Table } from 'reactstrap';
 import "react-datepicker/dist/react-datepicker.css";
 
 const AvailDetails = props => (
-  <tr className="row">
-      <td className="col">{props.avail.Name}</td>
-      <td className="col">{props.avail.StartscheduledDateTime}</td>
-      <td className="col">{props.avail.EndscheduledDateTime}</td>
-      <td className="col">{props.avail.location}</td>
+  <tr class="row">
+      <td class="col">{props.avail.Name}</td>
+      <td class="col">{props.avail.StartscheduledDateTime}</td>
+      <td class="col">{props.avail.EndscheduledDateTime}</td>
+      <td class="col">{props.avail.location}</td>
   </tr>
 )
 
@@ -84,12 +84,12 @@ class Admin_schedule_display extends React.Component {
         <React.Fragment>
           <div className="fullcalander__container">     
           
-            <div className="container justify-content-md-center">
-              <div className="row justify-content-md-center">
-                <div className="select_date_div col-md-auto">
+            <div class="container justify-content-md-center">
+              <div class="row justify-content-md-center">
+                <div class="select_date_div col-md-auto">
                   <p>Select Date</p>
                 </div>
-                  <div className="col-md-auto justify-content-md-center padding_div">
+                  <div class="col-md-auto justify-content-md-center padding_div">
                     <DatePicker
                       selected={this.state.date}
                       onChange={this.onChangeDate}
@@ -98,27 +98,27 @@ class Admin_schedule_display extends React.Component {
                     
                   </div>
                   <br/> <br/>
-                  <div className="col col-lg-2">
-                    <button className="btn btn-primary btn-block padding_button" onClick = {this.onSubmit}  >Get Schedule</button>
+                  <div class="col col-lg-2">
+                    <button class="btn btn-primary btn-block padding_button" onClick = {this.onSubmit}  >Get Schedule</button>
                   </div>
               </div>
             </div>
-            <section className="sectionBox">
+            <section class="sectionBox">
               
-                <div className="text-center uppercase pb10">
+                <div class="text-center uppercase pb10">
                   <h5>Shifts Details of selected date</h5>
                 </div>
-              <div className="container">
+              <div class="container">
                 <Table striped>
                 
-                    <tr className="row text-left">
-                        <th className="col">Name</th>
-                        <th className="col" colspan="2">Start Time</th>
-                        {/* <th className="col">MON_END</th> */}
-                        <th className="col pl-5" colspan="2">End Time</th>
-                        {/* <th className="col">TUE_END</th> */}
-                        <th className="col pl-5" colspan="2">Location</th>
-                        {/* <th className="col">WED_END</th> */}
+                    <tr class="row text-left">
+                        <th class="col">Name</th>
+                        <th class="col" colspan="2">Start Time</th>
+                        {/* <th class="col">MON_END</th> */}
+                        <th class="col pl-5" colspan="2">End Time</th>
+                        {/* <th class="col">TUE_END</th> */}
+                        <th class="col pl-5" colspan="2">Location</th>
+                        {/* <th class="col">WED_END</th> */}
                     </tr>
                   
                   <tbody>

@@ -29,11 +29,11 @@
 #root > div.fullscreen__container > div > div > div > div.select_date_div.col-md-auto > p {
     font-family: inherit;
     vertical-align: center;
-    padding-top: 10%;
+    padding-top: 8%;
 }
 
 #root > div.fullscreen__container > div > div > div > div.col.col-lg-2 > button {
     vertical-align: center;
     margin-top: 8%;
-    background-color: #084e96;
+    background-color: mediumblue;
 }
