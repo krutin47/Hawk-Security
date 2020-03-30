@@ -13,5 +13,9 @@
 }
 
 .sectionBox{
-  padding-top: 2px;
+  padding-top: 0px;
+}
+
+.Table{
+    height: 0px;
 }
