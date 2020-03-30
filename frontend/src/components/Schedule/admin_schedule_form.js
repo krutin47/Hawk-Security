@@ -1,13 +1,102 @@
 import React from 'react';
-import '../../main.css'
+import '../../main.css';
+import axios from 'axios'; 
 
-function admin_schedule_form() {
+
+class admin_schedule_form extends React.Component {
+    constructor(props) {
+        super(props);
+    
+        this.onChangeEmpID = this.onChangeEmpID.bind(this);
+        this.onChangeEmpName = this.onChangeEmpName.bind(this);
+        this.onChangeStartDate = this.onChangeStartDate.bind(this);
+        this.onChangeEndDate = this.onChangeEndDate.bind(this);
+        this.onChangeLocation = this.onChangeLocation.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+    
+        this.state = {
+          EMP_ID: '',
+          Name: '',
+          StartscheduleDateTime: '',
+          EndscheduleDateTime: '',
+          location: '',
+          emps: []
+        }
+      }      
+    
+      componentDidMount() {
+        axios.get('http://localhost:5000/shift_upload/')
+          .then(response => {
+            if (response.data.length > 0) {
+              this.setState({
+                emps: response.data.map(emp => emp.Name),
+                Name: response.data[0].Name
+              })
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+    
+      }
+
+      onChangeEmpID(e) {
+        this.setState({
+            EMP_ID: e.target.value
+        })
+      }
+    
+      onChangeEmpName(e) {
+        this.setState({
+            Name: e.target.value
+        })
+      }
+    
+      onChangeStartDate(e) {
+        this.setState({
+            StartscheduleDateTime: e.target.value
+        })
+      }
+    
+      onChangeEndDate(e) {
+        this.setState({
+            EndscheduleDateTime: e.target.value
+        })
+      }
+       
+      onChangeLocation(e) {
+        this.setState({
+            location: e.target.value
+        })
+      }
+
+      onSubmit(e) {
+        e.preventDefault();
+    
+        const shift_data = {
+          ID: this.state.EMP_ID,
+          Name: this.state.Name,          
+          start: this.state.StartscheduleDateTime,
+          end: this.state.EndscheduleDateTime,
+          loc: this.state.location,
+        }
+    
+        console.log(shift_data);
+    
+        axios.post('http://localhost:5000/shift_details/add', shift_data)
+          .then(res => console.log(res.data));
+    
+       // window.location = '/';
+      }
+
+      render(){
+    
     return (
         <React.Fragment>
             <section class="pb50 sectionBox">
                 <div class="wrapper smallWrapper">
                     <div class="text-center uppercase">
-                        <h3>Schedule</h3>
+                        <h3>Upload a Schedule</h3>
                     </div>
                     <div class="pt40">
                         <form>
@@ -15,14 +104,28 @@ function admin_schedule_form() {
                                 <div class="ib vt w50 mw100">
                                     <div class="field">
                                         <label for="employeeName">Employee Name <sup>*</sup></label>
-                                        <select id="employeeName">
+                                        <select ref="userInput"
+                                            required
+                                            className="form-control"
+                                            value={this.state.Name}
+                                            onChange={this.onChangeEmpName}>
+                                            {
+                                                this.state.emps.map(function(emp) {
+                                                return <option 
+                                                    key={emp}
+                                                    value={emp}>{emp}
+                                                    </option>;
+                                                })
+                                            }
+                                        </select>
+                                        {/* <select id="employeeName">
                                             <option hidden disabled selected value></option>
                                             <option value="XYZ">XYZ</option>
                                             <option value="ABC">ABC</option>
                                             <option value="PQR">PQR</option>
                                             <option value="AAA">AAA</option>
                                             <option value="XXX">XXX</option>
-                                        </select>
+                                        </select> */}
                                     </div>
                                 </div>
                             </div>
@@ -30,7 +133,12 @@ function admin_schedule_form() {
                                 <div class="ib vt w50 mw100">
                                     <div class="field">
                                         <label for="emId">Employee Id</label>
-                                        <input type="text" name="emId" id="emId"></input>
+                                        <input type="text"
+                                            disabled
+                                            className="form-control"
+                                            value={this.state.EMP_ID}
+                                            onChange={this.onChangeDescription}>
+                                        </input>
                                     </div>
                                 </div>
                                 <div class="ib vt w50 mw100">
@@ -107,6 +215,7 @@ function admin_schedule_form() {
             </section>
         </React.Fragment>    
     )
+}
 }
 
 export default admin_schedule_form

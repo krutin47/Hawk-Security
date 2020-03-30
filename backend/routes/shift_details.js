@@ -45,5 +45,4 @@ router.route('/:date').get((req, res) => {
 });
 
 
-
 module.exports = router;

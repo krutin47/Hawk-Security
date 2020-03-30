@@ -73,7 +73,7 @@ class user_schedule_display extends React.Component {
 
   render() {
 
-    console.log(this.props.auth.user.id);s
+    console.log(this.props.auth.user.id);
 
  console.log(this.state);
     return (
