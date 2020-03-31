@@ -78,6 +78,7 @@ app.use('/shift_upload', shiftuploadRouter);
 const availRouter = require('./routes/avail_display');
 app.use('/availability_display', availRouter);
 
+// defining routes 
 const employeeRouter = require('./routes/profileManagement');
 app.use('/employee', employeeRouter);
 
