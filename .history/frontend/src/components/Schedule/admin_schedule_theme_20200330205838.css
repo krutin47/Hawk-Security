@@ -12,7 +12,7 @@
     padding:2px;
 }
 
-section.sectionBox__display{
+.sectionBox{
   padding-top: 0px;
 }
 
@@ -21,7 +21,7 @@ section.sectionBox__display{
 }
 
 .fullscreen__container{
-    margin-top: 10%;
+    margin-top: 15%;
     width: 100vw;
     height: 100vh;
 }

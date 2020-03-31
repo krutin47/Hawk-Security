@@ -53,31 +53,8 @@ router.route('/add').post((req, res) => {
         Availability.updateOne(query, newvalues, function(err, res) {
           if (err) throw err;
           console.log("1 document updated");
-          //  {
-          //   // avail.id = emp_id;
-          //   avail.EMP_ID = name;
-          //   avail.MON_START = start[0];
-          //   avail.MON_END = end[0];
-          //   avail.TUE_START = start[1];
-          //   avail.TUE_END = end[1];
-          //   avail.WED_START = start[2];
-          //   avail.WED_END = end[2];
-          //   avail.THURS_START = start[3];
-          //   avail.THURS_END = end[3];
-          //   avail.FRI_START = start[4];
-          //   avail.FRI_END = end[4];
-          //   avail.SAT_START = start[5];
-          //   avail.SAT_END = end[5];
-          //   avail.SUN_START = start[6];
-          //   avail.SUN_END = end[6];
-            
-          //   console.log(avail);
-
-            // avail.save()
-            //   .then(() => res.json('Employee details Updated! => ' + avail))
-            //   .catch(err => res.status(400).json('Error: ' + err));    
-          })
-          .catch(err => res.status(400).json('Error: ' + err));
+        })
+        .catch(err => res.status(400).json('Error: ' + err));
       }
       else
       {

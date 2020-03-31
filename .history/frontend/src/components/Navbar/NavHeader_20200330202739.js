@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 //importing CSS
 import './NavHeader.css'
 
-
+// TODO :: update the User Navbar according to your need..
 function UserNavbar(props) {
     console.log("props ----------> ", props); 
     return (
@@ -17,15 +17,14 @@ function UserNavbar(props) {
             <div className="headerMain">
                 <div className="wrapper clearfix">
                     <div className="siteLogo fl">
-                        <Link to="/Home"><img src={require('../../assets/images/Sitelogo.png')} alt=""/></Link>
+                        <Link to="/"><img src={require('../../assets/images/Sitelogo.png')} alt=""/></Link>
                     </div>
                     <a className="expandMenu"><i></i><i></i><i></i></a>
                     <div className="siteNavigation fr">
                         <ul className="parent">
-                            <li><Link to="/user_schedule_display">HOME</Link></li>
-                            <li><Link to="/availability_form">AVAILABILITY</Link></li>
+                            <li><Link to="/availability_form">AVAILABILITY FORM</Link></li>
                             {/* // TODO: make below three in drop down list */}
-                            <li><Link to="/User_update_profile">UPDATE PROFILE</Link></li>                           
+                            <li><Link to="/User_update_profile">UPDATE PROFILE</Link></li>
                             <li><Link to="/Remove_profile">REMOVE PROFILE</Link></li>
                             <li><Link onClick={props.logoutUser}>LOGOUT</Link></li>
                             {/* //TODO: Logout Button needs be Added */}
@@ -50,10 +49,8 @@ function AdminNavbar(props) {
                     <div className="siteNavigation fr">
                         <ul className="parent">
                             {/* //TODO: Add the respective Link And Logout Button */}
-                            <li><Link to="/admin_schedule_display">Home</Link></li>
-                            <li><Link to="/availability_display">availabilities</Link></li>
-                            <li><Link to="/add_location">Locations</Link></li>
-                            <li><Link to="/job_create">Add Job</Link></li>
+                            <li><Link to="/admin_schedule_display">ADMIN PROFILE</Link></li>
+                            <li><Link to="/user_schedule_display">USER PROFILE</Link></li>
                             <li><Link to="/register">REGISTER</Link></li>
                             <li><Link onClick={props.logoutUser}>LOGOUT</Link></li>
                         </ul>
@@ -76,9 +73,8 @@ function GuestNavbar(props) {
                     <div className="siteNavigation fr">
                         <ul className="parent">
                             <li><Link to="/">HOME</Link></li>
-                            <li><Link to="/job_display">Jobs</Link></li>
-                            <li><Link href="#contact_us">CONTCT US</Link></li>
                             <li><a href="#_service_">SERVICES</a></li>
+                            <li><a href="#contact_us">CONTCT US</a></li>
                             <li><Link to="/login"><strong id="quote">SIGN IN</strong></Link></li>
                         </ul>
                     </div>
@@ -192,14 +188,14 @@ class NavHeader extends Component {
         // console.log(this.state);
         if (this.state.isLoggedIn) {
             if(this.state.isAdmin) {
-                return <AdminNavbar />;
+                return <AdminNavbar {...this.props}/>;
             } else if (this.state.isEmployee) {
                 console.log("I am in the UserNavbar");
                 return <UserNavbar {...this.props}/>;
             }
         } else {
             console.log("I am in the guestNavbaar");
-            return <GuestNavbar {...this.props}/>;
+            return <GuestNavbar />;
         }
     }
 }

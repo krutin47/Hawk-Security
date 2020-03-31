@@ -100,7 +100,7 @@ class Admin_schedule_display extends React.Component {
                   </div>
               </div>
             </div>
-            <section className="sectionBox__display">
+            <section className="sectionBox">
               
                 <div className="text-center uppercase pb10">
                   <h5>Shifts Details of selected date</h5>
