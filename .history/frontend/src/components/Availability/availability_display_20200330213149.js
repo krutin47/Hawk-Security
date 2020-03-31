@@ -59,7 +59,7 @@ class availability_display extends Component {
                             <h3>Employees' Availability</h3>
                         </div>
                         <div className="container">
-                            <Table>
+                            <Table striped>
                               <tr className="row text-left">
                                   <th className="col">Name</th>
                                   <th className="col" colspan="1">MON</th>

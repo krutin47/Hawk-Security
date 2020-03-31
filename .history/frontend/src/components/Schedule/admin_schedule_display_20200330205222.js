@@ -1,10 +1,13 @@
 import React from 'react';
 import DatePicker from "react-datepicker";
+import 'bootstrap/dist/css/bootstrap.min.css';
+// import { Box } from '@material-ui/core';
+import "./admin_schedule_theme.css"
 import { Link } from 'react-router-dom';
 import axios from 'axios'; 
 import { Table } from 'reactstrap';
-
-import "./admin_schedule_theme.css" 
+// import NavHeader from '../../Navbar/NavHeader';
+ 
 import "react-datepicker/dist/react-datepicker.css";
 
 const AvailDetails = props => (
@@ -100,7 +103,7 @@ class Admin_schedule_display extends React.Component {
                   </div>
               </div>
             </div>
-            <section className="sectionBox__display">
+            <section className="sectionBox">
               
                 <div className="text-center uppercase pb10">
                   <h5>Shifts Details of selected date</h5>
@@ -118,7 +121,9 @@ class Admin_schedule_display extends React.Component {
                         {/* <th className="col">WED_END</th> */}
                     </tr>
                   
-                    { this.tableData() }
+                  <tbody>
+                      { this.tableData() }
+                  </tbody>
                 </Table>
               </div>
             

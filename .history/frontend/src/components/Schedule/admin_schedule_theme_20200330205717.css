@@ -12,7 +12,7 @@
     padding:2px;
 }
 
-section.sectionBox__display{
+.sectionBox{
   padding-top: 0px;
 }
 
@@ -21,7 +21,7 @@ section.sectionBox__display{
 }
 
 .fullscreen__container{
-    margin-top: 10%;
+    margin-top: 15%;
     width: 100vw;
     height: 100vh;
 }
@@ -29,11 +29,5 @@ section.sectionBox__display{
 #root > div.fullscreen__container > div > div > div > div.select_date_div.col-md-auto > p {
     font-family: inherit;
     vertical-align: center;
-    padding-top: 10%;
-}
-
-#root > div.fullscreen__container > div > div > div > div.col.col-lg-2 > button {
-    vertical-align: center;
-    margin-top: 8%;
-    background-color: #084e96;
+    padding-top: 5%;
 }

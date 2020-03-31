@@ -91,6 +91,8 @@ class RemoveProfile extends Component {
           </div>
         </div>
         {/* Body End */}
+
+      
       </div>
     )
   }
