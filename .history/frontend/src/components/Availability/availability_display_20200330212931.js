@@ -64,17 +64,17 @@ class availability_display extends Component {
                                   <th className="col">Name</th>
                                   <th className="col" colspan="1">MON</th>
                                   {/* <th className="col">MON_END</th> */}
-                                  <th className="col pl-10" colspan="1">TUE</th>
+                                  <th className="col pl-5" colspan="1">TUE</th>
                                   {/* <th className="col">TUE_END</th> */}
-                                  <th className="col pl-10" colspan="1">WED</th>
+                                  <th className="col pl-5" colspan="1">WED</th>
                                   {/* <th className="col">WED_END</th> */}
-                                  <th className="col pl-10" colspan="1">THURS</th>
+                                  <th className="col pl-5" colspan="1">THURS</th>
                                   {/* <th className="col">THURS_END</th> */}
-                                  <th className="col pl-10" colspan="1">FRI</th>
+                                  <th className="col pl-5" colspan="1">FRI</th>
                                   {/* <th className="col">FRI_END</th> */}
-                                  <th className="col pl-10" colspan="1">SAT</th>
+                                  <th className="col pl-5" colspan="1">SAT</th>
                                   {/* <th className="col">SAT_END</th> */}
-                                  <th className="col pl-10" colspan="1">SUN</th>
+                                  <th className="col pl-5" colspan="1">SUN</th>
                                   {/* <th className="col">SUN_END</th> */}
                               </tr>
                               { this.tableData() }
