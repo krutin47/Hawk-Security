@@ -121,7 +121,9 @@ class Admin_schedule_display extends React.Component {
                         {/* <th className="col">WED_END</th> */}
                     </tr>
                   
-                    { this.tableData() }
+                  <tbody>
+                      { this.tableData() }
+                  </tbody>
                 </Table>
               </div>
             
