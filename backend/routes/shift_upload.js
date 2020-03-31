@@ -50,7 +50,7 @@ router.route('/add').post((req, res) => {
         console.log(shift_temp);
 
         shift_temp.save()
-          .then(() => res.json('Location added.........!  ' + shift_temp));
+          .then(() => res.json('Shift added.........!  ' + shift_temp));
       }
     }
 
