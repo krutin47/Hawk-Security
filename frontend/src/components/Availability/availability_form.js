@@ -153,50 +153,50 @@ class availability_form extends React.Component{
                                     <div class="ib vt w14 tabw25 mw100">
                                         <div class="field">
                                             <label for="monday">Monday</label>
-                                            <input type="text" name="monday" id="monday" onChange={this.onChangeStartTime} placeholder="00:00"></input>
-                                            <input type="text" name="monday" id="monday" onChange={this.onChangeEndTime} placeholder="00:00"></input>
+                                            <input type="text" name="monday" id="monday" onChange={this.onChangeStartTime} placeholder="00:00" required></input>
+                                            <input type="text" name="monday" id="monday" onChange={this.onChangeEndTime} placeholder="00:00" required></input>
                                         </div>
                                     </div>
                                     <div class="ib vt w14 tabw25 mw100">
                                         <div class="field">
                                             <label for="tuesday">Tuesday</label>
-                                            <input type="text" name="tuesday" id="tuesday" onChange={this.onChangeStartTime} placeholder="00:00"></input>
-                                            <input type="text" name="tuesday" id="tuesday" onChange={this.onChangeEndTime} placeholder="00:00"></input>
+                                            <input type="text" name="tuesday" id="tuesday" onChange={this.onChangeStartTime} placeholder="00:00" required></input>
+                                            <input type="text" name="tuesday" id="tuesday" onChange={this.onChangeEndTime} placeholder="00:00" required></input>
                                         </div>
                                     </div>
                                     <div class="ib vt w14 tabw25 mw100">
                                         <div class="field">
                                             <label for="wednesday">Wednesday</label>
-                                            <input type="text" name="wednesday" id="wednesday" onChange={this.onChangeStartTime} placeholder="00:00"></input>
-                                            <input type="text" name="wednesday" id="wednesday" onChange={this.onChangeEndTime} placeholder="00:00"></input>
+                                            <input type="text" name="wednesday" id="wednesday" onChange={this.onChangeStartTime} placeholder="00:00" required></input>
+                                            <input type="text" name="wednesday" id="wednesday" onChange={this.onChangeEndTime} placeholder="00:00" required></input>
                                         </div>
                                     </div>
                                     <div class="ib vt w14 tabw25 mw100">
                                         <div class="field">
                                             <label for="thursday">Thursday</label>
-                                            <input type="text" name="thursday" id="thursday" onChange={this.onChangeStartTime} placeholder="00:00"></input>
-                                            <input type="text" name="thursday" id="thursday" onChange={this.onChangeEndTime} placeholder="00:00"></input>
+                                            <input type="text" name="thursday" id="thursday" onChange={this.onChangeStartTime} placeholder="00:00" required></input>
+                                            <input type="text" name="thursday" id="thursday" onChange={this.onChangeEndTime} placeholder="00:00" required></input>
                                         </div>
                                     </div>
                                     <div class="ib vt w14 tabw25 mw100">
                                         <div class="field">
                                             <label for="friday">Friday</label>
-                                            <input type="text" name="friday" id="friday" onChange={this.onChangeStartTime} placeholder="00:00"></input>
-                                            <input type="text" name="friday" id="friday" onChange={this.onChangeEndTime} placeholder="00:00"></input>
+                                            <input type="text" name="friday" id="friday" onChange={this.onChangeStartTime} placeholder="00:00" required></input>
+                                            <input type="text" name="friday" id="friday" onChange={this.onChangeEndTime} placeholder="00:00" required></input>
                                         </div>
                                     </div>
                                     <div class="ib vt w14 tabw25 mw100">
                                         <div class="field">
                                             <label for="saturday">Saturday</label>
-                                            <input type="text" name="saturday" id="saturday" onChange={this.onChangeStartTime} placeholder="00:00"></input>
-                                            <input type="text" name="saturday" id="saturday" onChange={this.onChangeEndTime} placeholder="00:00"></input>
+                                            <input type="text" name="saturday" id="saturday" onChange={this.onChangeStartTime} placeholder="00:00" required></input>
+                                            <input type="text" name="saturday" id="saturday" onChange={this.onChangeEndTime} placeholder="00:00" required></input>
                                         </div>
                                     </div>
                                     <div class="ib vt w14 tabw25 mw100">
                                         <div class="field">
                                             <label for="sunday">Sunday</label>
-                                            <input type="text" name="sunday" id="sunday" onChange={this.onChangeStartTime} placeholder="00:00"></input>
-                                            <input type="text" name="sunday" id="sunday" onChange={this.onChangeEndTime} placeholder="00:00"></input>
+                                            <input type="text" name="sunday" id="sunday" onChange={this.onChangeStartTime} placeholder="00:00" required></input>
+                                            <input type="text" name="sunday" id="sunday" onChange={this.onChangeEndTime} placeholder="00:00" required></input>
                                         </div>
                                     </div>
                                     <p>Enter "-" if you are unavailable on a particular day.</p>

@@ -28,7 +28,7 @@ router.route('/add').post((req, res) => {
     const date = new Date(req.body.date);
     const end = req.body.end;
     const location = req.body.location;
-    
+    var loc_count = 0;    
 
     for (var i = 0; i < 7; i++)
     {
@@ -48,7 +48,7 @@ router.route('/add').post((req, res) => {
         enext.setHours(end[i].substring(0,2) - 3);
         enext.setMinutes(end[i].substring(3,5));
         
-        const shift_temp = new Shift_data({ EMP_ID: id, Name: name, StartscheduledDateTime: snext, EndscheduledDateTime: enext, location: location});
+        const shift_temp = new Shift_data({ EMP_ID: id, Name: name, StartscheduledDateTime: snext, EndscheduledDateTime: enext, location: location[loc_count++]});
         console.log(shift_temp);
 
         shift_temp.save()
