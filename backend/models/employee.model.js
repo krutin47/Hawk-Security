@@ -57,4 +57,4 @@ const empSchema = new Schema({
 });
 
 //exporting the schema as User
-module.exports = mongoose.model('employee', empSchema);
+module.exports = mongoose.model('employees', empSchema);

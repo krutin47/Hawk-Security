@@ -1,9 +1,7 @@
 const router = require('express').Router();
 
-let Empdetails = require('../models/employee_and_id.model');
+let Empdetails = require('../models/employee.model');
 let Availability = require('../models/availability.model'); 
-
-/* GET users availability */
 
 router.route('/').get((req, res) => {
   Availability.find()
@@ -13,7 +11,7 @@ router.route('/').get((req, res) => {
 
 router.route('/:id').get((req, res) => {
   const id = req.params.id;
-  Empdetails.find({EMP_ID: id})
+  Empdetails.find({_id: id})
     .then(Data => res.json(Data))
     .catch(err => res.status(400).json('Error: ' + err));
 });
@@ -24,17 +22,17 @@ router.route('/add').post((req, res) => {
   const start = req.body.start;
   const end = req.body.end;
 
-  Availability.find({id: emp_id},
+  Availability.find({eid: emp_id},
     (err, result)=>{
       if(err){
         return res.status(404).send('Sorry! Would not be able to process your request');
       }
       if(result.length > 0)
       {
-        const query = {id: emp_id};
+        const query = {eid: emp_id};
         const newvalues = {$set: 
-          { id: emp_id, 
-            EMP_ID: name, 
+          { eid: emp_id, 
+            Emp_Name: name, 
             MON_START: start[0], 
             MON_END: end[0],
             TUE_START: start[1], 
@@ -58,8 +56,8 @@ router.route('/add').post((req, res) => {
       }
       else
       {
-        const newvalues = { id: emp_id, 
-            EMP_ID: name, 
+        const newvalues = { eid: emp_id, 
+            Emp_Name: name, 
             MON_START: start[0], 
             MON_END: end[0],
             TUE_START: start[1], 
@@ -80,23 +78,10 @@ router.route('/add').post((req, res) => {
 
         console.log(avail_values);
         
-        // avail_values.save()
-        //   .then(() => res.json('Data added...!  ' + avail_values));
+        avail_values.save()
+          .then(() => res.json('Data added...!  ' + avail_values));
       }
     });
-
-
-  //       console.log(res.id);
-        // employee.firstName = req.body.firstName;
-        // employee.lastName = req.body.lastName;
-        // employee.address = req.body.address;
-        // employee.phone = Number(req.body.phone);
-        // employee.gender = req.body.gender;
-
-        // employee.save()
-        //     .then(() => res.json('Employee details Updated! => ' + employee))
-        //     .catch(err => res.status(400).json('Error: ' + err));    
-    // });
     
 });
 

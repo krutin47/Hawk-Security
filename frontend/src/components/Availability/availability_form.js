@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import '../../main.css';
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { Link, withRouter } from 'react-router-dom';
 
 class availability_form extends React.Component{
     constructor(props) {
@@ -28,16 +30,14 @@ class availability_form extends React.Component{
         
         axios.get('http://localhost:5000/availability_display/' + local_id)
           .then(response => {
-            const name = (response.data[0].Name).split(" ");
-            if (name.length === 1) name[1] = "";
             this.setState({
-                first_name: name[0]
+                first_name: response.data[0].firstName
             })
             this.setState({
-                last_name: name[1]
+                last_name: response.data[0].lastName
             })
             this.setState({
-                id: response.data[0].EMP_ID
+                id: response.data[0]._id
             })
           })
           .catch((error) => {
@@ -136,12 +136,12 @@ class availability_form extends React.Component{
                                     </div>
                                 </div>
                                 <div>
-                                    <div class="ib vt w50 mw100">
+                                    {/* <div class="ib vt w50 mw100">
                                         <div class="field">
                                             <label for="emId">Employee Id</label>
                                             <input type="text" name="emId" disabled placeholder={this.state.id}></input>
                                         </div>
-                                    </div>
+                                    </div> */}
                                     <div class="ib vt w50 mw100">
                                         <div class="field">
                                             <label for="efDate">Effective Date</label>
@@ -225,7 +225,7 @@ availability_form.propTypes = {
     errors: state.errors
   });
   
-//   export default connect(mapStateToProps)(withRouter(user_schedule_display));
+export default connect(mapStateToProps)(withRouter(availability_form));
 
 
-export default availability_form
+// export default availability_form

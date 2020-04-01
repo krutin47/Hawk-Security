@@ -36,7 +36,7 @@ class admin_schedule_form extends React.Component {
           .then(response => {
             if (response.data.length > 0) {
               this.setState({
-                emp_list: response.data.map(emp => emp.Name),
+                emp_list: response.data.map(emp => ((emp.firstName) + ' ' + (emp.lastName))),
                 emp_name: response.data[0].Name
               })
             }
@@ -74,11 +74,11 @@ class admin_schedule_form extends React.Component {
         
         axios.get('http://localhost:5000/shift_upload/' + e.target.value)
           .then(res => {
-            console.log(res.data[0].EMP_ID);  
+            console.log(res.data[0]._id);  
             this.setState({
-                emp_id: res.data[0].EMP_ID
+                emp_id: res.data[0]._id
             });
-            this.onChangeEmpID(res.data[0].EMP_ID);
+            this.onChangeEmpID(res.data[0]._id);
         });
 
         this.setState({
@@ -207,13 +207,13 @@ class admin_schedule_form extends React.Component {
                                     </div>
                                 </div>
                                 <div>
-                                    <div class="ib vt w50 mw100">
+                                    {/* <div class="ib vt w50 mw100">
                                         <div class="field">
                                             <label for="emId">Employee Id</label>
                                             <input type="text" disabled placeholder={this.state.emp_id}>
                                             </input>
                                         </div>
-                                    </div>
+                                    </div> */}
                                     <div class="ib vt w50 mw100">
                                         <div class="field">
                                             <label>Effective Date</label>
@@ -384,140 +384,3 @@ class admin_schedule_form extends React.Component {
 }
 
 export default admin_schedule_form
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-//                                         </div>
-//                                     </div>
-//                                 </div>
-//                                 <div>
-//                                     <div class="ib vt w50 mw100">
-//                                         <div class="field">
-//                                             <label for="emId">Employee Id</label>
-//                                             <input type="text"
-//                                                 required
-//                                                 className="form-control"
-//                                                 value={this.state.emp_id}
-//                                                 onChange={this.onChangeEmpID}>
-//                                             </input>
-//                                         </div>
-//                                     </div>
-//                                     <div class="ib vt w50 mw100">
-//                                         <div class="field">
-//                                             <label>Effective Date</label>
-//                                             <input  type="text"
-//                                                 required
-//                                                 className="form-control"
-//                                                 value={this.state.effective}
-//                                                 onChange={this.onChangeEffective}
-//                                                 />
-//                                         </div>
-//                                     </div>
-//                                 </div>
-//                                 <div>
-//                                     <div class="ib vt w14 tabw25 mw100">
-//                                         <div class="field">
-//                                             <label for="monday">Monday</label>
-//                                             <input type="text" name="monday" id="monday" placeholder="startTime"></input>
-//                                             <input type="text" name="monday" id="monday" placeholder="endTime"></input>
-//                                             <select
-//                                                 required
-//                                                 className="form-control"
-//                                                 value={this.state.location}
-//                                                 onChange={this.onChangeLocation}>
-//                                                 {
-//                                                     this.state.loc_list.map(function(loc) {
-//                                                     return <option 
-//                                                         key={loc}
-//                                                         value={loc}>{loc}
-//                                                         </option>;
-//                                                     })
-//                                                 }
-//                                             </select>
-                                            
-//                                             {/* <input type="text" name="saturday" id="saturday" placeholder="location"></input> */}
-//                                         </div>
-//                                     </div>
-//                                     <div class="ib vt w14 tabw25 mw100">
-//                                         <div class="field">
-//                                             <label for="tuesday">Tuesday</label>
-//                                             <input type="text" name="tuesday" id="tuesday" placeholder="startTime"></input>
-//                                             <input type="text" name="tuesday" id="tuesday" placeholder="endTime"></input>
-//                                             <input type="text" name="saturday" id="saturday" placeholder="location"></input>
-//                                         </div>
-//                                     </div>
-//                                     <div class="ib vt w14 tabw25 mw100">
-//                                         <div class="field">
-//                                             <label for="wednesday">Wednesday</label>
-//                                             <input type="text" name="wednesday" id="wednesday" placeholder="startTime"></input>
-//                                             <input type="text" name="wednesday" id="wednesday" placeholder="endTime"></input>
-//                                             <input type="text" name="saturday" id="saturday" placeholder="location"></input>
-//                                         </div>
-//                                     </div>
-//                                     <div class="ib vt w14 tabw25 mw100">
-//                                         <div class="field">
-//                                             <label for="thursday">Thursday</label>
-//                                             <input type="text" name="thursday" id="thursday" placeholder="startTime"></input>
-//                                             <input type="text" name="thursday" id="thursday" placeholder="endTime"></input>
-//                                             <input type="text" name="saturday" id="saturday" placeholder="location"></input>
-//                                         </div>
-//                                     </div>
-//                                     <div class="ib vt w14 tabw25 mw100">
-//                                         <div class="field">
-//                                             <label for="friday">Friday</label>
-//                                             <input type="text" name="friday" id="friday" placeholder="startTime"></input>
-//                                             <input type="text" name="friday" id="friday" placeholder="endTime"></input>
-//                                             <input type="text" name="saturday" id="saturday" placeholder="location"></input>
-//                                         </div>
-//                                     </div>
-//                                     <div class="ib vt w14 tabw25 mw100">
-//                                         <div class="field">
-//                                             <label for="saturday">Saturday</label>
-//                                             <input type="text" name="saturday" id="saturday" placeholder="startTime"></input>
-//                                             <input type="text" name="saturday" id="saturday" placeholder="endTime"></input>
-//                                             <input type="text" name="saturday" id="saturday" placeholder="location"></input>
-//                                         </div>
-//                                     </div>
-//                                     <div class="ib vt w14 tabw25 mw100">
-//                                         <div class="field">
-//                                             <label for="sunday">Sunday</label>
-//                                             <input type="text" name="sunday" id="sunday" placeholder="startTime"></input>
-//                                             <input type="text" name="sunday" id="sunday" placeholder="endTime"></input>
-//                                             <input type="text" name="sunday" id="sunday" placeholder="location"></input>
-//                                         </div>
-//                                     </div>
-//                                 </div>
-//                                 <div class="text-center pt30">
-//                                     <input type="submit" name="submit" value="submit"></input>
-//                                 </div>
-//                             </form>
-//                         </div>
-//                     </div>
-//                 </section>
-//             </React.Fragment>    
-//         )
-//     }
-// }
-
-// export default admin_schedule_form

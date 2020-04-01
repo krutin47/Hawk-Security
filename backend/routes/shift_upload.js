@@ -1,19 +1,21 @@
 const router = require('express').Router();
 
-let Empdetails = require('../models/employee_and_id.model');
+let Empdetails = require('../models/employee.model');
 let Shift_data = require('../models/shift_details.model');
 
 
 router.route('/').get((req, res) => {
-    Empdetails.find()
+    Empdetails.find({role: 1})
     .then(Empdetails => res.json(Empdetails))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
 
 router.route('/:name').get((req, res) => {
-    const empname = req.params.name;
-    Empdetails.find({Name: empname})
+    const name_string = req.params.name.split(" ");
+    const first = name_string[0];
+    const last = name_string[1];
+    Empdetails.find({ $and: [ {firstName: first}, {lastName: last}] })
       .then(Empdetails => res.json(Empdetails))
       .catch(err => res.status(400).json('Error: ' + err));
 });

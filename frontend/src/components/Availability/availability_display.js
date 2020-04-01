@@ -5,7 +5,7 @@ import axios from 'axios';
 const AvailDetails = props => (
     <span>
     <tr className="row">
-        <td className="col" rowSpan= '2'>{props.avail.EMP_ID}</td>
+        <td className="col" rowSpan= '2'>{props.avail.Emp_Name}</td>
         <td className="col">{props.avail.MON_START}</td>
         <td className="col">{props.avail.TUE_START}</td>
         <td className="col">{props.avail.WED_START}</td>
