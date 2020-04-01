@@ -56,25 +56,25 @@ router.route('/add').post((req, res) => {
       }
       else
       {
-        const newvalues = { eid: emp_id, 
-            Emp_Name: name, 
-            MON_START: start[0], 
-            MON_END: end[0],
-            TUE_START: start[1], 
-            TUE_END: end[1], 
-            WED_START: start[2], 
-            WED_END: end[2], 
-            THURS_START: start[3], 
-            THURS_END: end[3], 
-            FRI_START: start[4], 
-            FRI_END: end[4], 
-            SAT_START: start[5], 
-            SAT_END: end[5], 
-            SUN_START: start[6], 
-            SUN_END: end[6]
-          };
+        
 
-        const avail_values = new Availability(newvalues);
+        const avail_values = new Availability({ eid: emp_id, 
+          Emp_Name: name, 
+          MON_START: start[0], 
+          MON_END: end[0],
+          TUE_START: start[1], 
+          TUE_END: end[1], 
+          WED_START: start[2], 
+          WED_END: end[2], 
+          THURS_START: start[3], 
+          THURS_END: end[3], 
+          FRI_START: start[4], 
+          FRI_END: end[4], 
+          SAT_START: start[5], 
+          SAT_END: end[5], 
+          SUN_START: start[6], 
+          SUN_END: end[6]
+        });
 
         console.log(avail_values);
         

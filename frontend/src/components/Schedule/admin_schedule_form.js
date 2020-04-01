@@ -226,8 +226,8 @@ class admin_schedule_form extends React.Component {
                                     <div class="ib vt w14 tabw25 mw100">
                                         <div class="field">
                                             <label for="monday">Monday</label>
-                                            <input type="text" name="monday" id="monday" placeholder="startTime" onChange={this.onChangeStartTime}></input>
-                                            <input type="text" name="monday" id="monday" placeholder="endTime" onChange={this.onChangeEndTime}></input>
+                                            <input type="text" name="monday" id="monday" placeholder="00:00" onChange={this.onChangeStartTime}></input>
+                                            <input type="text" name="monday" id="monday" placeholder="00:00" onChange={this.onChangeEndTime}></input>
                                             <select
                                                 required
                                                 className="form-control"
@@ -247,8 +247,8 @@ class admin_schedule_form extends React.Component {
                                     <div class="ib vt w14 tabw25 mw100">
                                         <div class="field">
                                             <label for="tuesday">Tuesday</label>
-                                            <input type="text" name="tuesday" id="tuesday" placeholder="startTime" onChange={this.onChangeStartTime}></input>
-                                            <input type="text" name="tuesday" id="tuesday" placeholder="endTime" onChange={this.onChangeEndTime}></input>
+                                            <input type="text" name="tuesday" id="tuesday" placeholder="00:00" onChange={this.onChangeStartTime}></input>
+                                            <input type="text" name="tuesday" id="tuesday" placeholder="00:00" onChange={this.onChangeEndTime}></input>
                                             <select
                                                 required
                                                 className="form-control"
@@ -268,8 +268,8 @@ class admin_schedule_form extends React.Component {
                                     <div class="ib vt w14 tabw25 mw100">
                                         <div class="field">
                                             <label for="wednesday">Wednesday</label>
-                                            <input type="text" name="wednesday" id="wednesday" placeholder="startTime" onChange={this.onChangeStartTime}></input>
-                                            <input type="text" name="wednesday" id="wednesday" placeholder="endTime" onChange={this.onChangeEndTime}></input>
+                                            <input type="text" name="wednesday" id="wednesday" placeholder="00:00" onChange={this.onChangeStartTime}></input>
+                                            <input type="text" name="wednesday" id="wednesday" placeholder="00:00" onChange={this.onChangeEndTime}></input>
                                             <select
                                                 required
                                                 className="form-control"
@@ -289,8 +289,8 @@ class admin_schedule_form extends React.Component {
                                     <div class="ib vt w14 tabw25 mw100">
                                         <div class="field">
                                             <label for="thursday">Thursday</label>
-                                            <input type="text" name="thursday" id="thursday" placeholder="startTime" onChange={this.onChangeStartTime}></input>
-                                            <input type="text" name="thursday" id="thursday" placeholder="endTime" onChange={this.onChangeEndTime}></input>
+                                            <input type="text" name="thursday" id="thursday" placeholder="00:00" onChange={this.onChangeStartTime}></input>
+                                            <input type="text" name="thursday" id="thursday" placeholder="00:00" onChange={this.onChangeEndTime}></input>
                                             <select
                                                 required
                                                 className="form-control"
@@ -310,8 +310,8 @@ class admin_schedule_form extends React.Component {
                                     <div class="ib vt w14 tabw25 mw100">
                                         <div class="field">
                                             <label for="friday">Friday</label>
-                                            <input type="text" name="friday" id="friday" placeholder="startTime" onChange={this.onChangeStartTime}></input>
-                                            <input type="text" name="friday" id="friday" placeholder="endTime" onChange={this.onChangeEndTime}></input>
+                                            <input type="text" name="friday" id="friday" placeholder="00:00" onChange={this.onChangeStartTime}></input>
+                                            <input type="text" name="friday" id="friday" placeholder="00:00" onChange={this.onChangeEndTime}></input>
                                             <select
                                                 required
                                                 className="form-control"
@@ -331,8 +331,8 @@ class admin_schedule_form extends React.Component {
                                     <div class="ib vt w14 tabw25 mw100">
                                         <div class="field">
                                             <label for="saturday">Saturday</label>
-                                            <input type="text" name="saturday" id="saturday" placeholder="startTime" onChange={this.onChangeStartTime}></input>
-                                            <input type="text" name="saturday" id="saturday" placeholder="endTime" onChange={this.onChangeEndTime}></input>
+                                            <input type="text" name="saturday" id="saturday" placeholder="00:00" onChange={this.onChangeStartTime}></input>
+                                            <input type="text" name="saturday" id="saturday" placeholder="00:00" onChange={this.onChangeEndTime}></input>
                                             <select
                                                 required
                                                 className="form-control"
@@ -352,8 +352,8 @@ class admin_schedule_form extends React.Component {
                                     <div class="ib vt w14 tabw25 mw100">
                                         <div class="field">
                                             <label for="sunday">Sunday</label>
-                                            <input type="text" name="sunday" id="sunday" placeholder="startTime" onChange={this.onChangeStartTime}></input>
-                                            <input type="text" name="sunday" id="sunday" placeholder="endTime" onChange={this.onChangeEndTime}></input>
+                                            <input type="text" name="sunday" id="sunday" placeholder="00:00" onChange={this.onChangeStartTime}></input>
+                                            <input type="text" name="sunday" id="sunday" placeholder="00:00" onChange={this.onChangeEndTime}></input>
                                             <select
                                                 required
                                                 className="form-control"
@@ -369,6 +369,7 @@ class admin_schedule_form extends React.Component {
                                                 }
                                             </select>
                                         </div>
+                                        <p>Enter "-" if there are no shift on a particular day.</p>
                                     </div>
                                 </div>
                                 <div class="text-center pt30">
