@@ -5,17 +5,16 @@ const Schema = mongoose.Schema;
 const availSchema = new Schema({
   eid: {
     type: String,
-    unique: true,
-    trim: true
+    unique: true
   },
   Emp_Name: {
-      type: String
+    type: String
   },
   MON_START: {
-      type: String
+    type: String
   },
   MON_END: {
-      type: String
+    type: String
   },
   TUE_START: {
     type: String
