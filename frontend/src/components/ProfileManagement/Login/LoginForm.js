@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from "react-bootstrap";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../../actions/authActions";
@@ -8,7 +8,7 @@ import classnames from "classnames";
 
 import './logintheme.css';
 
-//TODO: Database connection and sending and requesting the info
+// //TODO: Database connection and sending and requesting the info
 class LoginForm extends React.Component {
     constructor (props) {
         super(props);
@@ -21,33 +21,37 @@ class LoginForm extends React.Component {
           passwordValid: false,
           passwordTouch: false,
           formValid: false,
-          errors: {},
         }
-
+        
+        this.errors = false;
         this.onSubmitForm = this.onSubmitForm.bind(this);
+        this.displayErrors = this.displayErrors(this);
     }
     
     componentWillReceiveProps(nextProps) {
+        console.log("nextProps ------> ", nextProps);
         if (nextProps.auth.isAuthenticated) {
-            if(nextProps.auth.user.role == 1) {
+            if(nextProps.auth.user.role === 1) {
                 this.props.history.push("/employee_dashboard"); // push user to Employee dashboard when Employee login
-            } else if (nextProps.auth.user.role == 2){
+            } else if (nextProps.auth.user.role === 2){
                 this.props.history.push("/admin_dashboard"); // push user to Admin dashboard when Admin login
             }
+        } 
+
+        console.log("this.errors ----> ", this.errors);
+        
+        if(nextProps.errors) {
+            this.errors = true;
         }
-        if (nextProps.errors) {
-            this.setState({
-                errors: nextProps.errors
-            });
-        }
+        console.log("this.errors ----> ", this.errors);
     }
 
     componentDidMount() {
         // If logged in and user navigates to Login page, should redirect them to dashboard
         if (this.props.auth.isAuthenticated) {
-            if(this.props.auth.user.role == 1) {
+            if(this.props.auth.user.role === 1) {
                 this.props.history.push("/employee_dashboard"); // push user to Employee dashboard when Employee login
-            } else if (this.props.auth.user.role == 2){
+            } else if (this.props.auth.user.role === 2){
                 this.props.history.push("/admin_dashboard"); // push user to Admin dashboard when Admin login
             }
         }
@@ -68,14 +72,18 @@ class LoginForm extends React.Component {
       
         switch(fieldName) {
             case 'email':
-                this.state.emailTouch = true;
+                this.setState({
+                    emailTouch: true
+                });
                 emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
                 fieldValidationErrors.email = emailValid 
                     ? <p className="isValid">Sweet! Email Id is valid</p> 
                     : <p className="has-error">Please Enter a valid Email Id</p>;
                 break;
             case 'password':
-                this.state.passwordTouch = true;
+                this.setState({
+                    passwordTouch: true
+                });
                 passwordValid = value.length >= 6;
                 fieldValidationErrors.password = passwordValid 
                     ? <p className="isValid">Awesome! Password is valid</p>
@@ -101,33 +109,45 @@ class LoginForm extends React.Component {
 
     onSubmitForm(e){
         e.preventDefault();
-
-        console.log("am i being called.....????????");
         
-        // if(this.state.formValid) {
-
+        if(this.state.formValid) {
             const employee = {
                 email: this.state.email,
                 password: this.state.password,
             }
-            
             this.props.loginUser(employee);
-        // }
+        }
+    }
+
+    displayErrors() {
+        console.log("this.errors", this.errors)
+        if(this.errors) {
+            return (<div className='col-md-12'>
+                        <div className="">
+                            <div className='bg-color--red p-2'>
+                                <p>Could not authenticate you. Either your Email ID or password is wrong.!</p>
+                            </div>
+                        </div>
+                    </div>)
+        }
     }
 
     render(){
         return(
             <form>
                 <div className="row">
+                    {this.displayErrors}
                     <div className="col-md-12">
                         <div className="form-label-group">
                             <div>
                                 <label htmlFor="email">Email address</label>
-                                {/* // TODO: change class dynamically to manipulate the border of the input */}
-                                <input className={'form-group ' + (this.errorClass(this.state.formErrors.email))} type="email" required className="form-control" name="email"
+                                {/* // // TODO: change class dynamically to manipulate the border of the input */}
+                                <input className= { classnames("form-control", { is_valid: this.state.emailValid && this.state.emailTouch , has_error: !this.state.emailValid && this.state.emailTouch })}
+                                    type="email" 
+                                    name="email"
                                     placeholder="Please Enter Your Email ID"
                                     value={this.state.email}
-                                    onChange={this.handleUserInput}  />
+                                    onChange={this.handleUserInput} required />
                                 {this.state.formErrors.email}
                             </div>
                         </div>
@@ -138,10 +158,12 @@ class LoginForm extends React.Component {
                             <div>
                                 <label htmlFor="password">Password</label>
                                 {/* // TODO: change class dynamically to manipulate the border of the input */}
-                                <input className={`form-group ${this.errorClass(this.state.formErrors.password)}`} type="password" className="form-control" name="password"
+                                <input className={ classnames("form-control", { is_valid: this.state.passwordValid && this.state.passwordTouch , has_error: !this.state.passwordValid && this.state.passwordTouch })}
+                                    type="password" 
+                                    name="password"
                                     placeholder="Please Enter Your Password"
                                     value={this.state.password}
-                                    onChange={this.handleUserInput}  />
+                                    onChange={this.handleUserInput} required />
                                 {this.state.formErrors.password}
                             </div>
                         </div>

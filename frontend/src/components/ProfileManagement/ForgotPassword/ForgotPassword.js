@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Alert } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";

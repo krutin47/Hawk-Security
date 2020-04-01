@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, Alert } from "react-bootstrap";
-import { Link, withRouter } from "react-router-dom";
+import { Button } from "react-bootstrap";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { registerUser } from "../../../actions/authActions";
@@ -83,9 +83,9 @@ class RegistrationForm extends React.Component {
     componentDidMount() {
         // If logged in and user navigates to Register page, should redirect them to dashboard
         if (this.props.auth.isAuthenticated) {
-            if(this.props.auth.user.role == 1) {
+            if(this.props.auth.user.role === 1) {
                 this.props.history.push("/employee_dashboard"); // push user to Employee dashboard when Employee login
-            } else if (this.props.auth.user.bind == 2){
+            } else if (this.props.auth.user.bind === 2){
                 this.props.history.push("/admin_dashboard"); // push user to Admin dashboard when Admin login
             }
         }
@@ -120,7 +120,7 @@ class RegistrationForm extends React.Component {
                     ? <p className="isValid">Awesome! Password is valid</p>
                     : <p className="has-error">Please Enter Password with more then 6 letter</p>;
                 if(this.state.confirmPasswordTouch) {
-                    confirmPasswordValid = (this.state.password == this.state.confirmPassword) ? true : false ;
+                    confirmPasswordValid = (this.state.password === this.state.confirmPassword) ? true : false ;
                     fieldValidationErrors.confirmPassword = confirmPasswordValid
                         ? <p className="isValid">Great! confirm Password is same</p>
                         : <p className="has-error">Confirm Password did not match</p>;
@@ -128,7 +128,7 @@ class RegistrationForm extends React.Component {
                 break;
             case 'confirmPassword':
                 this.setState({confirmPasswordTouch : true});
-                confirmPasswordValid = (this.state.password == this.state.confirmPassword) ? true : false ;
+                confirmPasswordValid = (this.state.password === this.state.confirmPassword) ? true : false ;
                 fieldValidationErrors.confirmPassword = confirmPasswordValid 
                     ? <p className="isValid">Great! confirm Password is same</p>
                     : <p className="has-error">Confirm Password did not match</p>;
@@ -178,10 +178,12 @@ class RegistrationForm extends React.Component {
                             <div>
                                 <label htmlFor="firstName">First Name</label>
                                 {/* // TODO: change class dynamically to manipulate the border of the input */}
-                                <input type="text" required className="form-control" name="firstName"
+                                <input className="form-control"
+                                    type="text"  
+                                    name="firstName"
                                     placeholder="Please Enter Your First Name"
                                     value={this.state.firstName}  
-                                    onChange={this.handleUserInput} />
+                                    onChange={this.handleUserInput} required />
                             </div>
                         </div>
                     </div>
@@ -191,10 +193,12 @@ class RegistrationForm extends React.Component {
                             <div>
                                 <label htmlFor="lastName">Last Name</label>
                                 {/* // TODO: change class dynamically to manipulate the border of the input */}
-                                <input type="text" required className="form-control" name="lastName"
+                                <input className="form-control"
+                                    type="text"   
+                                    name="lastName"
                                     placeholder="Please Enter Your Last Name"
                                     value={this.state.lastName}  
-                                    onChange={this.handleUserInput} />
+                                    onChange={this.handleUserInput} required />
                             </div>
                         </div>
                     </div>

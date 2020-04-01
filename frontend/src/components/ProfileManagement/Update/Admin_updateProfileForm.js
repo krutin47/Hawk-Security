@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from "react-bootstrap";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { updateUser } from "../../../actions/authActions";
@@ -36,7 +36,7 @@ class AdminUpdateProfileForm extends React.Component {
                     firstName: employee.data.firstName,
                     lastName: employee.data.lastName,
                     address: employee.data.address,
-                    phone: (employee.data.phone == 0) ? '' : employee.data.phone,
+                    phone: (employee.data.phone === 0) ? '' : employee.data.phone,
                     gender: employee.data.gender,
                 })
             })
@@ -60,7 +60,9 @@ class AdminUpdateProfileForm extends React.Component {
       
         switch(fieldName) {
             case 'address':
-                this.state.addressTouch = true;
+                this.setState({
+                    addressTouch: true
+                });
                 addressValid = value.length > 0 && value.length < 50;
                 fieldValidationErrors.address = 
                     addressValid 
@@ -68,7 +70,9 @@ class AdminUpdateProfileForm extends React.Component {
                         : '';
                 break;
             case 'phone':
-                this.state.phoneTouch = true;
+                this.setState({
+                    phoneTouch: true
+                });
                 phoneValid = value.length >= 14;
                 fieldValidationErrors.phone = 
                     phoneValid 
@@ -76,7 +80,9 @@ class AdminUpdateProfileForm extends React.Component {
                         : <p className="has-error">Please Enter a valid phone number</p>;
                 break;
             case 'gender':
-                this.state.genderTouch = true;
+                this.setState({
+                    genderTouch: true
+                });
                 genderValid = this.state.gender === "male" || this.state.gender === "female" || this.state.gender === "other";
                 fieldValidationErrors.gender = 
                     genderValid 
@@ -95,7 +101,7 @@ class AdminUpdateProfileForm extends React.Component {
     }
     
     validateForm() {
-        this.setState({formValid: this.state.addressValid && this.state.phoneValid});
+        this.setState({formValid: this.state.addressValid || this.state.phoneValid});
     }
       
     errorClass(error) {
@@ -190,7 +196,6 @@ class AdminUpdateProfileForm extends React.Component {
                                 {/* // TODO: change class dynamically to manipulate the border of the input */}
                                 <input className={`form-control ${this.errorClass(this.state.formErrors.gender)}`} 
                                     type="text" 
-                                    className="form-control" 
                                     name="gender"
                                     placeholder="Please select Your gender"
                                     value={this.state.gender}

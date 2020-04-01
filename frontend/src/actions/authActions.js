@@ -84,6 +84,8 @@ export const loginUser = userData => dispatch => {
 
 // Set logged in user
 export const setCurrentUser = decoded => {
+  console.log("called the setCurrentUser");
+  console.log("called the setCurrentUser -> decoded ----> ", decoded);
   return {
     type: SET_CURRENT_USER,
     payload: decoded
@@ -109,8 +111,8 @@ export const logoutUser = () => dispatch => {
 
 // Remove user
 export const removeUser = (userId) => dispatch => {
-  axios.
-    delete("/employee/delete" + userId)
+  
+  axios.delete("/employee/delete" + userId)
     .then(res => {
       console.log(res);
       toast.success("You are DELETED..!!", {

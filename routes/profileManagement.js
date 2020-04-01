@@ -219,20 +219,36 @@ router.route('/reset').post((req, res) => {
   const password = req.body.password;
   
   jwt.verify(_token, keys.secretOrKey, function(err, decoded) {
-    console.log(decoded) // bar
+    console.log(decoded) // decoded token
     if(!err){
+      
+      //find the user from Employee dictonary
       Employee.findById(decoded.id)
         .then(employee => {
-            employee.password = password;
-  
-            employee.save()
-                .then(() => {
-                  ResetPass.findByIdAndRemove(employee.id)
-                    .exec()
-                    .then(() => res.json('Employee Password Updated! => ' + employee))
-                    .catch(err => res.status(400).json('Error: ' + err));
-                })
-                .catch(err => res.status(400).json('Error: ' + err));    
+
+            // Hash password before saving in database
+            bcrypt.genSalt(10, (err, salt) => {
+              if (err) throw err;
+              bcrypt.hash(password, salt, (error_, hash) => {
+                if (error_) console.log(error_);
+                
+                employee.password = hash;
+      
+                //Go to Reset Password and delete the record so it can't be used again
+                ResetPass.findOneAndRemove(employee.email)
+                  .exec()
+                  .then(() => {
+                    
+                    //onec that is done save the new password into the database
+                    employee.save()
+                      .then(() => {
+                        res.json('Employee Password Updated! => ' + employee)
+                      })
+                      .catch(err => res.status(400).json('Error: ' + err));
+                  })
+                  .catch(err => res.status(400).json('Error: ' + err));
+              });
+            });    
         })
         .catch(err => res.status(400).json('Error: ' + err));
     } else {

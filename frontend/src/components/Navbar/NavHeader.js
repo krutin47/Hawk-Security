@@ -5,13 +5,17 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import PropTypes from "prop-types";
 
-
 //importing CSS
 import './NavHeader.css'
 
 
 function UserNavbar(props) {
-    console.log("props ----------> ", props); 
+    console.log("props ----------> ", props);
+    function onClickLogout(e) {
+        e.preventDefault();
+        console.log('The logout button was clicked.');
+        props.logoutUser();
+    } 
     return (
         <header>
             <div className="headerMain">
@@ -25,10 +29,15 @@ function UserNavbar(props) {
                             <li><Link to="/user_schedule_display">HOME</Link></li>
                             <li><Link to="/availability_form">AVAILABILITY</Link></li>
                             {/* // TODO: make below three in drop down list */}
-                            <li><Link to="/User_update_profile">UPDATE PROFILE</Link></li>                           
-                            <li><Link to="/Remove_profile">REMOVE PROFILE</Link></li>
-                            <li><Link onClick={props.logoutUser}>LOGOUT</Link></li>
-                            {/* //TODO: Logout Button needs be Added */}
+                            <li className="dropdown">
+                                <a className="dropdown-toggle" data-toggle="dropdown" href="#">PROFILE
+                                <span className="caret"></span></a>
+                                <ul className="dropdown-menu">
+                                    <li><Link to="/User_update_profile">UPDATE PROFILE</Link></li>                           
+                                    <li><Link to="/Remove_profile">REMOVE PROFILE</Link></li>
+                                    <li><Link onClick={onClickLogout}>LOGOUT</Link></li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -39,6 +48,11 @@ function UserNavbar(props) {
 
 // //TODO :: update the Admin Navbar according to your need..
 function AdminNavbar(props) {
+    function onClickLogout(e) {
+        e.preventDefault();
+        console.log('The logout button was clicked.');
+        props.logoutUser();
+    }
     return (
         <header>
             <div className="headerMain">
@@ -50,13 +64,31 @@ function AdminNavbar(props) {
                     <div className="siteNavigation fr">
                         <ul className="parent">
                             {/* //TODO: Add the respective Link And Logout Button */}
-                            <li><Link to="/admin_schedule_display">Home</Link></li>
-                            <li><Link to="/availability_display">availabilities</Link></li>
-                            <li><Link to="/admin_schedule_form">Add Shift</Link></li>
-                            <li><Link to="/add_location">Locations</Link></li>
-                            <li><Link to="/job_create">Add Job</Link></li>
-                            
-                            <li><Link onClick={props.logoutUser}>LOGOUT</Link></li>
+                            <li><Link to="/admin_schedule_display">DASHBOARD</Link></li>
+                            <li className="dropdown">
+                                <a className="dropdown-toggle" data-toggle="dropdown" href="#">EMPLOYEE
+                                <span className="caret"></span></a>
+                                <ul className="dropdown-menu">
+                                    <li><Link to="/availability_display">AVAILABILITY</Link></li>                           
+                                </ul>
+                            </li>
+                            <li className="dropdown">
+                                <a className="dropdown-toggle" data-toggle="dropdown" href="#">CREATE
+                                <span className="caret"></span></a>
+                                <ul className="dropdown-menu">
+                                    <li><Link to="/add_location">LOCATION</Link></li>
+                                    <li><Link to="/job_create">ADD JOB</Link></li>
+                                </ul>
+                            </li>
+                            <li className="dropdown">
+                                <a className="dropdown-toggle" data-toggle="dropdown" href="#">PROFILE
+                                <span className="caret"></span></a>
+                                <ul className="dropdown-menu">
+                                    <li><Link to="/Admin_update_profile">UPDATE PROFILE</Link></li>                           
+                                    <li><Link to="/Remove_profile">REMOVE PROFILE</Link></li>
+                                    <li><Link to='' onClick={onClickLogout}>LOGOUT</Link></li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -77,8 +109,8 @@ function GuestNavbar(props) {
                     <div className="siteNavigation fr">
                         <ul className="parent">
                             <li><Link to="/">HOME</Link></li>
-                            <li><Link to="/job_display">Jobs</Link></li>
-                            <li><Link href="#contact_us">CONTCT US</Link></li>
+                            <li><Link to="/job_display">JOBS</Link></li>
+                            <li><a href="#contact_us">CONTCT US</a></li>
                             <li><a href="#_service_">SERVICES</a></li>
                             <li><Link to="/login"><strong id="quote">SIGN IN</strong></Link></li>
                         </ul>
@@ -101,24 +133,13 @@ class NavHeader extends Component {
             isGuest: true,
             errors: {},
             auth: {},
-            logoutUser: {} 
         };
-
-        this.onClickLogout = this.onClickLogout.bind(this);
     }
-
-    onClickLogout(e) {
-        e.preventDefault();
-
-        this.props.logoutUser();
-    }
-
 
     componentDidMount() {
 
         this.setState({
             auth: this.props.auth,
-            logoutUser: this.props.logoutUser()
         })
 
         if(this.props.auth.isAuthenticated) {
@@ -130,7 +151,7 @@ class NavHeader extends Component {
             console.log("navbar is authenticated....");
             console.log("nextProps.auth.user.role -----------> ", this.props.auth.user.role);
             
-            if(this.props.auth.user.role == 1) {
+            if(this.props.auth.user.role === 1) {
                 //this is employee
                 this.setState({
                     isEmployee: true,
@@ -158,7 +179,7 @@ class NavHeader extends Component {
             console.log("navbar is authenticated....");
             console.log("nextProps.auth.user.role -----------> ", nextProps.auth.user.role);
             
-            if(nextProps.auth.user.role == 1) {
+            if(nextProps.auth.user.role === 1) {
                 //this is employee
                 this.setState({
                     isEmployee: true,
@@ -193,14 +214,14 @@ class NavHeader extends Component {
         // console.log(this.state);
         if (this.state.isLoggedIn) {
             if(this.state.isAdmin) {
-                return <AdminNavbar />;
+                return <AdminNavbar {...this.props}/>;
             } else if (this.state.isEmployee) {
                 console.log("I am in the UserNavbar");
                 return <UserNavbar {...this.props}/>;
             }
         } else {
             console.log("I am in the guestNavbaar");
-            return <GuestNavbar {...this.props}/>;
+            return <GuestNavbar />;
         }
     }
 }

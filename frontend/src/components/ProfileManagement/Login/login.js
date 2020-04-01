@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
-import NavHeader from '../../Navbar/NavHeader';
 import LoginForm from './LoginForm';
-import Footer from '../../Footer/Footer';
 
 class Login extends Component {
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 
 function Home() {
@@ -13,10 +12,7 @@ function Home() {
           <div className="table">
             <div className="table-cell text-center fontWhite">
               <h1 className="pb10 fontWhite">HAWK SECURITY</h1>
-              <p className="pb20"> OUR SECURITY SERVICES
-                MAKE THE WORLD A
-                SAFER & FRIENDLIER PLACE
-              </p>
+              <p className="pb20"> OUR SECURITY SERVICES MAKE THE WORLD A SAFER & FRIENDLIER PLACE</p>
               {/* <!-- <div className="button pt30 whiteButton wow fadeInDown"  data-wow-delay="0.6s">
                 <a href="#">View Equipment</a>
                 <a href="#">Request Parts</a>

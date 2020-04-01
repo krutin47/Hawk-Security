@@ -21,10 +21,8 @@ class Admin_schedule_display extends React.Component {
   constructor(props) {
     super(props);
 
-   
     this.onChangeDate = this.onChangeDate.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-   
+    this.onSubmitDate = this.onSubmitDate.bind(this);
   
     this.state = {
       date: new Date(),
@@ -38,6 +36,11 @@ class Admin_schedule_display extends React.Component {
     this.setState({
       date: date
     })
+    console.log("i am calling it");
+    
+    //this.onSubmitDate();    
+    console.log("i called it");
+    
   }
 
   componentDidMount() {
@@ -69,7 +72,7 @@ class Admin_schedule_display extends React.Component {
 
   }
     
-  onSubmit(e) {
+  onSubmitDate(e) {
     e.preventDefault();
     
     const date = new Date(this.state.date);
@@ -94,8 +97,10 @@ class Admin_schedule_display extends React.Component {
         }
           this.setState({ shiftList: events })
           // console.log(shiftList);
-      });
-
+      })
+      .catch(err => console.log(err));
+      console.log("i am leaving...");
+      
   }
 
   tableData() {
@@ -110,22 +115,19 @@ class Admin_schedule_display extends React.Component {
         <React.Fragment>
           <div className="fullcalander__container">     
           
-            <div className="container justify-content-md-center">
-              <div className="row justify-content-md-center">
-                <div className="select_date_div col-md-auto">
-                  <p>Select Date</p>
-                </div>
-                  <div className="col-md-auto justify-content-md-center padding_div">
+            <div className="container">
+              <div className="row justify-content-sm-center align-items-center">
+                  <div className="select_date_div col-sm-auto">
+                    <p>Select Date</p>
+                  </div>
+                  <div className="col-sm-auto">
                     <DatePicker
                       selected={this.state.date}
                       onChange={this.onChangeDate}
                     />
-                   
-                    
                   </div>
-                  <br/> <br/>
-                  <div className="col col-lg-2">
-                    <button className="btn btn-primary btn-block padding_button" onClick = {this.onSubmit}  >Get Schedule</button>
+                  <div className="col-sm-auto">
+                    <button className="btn btn-primary btn-block padding_button" onClick = {this.onSubmitDate}  >Get Schedule</button>
                   </div>
               </div>
             </div>
@@ -139,11 +141,11 @@ class Admin_schedule_display extends React.Component {
                 
                     <tr className="row text-left">
                         <th className="col">Name</th>
-                        <th className="col" colspan="2">Start Time</th>
+                        <th className="col" colSpan="2">Start Time</th>
                         {/* <th className="col">MON_END</th> */}
-                        <th className="col pl-5" colspan="2">End Time</th>
+                        <th className="col pl-5" colSpan="2">End Time</th>
                         {/* <th className="col">TUE_END</th> */}
-                        <th className="col pl-5" colspan="2">Location</th>
+                        <th className="col pl-5" colSpan="2">Location</th>
                         {/* <th className="col">WED_END</th> */}
                     </tr>
                   

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Button, Alert } from "react-bootstrap";
-import { Link, withRouter } from "react-router-dom";
+import { Button } from "react-bootstrap";
+import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { resetUserPassword } from "../../../actions/authActions";
@@ -65,7 +65,7 @@ class ResetPassword extends Component {
                     ? <p className="isValid">Awesome! Password is valid</p>
                     : <p className="has-error">Please Enter a valid Password</p>;
                 if(this.state.confirmPasswordTouch) {
-                    confirmPasswordValid = (this.state.password == this.state.confirmPassword) ? true : false ;
+                    confirmPasswordValid = (this.state.password === this.state.confirmPassword) ? true : false ;
                     fieldValidationErrors.confirmPassword = confirmPasswordValid
                         ? <p className="isValid">Great! confirm Password is same</p>
                         : <p className="has-error">Confirm Password did not match</p>;
@@ -73,7 +73,7 @@ class ResetPassword extends Component {
                 break;
             case 'confirmPassword':
                 this.setState({confirmPasswordTouch : true});
-                confirmPasswordValid = (this.state.password == this.state.confirmPassword) ? true : false ;
+                confirmPasswordValid = (this.state.password === this.state.confirmPassword) ? true : false ;
                 fieldValidationErrors.confirmPassword = confirmPasswordValid 
                     ? <p className="isValid">Great! confirm Password is same</p>
                     : <p className="has-error">Confirm Password did not match</p>;

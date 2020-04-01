@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Admin_schedule_display from '../Schedule/admin_schedule_display';
+import AdminScheduleDisplay from '../Schedule/admin_schedule_display';
 
 export class AdminDashboard extends Component {
     constructor(props) {
@@ -11,9 +11,9 @@ export class AdminDashboard extends Component {
     
     render() {
         return (
-            <div className= "fullscreen__container">
+            <div>
                 {/* Body Div */}
-                <Admin_schedule_display />
+                <AdminScheduleDisplay />
                 {/* Body End */}
             </div>
         )
