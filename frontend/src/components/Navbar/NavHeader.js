@@ -17,7 +17,7 @@ function UserNavbar(props) {
             <div className="headerMain">
                 <div className="wrapper clearfix">
                     <div className="siteLogo fl">
-                        <Link to="/Home"><img src={require('../../assets/images/Sitelogo.png')} alt=""/></Link>
+                        <Link to="/"><img src={require('../../assets/images/Sitelogo.png')} alt=""/></Link>
                     </div>
                     <a className="expandMenu"><i></i><i></i><i></i></a>
                     <div className="siteNavigation fr">
@@ -52,6 +52,7 @@ function AdminNavbar(props) {
                             {/* //TODO: Add the respective Link And Logout Button */}
                             <li><Link to="/admin_schedule_display">Home</Link></li>
                             <li><Link to="/availability_display">availabilities</Link></li>
+                            <li><Link to="/admin_schedule_form">Add Shift</Link></li>
                             <li><Link to="/add_location">Locations</Link></li>
                             <li><Link to="/job_create">Add Job</Link></li>
                             
