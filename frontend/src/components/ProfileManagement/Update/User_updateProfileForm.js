@@ -69,7 +69,7 @@ class UserUpdateProfileForm extends React.Component {
                 break;
             case 'phone':
                 this.state.phoneTouch = true;
-                phoneValid = value.length >= 14;
+                phoneValid = value.length == 10;
                 fieldValidationErrors.phone = 
                     phoneValid 
                         ? <p className="isValid">Awesome! phone number is valid</p>
@@ -105,7 +105,6 @@ class UserUpdateProfileForm extends React.Component {
     onclickUpdate(e) {
         e.preventDefault();
 
-        console.log("id ------> ", this.props.auth.user.id);
         
         const user = {
             id: this.props.auth.user.id,
@@ -175,7 +174,7 @@ class UserUpdateProfileForm extends React.Component {
                                 <input className={`form-control ${this.errorClass(this.state.formErrors.phone)}`} 
                                     type="text" 
                                     name="phone"
-                                    placeholder="Please Enter Your phone number with country code"
+                                    placeholder="Please Enter Your phone number"
                                     value={this.state.phone}
                                     onChange={this.handleUserInput}  />
                                 {this.state.formErrors.phone}
