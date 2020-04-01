@@ -1,8 +1,7 @@
 const router = require('express').Router();
 
+let Empdetails = require('../models/employee.model');
 let Availability = require('../models/availability.model'); 
-
-/* GET users availability */
 
 router.route('/').get((req, res) => {
   Availability.find()
@@ -10,34 +9,80 @@ router.route('/').get((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/add').post((req, res) => {
-  const EMP_ID = req.body.EMP_ID;
-  const MON_START = req.body.  MON_START;
-  const MON_END = req.body.MON_END;
-  const TUE_START = req.body.TUE_START;
-  const TUE_END = req.body.TUE_END;
-  const WED_START = req.body.WED_START;
-  const WED_END = req.body.WED_END;
-  const THURS_START = req.body.THURS_START;
-  const THURS_END = req.body.THURS_END;
-  const FRI_START = req.body.FRI_START;
-  const FRI_END = req.body.FRI_END;
-  const SAT_START = req.body.SAT_START;
-  const SAT_END = req.body.SAT_END;
-  const SUN_START = req.body.SUN_START;
-  const SUN_END = req.body.SUN_END;
-
-
-
-  const ava = new Availability({ EMP_ID: EMP_ID, MON_START: MON_START, MON_END: MON_END,
-                                 TUE_START: TUE_START, TUE_END: TUE_END, WED_START: WED_START,
-                                 WED_END: WED_END, THURS_START: THURS_START, THURS_END: THURS_END,
-                                 FRI_START: FRI_START, FRI_END: FRI_END, SAT_START: SAT_START,
-                                 SAT_END: SAT_END, SUN_START: SUN_START, SUN_END: SUN_END });
-
-  ava.save()
-    .then(() => res.json('Avaibility added.........!  ' + ava))
+router.route('/:id').get((req, res) => {
+  const id = req.params.id;
+  Empdetails.find({_id: id})
+    .then(Data => res.json(Data))
     .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/add').post((req, res) => {
+  const emp_id = req.body.id;
+  const name = req.body.first_name + " " + req.body.last_name;
+  const start = req.body.start;
+  const end = req.body.end;
+
+  Availability.find({eid: emp_id},
+    (err, result)=>{
+      if(err){
+        return res.status(404).send('Sorry! Would not be able to process your request');
+      }
+      if(result.length > 0)
+      {
+        const query = {eid: emp_id};
+        const newvalues = {$set: 
+          { eid: emp_id, 
+            Emp_Name: name, 
+            MON_START: start[0], 
+            MON_END: end[0],
+            TUE_START: start[1], 
+            TUE_END: end[1], 
+            WED_START: start[2], 
+            WED_END: end[2], 
+            THURS_START: start[3], 
+            THURS_END: end[3], 
+            FRI_START: start[4], 
+            FRI_END: end[4], 
+            SAT_START: start[5], 
+            SAT_END: end[5], 
+            SUN_START: start[6], 
+            SUN_END: end[6]
+          }};
+        Availability.updateOne(query, newvalues, function(err, res) {
+          if (err) throw err;
+          console.log("1 document updated");
+        })
+        .catch(err => res.status(400).json('Error: ' + err));
+      }
+      else
+      {
+        const newvalues = { eid: emp_id, 
+            Emp_Name: name, 
+            MON_START: start[0], 
+            MON_END: end[0],
+            TUE_START: start[1], 
+            TUE_END: end[1], 
+            WED_START: start[2], 
+            WED_END: end[2], 
+            THURS_START: start[3], 
+            THURS_END: end[3], 
+            FRI_START: start[4], 
+            FRI_END: end[4], 
+            SAT_START: start[5], 
+            SAT_END: end[5], 
+            SUN_START: start[6], 
+            SUN_END: end[6]
+          };
+
+        const avail_values = new Availability(newvalues);
+
+        console.log(avail_values);
+        
+        avail_values.save()
+          .then(() => res.json('Data added...!  ' + avail_values));
+      }
+    });
+    
 });
 
 

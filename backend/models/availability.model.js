@@ -3,12 +3,12 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const availSchema = new Schema({
-  id: {
+  eid: {
     type: String,
     unique: true,
     trim: true
   },
-  EMP_ID: {
+  Emp_Name: {
       type: String
   },
   MON_START: {

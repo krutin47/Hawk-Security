@@ -70,7 +70,10 @@ const locationRouter = require('./routes/location');
 app.use('/location', locationRouter);
 
 const shiftRouter = require('./routes/shift_details');
-app.use('/shift_details', shiftRouter); 
+app.use('/shift_details', shiftRouter);
+
+const shiftuploadRouter = require('./routes/shift_upload');
+app.use('/shift_upload', shiftuploadRouter);
 
 const availRouter = require('./routes/avail_display');
 app.use('/availability_display', availRouter);
