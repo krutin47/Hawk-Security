@@ -39,6 +39,35 @@ class Admin_schedule_display extends React.Component {
       date: date
     })
   }
+
+  componentDidMount() {
+    let cur_date = new Date().getDate();
+    let cur_month = new Date().getMonth() + 1; //Current Month
+    let cur_year = new Date().getFullYear();
+    console.log(cur_year + '-' + cur_month + '-' + cur_date);
+    let current_day = cur_year + '-' + cur_month + '-' + cur_date ;
+
+    axios.get('http://localhost:5000/shift_details/' +  current_day)
+    .then(res => {
+        
+
+        let events = [];
+      for (let index = 0; index < res.data.length; index++) {
+        let schedule = {
+          Name : res.data[index].Name,
+          StartscheduledDateTime : (new Date(res.data[index].StartscheduledDateTime)).getUTCHours()
+                                 + ':' + (new Date(res.data[index].StartscheduledDateTime)).getUTCMinutes()                                                               ,
+          EndscheduledDateTime: (new Date(res.data[index].EndscheduledDateTime)).getUTCHours()
+                                 + ':' + (new Date(res.data[index].EndscheduledDateTime)).getUTCMinutes(),
+          location: res.data[index].location
+        }
+        events.push(schedule);
+      }
+        this.setState({ shiftList: events })
+        // console.log(shiftList);
+    });
+
+  }
     
   onSubmit(e) {
     e.preventDefault();

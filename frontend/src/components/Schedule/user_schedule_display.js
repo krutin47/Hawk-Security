@@ -47,10 +47,16 @@ class user_schedule_display extends React.Component {
         console.log(res.data);
         let events = [];
         for (let index = 0; index < res.data.length; index++) {
+          let tem_start = new Date(res.data[index].StartscheduledDateTime);
+          tem_start.setHours(tem_start.getHours() + 3);
+          let tem_end = new Date(res.data[index].EndscheduledDateTime);
+          tem_end.setHours(tem_end.getHours() + 3);
+           
+
           let schedule = {
             title : res.data[index].location,
-            start : new Date(res.data[index].StartscheduledDateTime),
-            end: new Date(res.data[index].EndscheduledDateTime)
+            start : tem_start,
+            end: tem_end
           }
           events.push(schedule);
         }
