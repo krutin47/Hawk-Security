@@ -54,7 +54,7 @@ function AdminNavbar(props) {
                             <li><Link to="/availability_display">availabilities</Link></li>
                             <li><Link to="/add_location">Locations</Link></li>
                             <li><Link to="/job_create">Add Job</Link></li>
-                            <li><Link to="/register">REGISTER</Link></li>
+                            
                             <li><Link onClick={props.logoutUser}>LOGOUT</Link></li>
                         </ul>
                     </div>

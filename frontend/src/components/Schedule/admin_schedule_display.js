@@ -42,14 +42,14 @@ class Admin_schedule_display extends React.Component {
     
   onSubmit(e) {
     e.preventDefault();
-    console.log(this.state.date);
+    
     const date = new Date(this.state.date);
     const formattedDate = date.getFullYear() + '-' + (date.getUTCMonth()+1) + '-' +date.getDate();
-    console.log(formattedDate);
+   
 
     axios.get('http://localhost:5000/shift_details/' +  formattedDate)
       .then(res => {
-          console.log(res.data[0].Name);
+          
 
           let events = [];
         for (let index = 0; index < res.data.length; index++) {
