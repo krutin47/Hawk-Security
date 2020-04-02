@@ -73,11 +73,12 @@ function AdminNavbar(props) {
                                 </ul>
                             </li>
                             <li className="dropdown">
-                                <a className="dropdown-toggle" data-toggle="dropdown" href="#">CREATE
+                                <a className="dropdown-toggle" data-toggle="dropdown" href="#">INSERT
                                 <span className="caret"></span></a>
                                 <ul className="dropdown-menu">
+                                    <li><Link to="/admin_schedule_form">SHIFTS</Link></li>
                                     <li><Link to="/add_location">LOCATION</Link></li>
-                                    <li><Link to="/job_create">ADD JOB</Link></li>
+                                    <li><Link to="/job_create">JOB</Link></li>
                                 </ul>
                             </li>
                             <li className="dropdown">
