@@ -172,8 +172,8 @@ class admin_schedule_form extends React.Component {
     
         console.log(shift_data);
     
-        // axios.post('http://localhost:5000/shift_upload/add', shift_data)
-        //   .then(res => console.log(res.data));
+        axios.post('http://localhost:5000/shift_upload/add', shift_data)
+          .then(res => console.log(res.data));
     
        // window.location = '/';
     }
