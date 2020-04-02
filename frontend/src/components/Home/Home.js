@@ -211,7 +211,7 @@ function Home() {
               <p>Interested for our services? Explore our plans and services. Adjust your requirements and get a ballpark quote of our services.</p>
             </div>
             <div className="button">
-              <a href="javascript:void(0)">Request a Quote</a>
+              <a href="/coming_soon">Request a Quote</a>
             </div>
           </div>
         </div>

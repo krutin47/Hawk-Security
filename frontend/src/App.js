@@ -105,37 +105,9 @@ class App extends Component{
 					<Route path='/register' component={Register} />
 					<Route path='/Forgot_password' component={Forgot_password} />
 					
-					{/* Employee Dashboard Component */}
-					{/* <Route path='/employee_dashboard' component={EmpDashboard} /> */}
-					<Route path='/user_schedule_display' component={User_schedule_display} />
-					<Route path='/User_update_profile' component={User_update_profile} />
-					
-					{/* Admin Dashboard Components */}
-					<Route path='/admin_dashboard' component={AdminDashboard} />
-					<Route path='/admin_schedule_display' component={Admin_schedule_display} />
-					<Route path='/admin_schedule_form' component={Admin_schedule_form} />
-					<Route path='/Admin_update_profile' component={Admin_update_profile} />
-					
-					{/* This will be common Component for Admin and Employee */}
-					<Route path='/Remove_profile' component={Remove_profile} />
-
-					{/* This will the reset Password route */}
-					<Route path='/reset_password' component={resetPassword} />
-					
-					{/* I don't have Knowledge regurding this thus in last(Misc) */}
-					<Route path='/availability_form' component={Availability_form} />
-					<Route path='/availability_display' component={Availability_display}/>
-					<Route path='/Add_location' component={Add_location} />
-
 					<Route path='/job_form' component={Job_form} />
 					<Route path='/job_display' component={Job_display} />
 					<Route path='/Coming_soon' component={Coming_soon} />
-
-					{/* Private Routes */}
-					<Switch>
-              			<PrivateRoute exact path="/employee_dashboard" component={EmpDashboard} />
-            		</Switch>
-
 
 					{/* Private Routes */}
 					<Switch>
@@ -153,6 +125,9 @@ class App extends Component{
 						
 						{/* This will be common Component for Admin and Employee */}
 						<PrivateRoute path='/Remove_profile' component={Remove_profile} />
+
+						{/* This will the reset Password route */}
+						<Route path='/reset_password' component={resetPassword} />
 
 						{/* I don't have Knowledge regurding this thus in last(Misc) */}
 						<PrivateRoute path='/availability_form' component={Availability_form} />

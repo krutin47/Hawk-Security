@@ -8,15 +8,14 @@ function Coming_soon() {
     <React.Fragment>
       {/* //? Suggetion :: Need to Bigger the view or add an image to make it more attractive */}
       {/* <!-- 1  coloumn  Section--> */}
-      <section id="contact_us" className="oneColumnSection p100-0 forUp">
+      <section id="coming_soon" className="oneColumnSection p100-0 forUp">
         <div className="wrapper">
-          <div className="text-center wow fadeInDown">
-            <h3>Coming Soon</h3>
+          <div className="text-center wow fadeInDown ">
+            <h1 className="display-2">Coming Soon</h1>
             <div className="p40-0 forSmallWidth light">
               {/* //TODO :: Add content in the P tag */}
-              <p>We are currently working on this page! <br></br>
-                  It will be available soon..!
-              </p>
+              <h5>We are currently working on this page! </h5>
+              <h5>It will be available soon..!</h5>
             </div>
             
           </div>

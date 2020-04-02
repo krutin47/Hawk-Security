@@ -110,7 +110,7 @@ function GuestNavbar(props) {
                         <ul className="parent">
                             <li><Link to="/">HOME</Link></li>
                             <li><Link to="/job_display">JOBS</Link></li>
-                            <li><a href="#contact_us">CONTCT US</a></li>
+                            <li><a href="#contact_us">CONTACT US</a></li>
                             <li><a href="#_service_">SERVICES</a></li>
                             <li><Link to="/login"><strong id="quote">SIGN IN</strong></Link></li>
                         </ul>
