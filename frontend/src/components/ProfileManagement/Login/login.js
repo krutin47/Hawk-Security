@@ -5,6 +5,7 @@ import { Button, FormGroup, FormControl, Form, Alert } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './logintheme.css';
 import { Link } from 'react-router-dom';
+import LoginForm from './LoginForm';
 
 class Login extends Component {
 

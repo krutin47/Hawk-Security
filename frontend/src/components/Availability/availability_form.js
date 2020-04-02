@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
+import axios from 'axios';
 import '../../main.css';
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { Link, withRouter } from 'react-router-dom';
 
 function availability_form() {
     return (
@@ -95,6 +99,8 @@ function availability_form() {
                                         <input type="text" name="saturday" id="saturday" placeholder="Start Time" required></input>
                                         <input type="text" name="saturday" id="saturday" placeholder="End Time" required></input>
                                     </div>
+                                    <p>Enter "-" if you are unavailable on a particular day.</p>
+                                </div>
                                 </div>
                                 <div class="ib vt w14 tabw25 mw100">
                                     <div class="field">
@@ -103,14 +109,11 @@ function availability_form() {
                                         <input type="text" name="sunday" id="sunday" placeholder="End Time" required></input>
                                     </div>
                                 </div>
-                                 <p><sup>*</sup>Required Fields.</p>
-                            </div>
-                            <div class="text-center pt30">
-                                <input type="submit" name="submit" value="submit"></input>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
+                        
                     </div>
-                </div>
+                
             </section>
 
             {/* Footer Section */}
@@ -164,5 +167,20 @@ function availability_form() {
         </React.Fragment>    
     )
 }
+    
 
-export default availability_form
+availability_form.propTypes = {
+
+    auth: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired
+  };
+  
+  const mapStateToProps = state => ({
+    auth: state.auth,
+    errors: state.errors
+  });
+  
+export default connect(mapStateToProps)(withRouter(availability_form));
+
+
+// export default availability_form

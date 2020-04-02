@@ -1,26 +1,46 @@
 import React from 'react';
 import { Button } from "react-bootstrap";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { updateUser } from "../../../actions/authActions";
+import Axios from 'axios';
 
 //TODO: Database connection and sending and requesting the info
 class AdminUpdateProfileForm extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
-            firstName: 'Krutin',
-            lastName: 'Trivedi',
-            email: 'krutin@gmail.com',
-            password: 'Krutin@47',
-            confirmPassword: 'Krutin@47',
-            formErrors: {email: '', password: '', confirmPassword: ''},
-            emailValid: false,
-            emailTouch: false,
-            passwordValid: false,
-            passwordTouch: false,
-            confirmPasswordValid: false,
-            confirmPasswordTouch: false,
+            firstName: '',
+            lastName: '',
+            address:'',
+            phone:'',
+            gender:'',
+            formErrors: {address: '', phone: '', gender: ''},
+            addressValid: false,
+            addressTouch: false,
+            phoneValid: false,
+            phoneTouch: false,
+            genderValid: false,
+            genderTouch: false,
             formValid: false
         }
+
+        this.onclickUpdate = this.onclickUpdate.bind(this);
+    }
+
+    componentDidMount(){
+        Axios.get("/employee/check" + this.props.auth.user.id)
+            .then(employee => {
+                this.setState({
+                    firstName: employee.data.firstName,
+                    lastName: employee.data.lastName,
+                    address: employee.data.address,
+                    phone: (employee.data.phone === 0) ? '' : employee.data.phone,
+                    gender: employee.data.gender,
+                })
+            })
+            .catch(err => console.log('Error: ' + err));
     }
       
     handleUserInput = (e) => {
@@ -34,68 +54,80 @@ class AdminUpdateProfileForm extends React.Component {
       
     validateField(fieldName, value) {
         let fieldValidationErrors = this.state.formErrors;
-        console.log('fieldValidationErrors:', fieldValidationErrors);
-        console.log('this.state.formErrors:', this.state.formErrors);
-        let emailValid = this.state.emailValid;
-        let passwordValid = this.state.passwordValid;
-        let confirmPasswordValid = this.state.confirmPasswordValid;
+        let addressValid = this.state.addressValid;
+        let phoneValid = this.state.phoneValid;
+        let genderValid = this.state.genderValid;
       
         switch(fieldName) {
-            case 'email':
-                this.state.emailTouch = true;
-                emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-                fieldValidationErrors.email = emailValid ? '' : ' is invalid';
+            case 'address':
+                this.setState({
+                    addressTouch: true
+                });
+                addressValid = value.length > 0 && value.length < 50;
+                fieldValidationErrors.address = 
+                    addressValid 
+                        ? <p className="isValid">Sweet! address is filled</p> 
+                        : '';
                 break;
-            case 'password':
-                this.state.passwordTouch = true;
-                passwordValid = value.length >= 6;
-                fieldValidationErrors.password = passwordValid ? '': ' is too short';
+            case 'phone':
+                this.setState({
+                    phoneTouch: true
+                });
+                phoneValid = value.length >= 14;
+                fieldValidationErrors.phone = 
+                    phoneValid 
+                        ? <p className="isValid">Awesome! phone number is valid</p>
+                        : <p className="has-error">Please Enter a valid phone number</p>;
                 break;
-            case 'confirmPassword':
-                this.state.confirmPasswordTouch = true;
-                confirmPasswordValid = this.state.password === this.state.confirmPassword ;
-                fieldValidationErrors.confirmPassword = confirmPasswordValid ? '': ' is not same';
+            case 'gender':
+                this.setState({
+                    genderTouch: true
+                });
+                genderValid = this.state.gender === "male" || this.state.gender === "female" || this.state.gender === "other";
+                fieldValidationErrors.gender = 
+                    genderValid 
+                        ? <p className="isValid">Awesome!</p>
+                        : <p className="has-error">Please select a valid gender</p>;
                 break;
             default:
                 break;
         }
         
         this.setState({formErrors: fieldValidationErrors,
-                        emailValid: emailValid,
-                        passwordValid: passwordValid,
-                        confirmPasswordValid: confirmPasswordValid
+                        addressValid: addressValid,
+                        phoneValid: phoneValid,
+                        genderValid: genderValid
                       }, this.validateForm);
     }
     
     validateForm() {
-        this.setState({formValid: this.state.emailValid && this.state.passwordValid});
+        this.setState({formValid: this.state.addressValid || this.state.phoneValid});
     }
       
     errorClass(error) {
         return(error.length === 0 ? 'is_valid' : 'has_error');
     }
 
+    onclickUpdate(e) {
+        e.preventDefault();
+
+        console.log("id ------> ", this.props.auth.user.id);
+        
+        const user = {
+            id: this.props.auth.user.id,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            address: this.state.address,
+            phone: this.state.phone,
+            gender: this.state.gender,
+        }
+
+        console.log("UserUpdateProfileForm -> onclickUpdate -> user", user)
+
+        this.props.updateUser(user, this.props.history);
+    }
+
     render(){
-
-        let errorMessage_Email;
-        let errorMessage_password;
-        let errorMessage_confirmPassword;
-        if(this.state.emailTouch) {
-            (this.state.emailValid)
-            ? errorMessage_Email = <p className="isValid">Sweet! Email Id is valid</p>
-            : errorMessage_Email = <p className="has-error">Please Enter a valid Email Id</p>
-        }
-        if(this.state.passwordTouch) {
-            (this.state.passwordValid)
-            ? errorMessage_password = <p className="isValid">Awesome! Password is valid</p>
-            : errorMessage_password = <p className="has-error">Please Enter a valid Password</p>
-        }
-        if(this.state.confirmPasswordTouch) {
-            (this.state.passwordValid)
-            ? errorMessage_confirmPassword = <p className="isValid">Great! confirm Password is same</p>
-            : errorMessage_confirmPassword = <p className="has-error">Password did not match</p>
-        }
-
         return(
             <form>  
                 <div className="row">
@@ -128,13 +160,15 @@ class AdminUpdateProfileForm extends React.Component {
                     <div className="col-md-12">
                         <div className="form-label-group">
                             <div>
-                                <label htmlFor="email">Email address</label>
+                                <label htmlFor="address">Address</label>
                                 {/* // TODO: change class dynamically to manipulate the border of the input */}
-                                <input className={'form-group ' + (this.errorClass(this.state.formErrors.email))} type="email" required className="form-control" name="email"
-                                    placeholder="Please Enter Your Email ID"
-                                    value={this.state.email}
-                                    onChange={this.handleUserInput}  />
-                                {errorMessage_Email}
+                                <input className={'form-control ' + (this.errorClass(this.state.formErrors.address))} 
+                                    type="text" 
+                                    name="address"
+                                    placeholder="Please Enter Your address"
+                                    value={this.state.address} 
+                                    onChange={this.handleUserInput} />
+                                {this.state.formErrors.address}
                             </div>
                         </div>
                     </div>
@@ -142,13 +176,15 @@ class AdminUpdateProfileForm extends React.Component {
                     <div className="col-md-12">
                         <div className="form-label-group">
                             <div>
-                                <label htmlFor="password">Password</label>
+                                <label htmlFor="phone">phone</label>
                                 {/* // TODO: change class dynamically to manipulate the border of the input */}
-                                <input className={`form-group ${this.errorClass(this.state.formErrors.password)}`} type="password" className="form-control" name="password"
-                                    placeholder="Please Enter Your Password"
-                                    value={this.state.password}
+                                <input className={`form-control ${this.errorClass(this.state.formErrors.phone)}`} 
+                                    type="text" 
+                                    name="phone"
+                                    placeholder="Please Enter Your phone number with country code"
+                                    value={this.state.phone}
                                     onChange={this.handleUserInput}  />
-                                {errorMessage_password}
+                                {this.state.formErrors.phone}
                             </div>
                         </div>
                     </div>
@@ -156,19 +192,24 @@ class AdminUpdateProfileForm extends React.Component {
                     <div className="col-md-12">
                         <div className="form-label-group">
                             <div>
-                                <label htmlFor="confirmPassword">Confirm Password</label>
+                                <label htmlFor="gender">Gender</label>
                                 {/* // TODO: change class dynamically to manipulate the border of the input */}
-                                <input className={`form-group ${this.errorClass(this.state.formErrors.password)}`} type="password" className="form-control" name="confirmPassword"
-                                    placeholder="Please Confirm Your Password"
-                                    value={this.state.confirmPassword}
+                                <input className={`form-control ${this.errorClass(this.state.formErrors.gender)}`} 
+                                    type="text" 
+                                    name="gender"
+                                    placeholder="Please select Your gender"
+                                    value={this.state.gender}
                                     onChange={this.handleUserInput}  />
-                                {errorMessage_confirmPassword}
+                                {this.state.formErrors.gender}
                             </div>
                         </div>
                     </div>
                     
                     <div className="col-md-12">
-                        <Button className="btn pull-right" block type="submit" disabled={!this.state.formValid}>Update</Button>
+                        <Button className="btn pull-right" block 
+                            type="submit" 
+                            disabled={!this.state.formValid}
+                            onClick={this.onclickUpdate}>Update</Button>
                     </div>
                 </div>
             </form>
@@ -176,4 +217,15 @@ class AdminUpdateProfileForm extends React.Component {
     }
 }
 
-export default AdminUpdateProfileForm;
+AdminUpdateProfileForm.propTypes = {
+    updateUser: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+    auth: state.auth,
+    errors: state.errors
+});
+
+export default connect(mapStateToProps, { updateUser })(withRouter(AdminUpdateProfileForm));

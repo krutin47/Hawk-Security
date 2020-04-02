@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { FormErrors } from './FormError';
 import { Button, FormGroup, FormControl, Form, Alert } from "react-bootstrap";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './User_updateProfile.css';
+import './updateProfile.css';
 
 class UserUpdateProfile extends Component {
 

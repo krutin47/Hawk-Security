@@ -1,6 +1,7 @@
 // var createError = require('http-errors');
 var express = require('express');
 const cors = require('cors');
+const passport = require("passport");
 // var path = require('path');
 // var cookieParser = require('cookie-parser');
 // var logger = require('morgan');
@@ -59,25 +60,28 @@ connection.once('open', () => {
   console.log("MongoDB database connection established successfully");
 })
 
-// defining routes 
-const employeeRouter = require('./routes/profileManagement');
-const usersRouter = require('./routes/location');
+// Passport middleware
+app.use(passport.initialize());
 
-app.use('/employee', employeeRouter);
-app.use('/location', usersRouter);
+// Passport config
+require("./config/passport")(passport);
 
-const jobsRouter = require('./routes/jobs');
-app.use('/jobs', jobsRouter);
 const locationRouter = require('./routes/location');
 app.use('/location', locationRouter);
 
 const shiftRouter = require('./routes/shift_details');
-app.use('/shift_details', shiftRouter); 
+app.use('/shift_details', shiftRouter);
+
+const shiftuploadRouter = require('./routes/shift_upload');
+app.use('/shift_upload', shiftuploadRouter);
+
+const availRouter = require('./routes/avail_display');
+app.use('/availability_display', availRouter);
+
+// defining routes 
+const employeeRouter = require('./routes/profileManagement');
+app.use('/employee', employeeRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
-
-
-
-// module.exports = app;

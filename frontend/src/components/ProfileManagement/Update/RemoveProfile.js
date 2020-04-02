@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import { Button, FormGroup, FormControl, Alert } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { removeUser } from "../../../actions/authActions";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './RemoveProfile.css';
@@ -9,15 +13,35 @@ class RemoveProfile extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      email: '',
-      password: '',
-      licence_number: '',
-      formErrors: {email: '', password: ''},
-      emailValid: false,
-      passwordValid: false,
-      licenceValid: false,
-      formValid: false
+      auth: {},
+      errors: {}
     }
+
+    this.onClickYes = this.onClickYes.bind(this);
+    this.onClickNo = this.onClickNo.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(!nextProps.auth.isAuthenticated) {
+      this.props.history.push("/");
+    }
+  }
+
+  componentDidMount(){
+    this.setState({
+      auth: this.props.auth,
+      errors: this.props.errors
+    })
+  }
+
+  onClickYes(e) {
+    e.preventDefault();
+    this.props.removeUser(this.props.auth.user.id);
+  }
+
+  onClickNo(e) {
+    e.preventDefault();
+    this.props.history.goBack();
   }
   
   handleUserInput = (e) => {
@@ -59,28 +83,55 @@ class RemoveProfile extends Component {
   }
   
   render () {
+    console.log(this.props);
     return (
       <div>
-        <form>
-          <div className="login-container jumbotron">
-            <div className="row">
-                <div className="col-md-12">
-                    <p>Are you sure you want to remove this profile?</p>                
-                </div>
-                <div className="container">
-
-                <div className="row">
-                  <div className="col">
-                      <br/>
-                      <Button className="btn btn-success pull-right" block bsSize="large" type="submit" disabled={!this.state.formValid}>Yes</Button>
-                      {/* <button className="btn btn-success pull-right" type="submit" >Login</button> */}
+        {/* Body Section */}
+        <div className="full_window">
+          
+          {/* Login Container */}
+          <div className="forgot_container">
+            
+            {/* Imaage View */}
+            <div className="image_view_1">
+              <img src={require('../../../assets/images/removeProfile.jpg')} alt=""/>
+            </div>
+            
+            {/* Form Container */}
+            <div className="remove-profile-form__container">
+              
+              {/* Register Form Component */}
+              <div>
+                <form>
+                  <div className="row">
+                    <div className="col-md-12">
+                        <p>Are you sure you want to remove this profile?</p>                
+                    </div>
+                    <div className="container">
+                      <div className="row">
+                        <div className="col">
+                          <Button className="btn btn-success pull-right" block 
+                            bsSize="large" 
+                            type="submit" 
+                            onClick= {this.onClickYes}>Yes</Button>
+                        </div>
+                        <div className="col">
+                          <Button className="btn btn-danger pull-right" block 
+                            bsSize="large" 
+                            type="button" 
+                            onClick= {this.onClickNo}>No</Button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   <div className="col">
                       <br/>
                       <Button className="btn btn-danger pull-right" block bsSize="large" type="button" disabled={!this.state.formValid}>No</Button>
                       {/* <button className="btn btn-success pull-right" type="submit" >Login</button> */}
                   </div>
+                </form>
                 </div>
+                
                 </div>
             </div>
 
@@ -96,11 +147,24 @@ class RemoveProfile extends Component {
               </div>
             </div>
           </div>
-          </div>
-        </form>
+        </div>
+        {/* Body End */}
+
+      
       </div>
     )
   }
 }
 
-export default RemoveProfile;
+RemoveProfile.propTypes = {
+  removeUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+
+export default connect(mapStateToProps, { removeUser })(withRouter(RemoveProfile));
