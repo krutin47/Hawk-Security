@@ -12,9 +12,6 @@ class admin_schedule_form extends React.Component {
         this.onChangeEmpName = this.onChangeEmpName.bind(this);
         this.onChangeEmpID = this.onChangeEmpID.bind(this);
         this.onChangeEffective = this.onChangeEffective.bind(this);
-        this.onChangeStartTime = this.onChangeStartTime.bind(this);
-        this.onChangeEndTime = this.onChangeEndTime.bind(this);
-        this.onChangeLocation = this.onChangeLocation.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.onChangeDate = this.onChangeDate.bind(this);
         
@@ -99,64 +96,59 @@ class admin_schedule_form extends React.Component {
         })
     }
 
-    onChangeStartTime(e) {
-        if (e.target.value.length === 5){
-            let data = e.target.value;
-            this.state.start.push(data);
-
-            this.setState({
-                start: this.state.start
-            })
-        }
-
-        if (e.target.value === "-"){
-            let data = -1;
-            this.state.start.push(data);
-
-            this.setState({
-                start: this.state.start
-            })
-        }
-    }
-    
-    onChangeEndTime(e) {
-        if (e.target.value.length === 5){
-            let data = e.target.value;
-            this.state.end.push(data);
-
-            this.setState({
-                end: this.state.end
-            })
-        }
-
-        if (e.target.value === "-"){
-            let data = -1;
-            this.state.end.push(data);
-
-            this.setState({
-                end: this.state.end
-            })
-        }
-    }
-       
-    onChangeLocation(e) {
-        // let data = e.target.value;
-        // this.state.location.push(data);
-
-        // this.setState({
-        //     location: this.state.location
-        // })
-        let data = e.target.value;
-        this.state.location.push(data);
-
-        this.setState({
-            location: this.state.location
-        })
-    }
-
     onSubmit(e) {
         e.preventDefault();
     
+        this.state.start = [];
+        this.state.end = [];
+        this.state.location = [];
+
+        let flag = 0;
+        const re_pattern = "(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$";
+
+        for (let i = 1; i<= 7; i++){
+            let temp_start = document.getElementById("start" + i).value;
+            let temp_end =  document.getElementById("end" + i).value;
+            let temp_loc = document.getElementById("loc" + i).value;
+
+            if (temp_start.search(re_pattern) != -1 && temp_end.search(re_pattern) != -1){                
+                this.state.start.push(temp_start);
+                this.state.end.push(temp_end);
+                this.state.location.push(temp_loc);
+
+                console.log("Valid");
+                this.setState({
+                    start: this.state.start,
+                    end: this.state.end,
+                    location: this.state.location
+                })
+            }
+    
+            else if(temp_start === "-" && temp_end === "-"){
+                temp_start = "";
+                temp_end = "";
+                this.state.start.push(temp_start);
+                this.state.end.push(temp_end);
+                this.state.location.push(temp_loc);
+
+                this.setState({
+                    start: this.state.start,
+                    end: this.state.end,
+                    location: this.state.location
+                })
+            }
+
+            else{
+                flag = -1;
+                alert("Data entered is Invalid! Kindly check the data and submit again.");
+                break;
+            }
+            
+        }
+        
+
+        if(flag === 0){
+        
         const date = new Date(this.state.date);
         // const formattedDate = date.getFullYear() + '-' + (date.getUTCMonth()+1) + '-' +date.getDate();
         // console.log(formattedDate);
@@ -175,7 +167,9 @@ class admin_schedule_form extends React.Component {
         axios.post('http://localhost:5000/shift_upload/add', shift_data)
           .then(res => console.log(res.data));
     
-       // window.location = '/';
+        alert("Schedule detail for " + this.state.emp_name + " have been uploaded");
+        window.location = '/admin_schedule_form';
+        }
     }
   
     render(){
@@ -229,11 +223,12 @@ class admin_schedule_form extends React.Component {
                                     <div class="ib vt w14 tabw25 mw100">
                                         <div class="field">
                                             <label for="monday">Monday</label>
-                                            <input type="text" name="monday" id="monday" placeholder="00:00" onChange={this.onChangeStartTime} required></input>
-                                            <input type="text" name="monday" id="monday" placeholder="00:00" onChange={this.onChangeEndTime} required></input>
+                                            <input type="text" name="monday" id="start1" placeholder="00:00" required></input>
+                                            <input type="text" name="monday" id="end1" placeholder="00:00" required></input>
                                             <select
                                                 required
                                                 className="form-control"
+                                                id="loc1"
                                                 // value={this.state.loc_option}
                                                 onChange={this.onChangeLocation}>
                                                 {
@@ -250,12 +245,13 @@ class admin_schedule_form extends React.Component {
                                     <div class="ib vt w14 tabw25 mw100">
                                         <div class="field">
                                             <label for="tuesday">Tuesday</label>
-                                            <input type="text" name="tuesday" id="tuesday" placeholder="00:00" onChange={this.onChangeStartTime} required></input>
-                                            <input type="text" name="tuesday" id="tuesday" placeholder="00:00" onChange={this.onChangeEndTime} required></input>
+                                            <input type="text" name="tuesday" id="start2" placeholder="00:00" required></input>
+                                            <input type="text" name="tuesday" id="end2" placeholder="00:00" required></input>
                                             <select
                                                 required
                                                 className="form-control"
                                                 // value={this.state.loc_option}
+                                                id="loc2"
                                                 onChange={this.onChangeLocation}>
                                                 {
                                                     this.state.loc_list.map(function(loc) {
@@ -271,12 +267,13 @@ class admin_schedule_form extends React.Component {
                                     <div class="ib vt w14 tabw25 mw100">
                                         <div class="field">
                                             <label for="wednesday">Wednesday</label>
-                                            <input type="text" name="wednesday" id="wednesday" placeholder="00:00" onChange={this.onChangeStartTime} required></input>
-                                            <input type="text" name="wednesday" id="wednesday" placeholder="00:00" onChange={this.onChangeEndTime} required></input>
+                                            <input type="text" name="wednesday" id="start3" placeholder="00:00" required></input>
+                                            <input type="text" name="wednesday" id="end3" placeholder="00:00" required></input>
                                             <select
                                                 required
                                                 className="form-control"
                                                 // value={this.state.loc_option}
+                                                id="loc3"
                                                 onChange={this.onChangeLocation}>
                                                 {
                                                     this.state.loc_list.map(function(loc) {
@@ -292,12 +289,13 @@ class admin_schedule_form extends React.Component {
                                     <div class="ib vt w14 tabw25 mw100">
                                         <div class="field">
                                             <label for="thursday">Thursday</label>
-                                            <input type="text" name="thursday" id="thursday" placeholder="00:00" onChange={this.onChangeStartTime} required></input>
-                                            <input type="text" name="thursday" id="thursday" placeholder="00:00" onChange={this.onChangeEndTime} required></input>
+                                            <input type="text" name="thursday" id="start4" placeholder="00:00" required></input>
+                                            <input type="text" name="thursday" id="end4" placeholder="00:00" required></input>
                                             <select
                                                 required
                                                 className="form-control"
                                                 // value={this.state.loc_option}
+                                                id="loc4"
                                                 onChange={this.onChangeLocation}>
                                                 {
                                                     this.state.loc_list.map(function(loc) {
@@ -313,12 +311,13 @@ class admin_schedule_form extends React.Component {
                                     <div class="ib vt w14 tabw25 mw100">
                                         <div class="field">
                                             <label for="friday">Friday</label>
-                                            <input type="text" name="friday" id="friday" placeholder="00:00" onChange={this.onChangeStartTime} required></input>
-                                            <input type="text" name="friday" id="friday" placeholder="00:00" onChange={this.onChangeEndTime} required></input>
+                                            <input type="text" name="friday" id="start5" placeholder="00:00" required></input>
+                                            <input type="text" name="friday" id="end5" placeholder="00:00" required></input>
                                             <select
                                                 required
                                                 className="form-control"
                                                 // value={this.state.loc_option}
+                                                id="loc5"
                                                 onChange={this.onChangeLocation}>
                                                 {
                                                     this.state.loc_list.map(function(loc) {
@@ -334,12 +333,13 @@ class admin_schedule_form extends React.Component {
                                     <div class="ib vt w14 tabw25 mw100">
                                         <div class="field">
                                             <label for="saturday">Saturday</label>
-                                            <input type="text" name="saturday" id="saturday" placeholder="00:00" onChange={this.onChangeStartTime} required></input>
-                                            <input type="text" name="saturday" id="saturday" placeholder="00:00" onChange={this.onChangeEndTime} required></input>
+                                            <input type="text" name="saturday" id="start6" placeholder="00:00" required></input>
+                                            <input type="text" name="saturday" id="end6" placeholder="00:00" required></input>
                                             <select
                                                 required
                                                 className="form-control"
                                                 // value={this.state.loc_option}
+                                                id="loc6"
                                                 onChange={this.onChangeLocation}>
                                                 {
                                                     this.state.loc_list.map(function(loc) {
@@ -355,12 +355,13 @@ class admin_schedule_form extends React.Component {
                                     <div class="ib vt w14 tabw25 mw100">
                                         <div class="field">
                                             <label for="sunday">Sunday</label>
-                                            <input type="text" name="sunday" id="sunday" placeholder="00:00" onChange={this.onChangeStartTime} required></input>
-                                            <input type="text" name="sunday" id="sunday" placeholder="00:00" onChange={this.onChangeEndTime} required></input>
+                                            <input type="text" name="sunday" id="start7" placeholder="00:00" required></input>
+                                            <input type="text" name="sunday" id="end7" placeholder="00:00" required></input>
                                             <select
                                                 required
                                                 className="form-control"
                                                 // value={this.state.loc_option}
+                                                id="loc7"
                                                 onChange={this.onChangeLocation}>
                                                 {
                                                     this.state.loc_list.map(function(loc) {
@@ -373,7 +374,9 @@ class admin_schedule_form extends React.Component {
                                             </select>
                                         </div>
                                     </div>
-                                    <p>Enter "-" if there are no shift on a particular day.</p>
+                                    <p>*Please enter "-" if you are unavailable on a particular day.</p>
+                                    <p>*Please use 24 hour time format.</p>
+                        
                                 </div>
                                 <div class="text-center pt30">
                                     <input type="submit" name="submit" value="submit" onClick={this.onSubmit}></input>

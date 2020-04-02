@@ -54,7 +54,7 @@ class Location_add extends React.Component {
         axios.post('http://localhost:5000/location/add', location)
           .then(res => console.log(res.data));
     
-       // window.location = '/';
+       window.location = '/admin_schedule_display';
       }
     
     render() {
