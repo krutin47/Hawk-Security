@@ -12,6 +12,10 @@ input.is_valid{
   border: 1px solid forestgreen;
 }
 
+input[type="email"].is_valid{
+  border: 1px solid forestgreen;
+}
+
 .display_none {
   display: none;
 }
@@ -58,7 +62,6 @@ button.btn {
 }
 
 .image_view {
-  max-width: 50%;
   min-height: 100%;
   height: fit-content;
 }
@@ -115,8 +118,7 @@ label {
   font-size: 12px;
 }
 
-#root > div > div > div > div.form_container > form > div > div:nth-child(1) > div > div > p,
-#root > div > div > div > div.form_container > form > div > div:nth-child(2) > div > div > p {
+#root > div > div > div > div.form_container > form > div > div > div > div > p {
   margin: 5px 15px;
   font-size: 0.8rem;
 }

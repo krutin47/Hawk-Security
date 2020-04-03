@@ -4,30 +4,6 @@
   padding-top: 4px
 }
 
-button.btn {
-  background-color: #ffd700;
-}
-
-.display_none {
-  display: none;
-}
-
-.display_block {
-  display: block;
-}
-
-.has_error{
-  border: 1px solid red;
-}
-
-.is_valid{
-  border: 1px solid forestgreen;
-}
-
-button.btn {
-  background-color: #ffd700;
-}
-
 .max_window {
   margin-top: 12vh;
   width: 100%;
@@ -37,7 +13,7 @@ button.btn {
   justify-content: center;
   align-items: center;
   align-content: center;
-  padding: 5%;
+  padding: 3%;
 }
 
 .updateProfile__Container {
@@ -59,13 +35,6 @@ button.btn {
 .image_view {
   max-width: 60%;
   max-height: 100%;
-}
-
-#root > div > div > div > div.form_container > form > div > div:nth-child(6) > button {
-  background-color: #044e7f;
-  border-color: #044e7f;
-  opacity: 1;
-  margin-top: 1rem;
 }
 
 .image_view > img {

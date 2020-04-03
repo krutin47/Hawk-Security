@@ -101,7 +101,7 @@ class AdminUpdateProfileForm extends React.Component {
     }
     
     validateForm() {
-        this.setState({formValid: this.state.addressValid || this.state.phoneValid});
+        this.setState({formValid: true});
     }
       
     errorClass(error) {

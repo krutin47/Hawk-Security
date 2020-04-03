@@ -21,7 +21,7 @@ class AdminUpdateProfile extends Component {
             </div>
             
             {/* Form Container */}
-            <div className="form_container">
+            <div className="register--form_container">
               
               {/* Register Text */}
               <div className="login_text">
