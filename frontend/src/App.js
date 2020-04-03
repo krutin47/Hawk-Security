@@ -38,6 +38,8 @@ import PrivateRoute from "./components/private-route/PrivateRoute";
 
 import Add_location from './components/Location/Add_location';
 
+import RequestQuote from "./components/RequestQuote/RequestQuote";
+
 //importing CSS
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -93,6 +95,8 @@ class App extends Component{
 					
 					{/* Home Component */}
 					<Route exact path='/' component={Home} />
+
+					<Route exact path='/request' component={RequestQuote} />
 					
 					{/* Authentication Components */}
 					<Route path='/login' component={Login} />

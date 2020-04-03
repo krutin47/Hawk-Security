@@ -6150,6 +6150,7 @@
 
 .headerMain {
   background-color: #124e7e;
+  color: rgba(255, 255, 255, 0.9) !important;
 }
 
 html {

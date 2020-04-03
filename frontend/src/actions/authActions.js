@@ -228,4 +228,37 @@ export const resetUserPassword = (userPass, history) => dispatch => {
     );
 };
 
+// User Request
+export const userRequest = (userPass, history) => dispatch => {
+  axios
+    .post("/employee/request_quote", userPass)
+    .then(res => {
+      if(res.data.length > 0) {
+        console.log(res.data);
+        if(res.data.includes("Error:")) {
+          dispatch({
+            type: GET_ERRORS,
+            payload: res.data
+          })
+        } else {
+          // // TODO: show this in elegant way so user can understand.
+          // make a toast for user to know that the email is sent
+          toast.success("Request received.! we will get back to you sortly..", {
+            position: toast.POSITION.BOTTOM_RIGHT
+          });
+          // re-direct to previous page on successful email sent
+          history.push("/");
+        }
+      }
+    })
+    .catch(err => {
+        console.log("err", err)
+        dispatch({
+          type: GET_ERRORS,
+          payload: err.response.data
+        })
+      }
+    );
+};
+
 

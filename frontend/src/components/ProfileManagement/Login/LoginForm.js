@@ -21,7 +21,7 @@ class LoginForm extends React.Component {
           passwordValid: false,
           passwordTouch: false,
           formValid: false,
-          loginErrors: '',
+          loginErrors: {},
         }
         
         // this.errors = false;
@@ -46,9 +46,6 @@ class LoginForm extends React.Component {
             //this.state.loginErrors = nextProps.errors;
             console.log("this.state.errors ----> ", this.state.loginErrors);
         }
-        // if(nextProps.errors) {
-        //     this.errors = true;
-        // }
     }
 
     componentDidMount() {
@@ -138,7 +135,7 @@ class LoginForm extends React.Component {
     }
 
     render(){
-        const error = (this.state.loginErrors) 
+        const error = ( !(Object.keys(this.state.loginErrors).length === 0 && this.state.loginErrors.constructor === Object) ) 
             ?   <div className='col-md-12'>
                     <div className="">
                         <div className='bg-color--red p-2'>
@@ -147,6 +144,8 @@ class LoginForm extends React.Component {
                     </div>
                 </div>
             : '' ;
+        console.log("LoginForm -> render -> error", error)
+            
         return(
             <form>
                 <div className="row">

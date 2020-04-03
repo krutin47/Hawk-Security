@@ -20,4 +20,4 @@ const resetPassSchema = new Schema({
 });
 
 //exporting the schema as User
-module.exports = mongoose.model('resetPass', resetPassSchema);
+module.exports = mongoose.model('resetPassword_Request', resetPassSchema);

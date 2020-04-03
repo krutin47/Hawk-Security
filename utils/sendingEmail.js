@@ -30,8 +30,34 @@ var sendMailMethods = {
             }
         });
 	},
-	currentDate: function() {
-		console.log('Current Date is: ' + new Date().toISOString().slice(0, 10));
+	userRequest: function(firstName, lastName, email) {
+		var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'hawkdeveloper5709@gmail.com',
+                pass: 'Admin@123'
+            }
+        });
+        
+        var mailOptions = {
+            from: 'hawkdeveloper5709@gmail.com',
+            to: email,
+            subject: 'Hawk-Security',
+            html: '<h1>Hello there ' + firstName + " " + lastName + '..!</h1>' +
+                        '<p>How are you doing..?</p>' +
+                        '<br/>' +
+                        '<p>our team will get back to you shortly. please write any query you have in this mail thread.</p>' +
+                        '<br/>' +
+                        '<p>until then, Have good day ' + firstName + " " + lastName + '..! will see you soon</p>'
+        };
+        
+        transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
 	}
 };
 

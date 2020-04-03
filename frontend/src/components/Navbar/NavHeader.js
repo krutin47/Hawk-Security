@@ -17,32 +17,34 @@ function UserNavbar(props) {
         props.logoutUser();
     } 
     return (
-        <header>
-            <div className="headerMain">
-                <div className="wrapper clearfix">
-                    <div className="siteLogo fl">
-                        <Link to="/"><img src={require('../../assets/images/Sitelogo.png')} alt=""/></Link>
-                    </div>
-                    <a className="expandMenu"><i></i><i></i><i></i></a>
-                    <div className="siteNavigation fr">
-                        <ul className="parent">
-                            <li><Link to="/user_schedule_display">HOME</Link></li>
-                            <li><Link to="/availability_form">AVAILABILITY</Link></li>
-                            {/* // TODO: make below three in drop down list */}
-                            <li className="dropdown">
-                                <a className="dropdown-toggle" data-toggle="dropdown" href="#">PROFILE
-                                <span className="caret"></span></a>
-                                <ul className="dropdown-menu">
-                                    <li><Link to="/User_update_profile">UPDATE PROFILE</Link></li>                           
-                                    <li><Link to="/Remove_profile">REMOVE PROFILE</Link></li>
-                                    <li><Link onClick={onClickLogout}>LOGOUT</Link></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+        <nav className="navbar navbar-expand-lg navbar-dark headerMain justify-content-between fixed-top px-5">
+            <div className="siteLogo fl">
+                <Link className="navbar-brand" to="/"><img src={require('../../assets/images/Sitelogo.png')} alt=""/></Link>
             </div>
-        </header>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse pr-5" id="navbarNavDropdown">
+                <ul className="navbar-nav justify-content-between">
+                    <li className="nav-item active">
+                        <Link className="nav-link mx-3" to="/user_schedule_display">DASHBOARD</Link>
+                    </li>
+                    <li className="nav-item active">
+                        <Link className="nav-link mx-3" to="/availability_form">AVAILABILITY</Link>
+                    </li>
+                    <li className="nav-item dropdown active ml-3">
+                        <a className="nav-link active dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            PROFILE
+                        </a>
+                        <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <Link className="dropdown-item" to="/Admin_update_profile">UPDATE PROFILE</Link>                           
+                            <Link className="dropdown-item" to="/Remove_profile">REMOVE PROFILE</Link>
+                            <Link className="dropdown-item" to='' onClick={onClickLogout}>LOGOUT</Link>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     );
 }
 
@@ -50,75 +52,85 @@ function UserNavbar(props) {
 function AdminNavbar(props) {
     function onClickLogout(e) {
         e.preventDefault();
-        console.log('The logout button was clicked.');
+
         props.logoutUser();
     }
     return (
-        <header>
-            <div className="headerMain">
-                <div className="wrapper clearfix">
-                    <div className="siteLogo fl">
-                        <Link to="/"><img src={require('../../assets/images/Sitelogo.png')} alt=""/></Link>
-                    </div>
-                    <a className="expandMenu"><i></i><i></i><i></i></a>
-                    <div className="siteNavigation fr">
-                        <ul className="parent">
-                            {/* //TODO: Add the respective Link And Logout Button */}
-                            <li><Link to="/admin_schedule_display">DASHBOARD</Link></li>
-                            <li className="dropdown">
-                                <a className="dropdown-toggle" data-toggle="dropdown" href="#">EMPLOYEE
-                                <span className="caret"></span></a>
-                                <ul className="dropdown-menu">
-                                    <li><Link to="/availability_display">AVAILABILITY</Link></li>                           
-                                </ul>
-                            </li>
-                            <li className="dropdown">
-                                <a className="dropdown-toggle" data-toggle="dropdown" href="#">INSERT
-                                <span className="caret"></span></a>
-                                <ul className="dropdown-menu">
-                                    <li><Link to="/admin_schedule_form">SHIFTS</Link></li>
-                                    <li><Link to="/add_location">LOCATION</Link></li>
-                                    <li><Link to="/job_create">JOB</Link></li>
-                                </ul>
-                            </li>
-                            <li className="dropdown">
-                                <a className="dropdown-toggle" data-toggle="dropdown" href="#">PROFILE
-                                <span className="caret"></span></a>
-                                <ul className="dropdown-menu">
-                                    <li><Link to="/Admin_update_profile">UPDATE PROFILE</Link></li>                           
-                                    <li><Link to="/Remove_profile">REMOVE PROFILE</Link></li>
-                                    <li><Link to='' onClick={onClickLogout}>LOGOUT</Link></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+        <nav className="navbar navbar-expand-lg navbar-dark headerMain justify-content-between fixed-top px-5">
+            <div className="siteLogo fl">
+                <Link className="navbar-brand" to="/"><img src={require('../../assets/images/Sitelogo.png')} alt=""/></Link>
             </div>
-        </header>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse pr-5" id="navbarNavDropdown">
+                <ul className="navbar-nav justify-content-between">
+                    <li className="nav-item active mx-2">
+                        <Link className="nav-link" to="/admin_schedule_display">DASHBOARD</Link>
+                    </li>
+                    <li className="nav-item active dropdown mx-2">
+                        <a className="nav-link active dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            EMPLOYEE
+                        </a>
+                        <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <Link className="dropdown-item" to="/availability_display">AVAILABILITY</Link>
+                        </div>
+                    </li>
+                    <li className="nav-item active dropdown mx-2">
+                        <a className="nav-link active dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            INSERT
+                        </a>
+                        <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <Link className="dropdown-item" to="/admin_schedule_form">SHIFTS</Link>
+                            <Link className="dropdown-item" to="/add_location">LOCATION</Link>
+                            <Link className="dropdown-item" to="/job_create">JOB</Link>
+                        </div>
+                    </li>
+                    <li className="nav-item active dropdown ml-2">
+                        <a className="nav-link active dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            PROFILE
+                        </a>
+                        <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <Link className="dropdown-item" to="/Admin_update_profile">UPDATE PROFILE</Link>                           
+                            <Link className="dropdown-item" to="/Remove_profile">REMOVE PROFILE</Link>
+                            <Link className="dropdown-item" to='' onClick={onClickLogout}>LOGOUT</Link>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     );
 }
 
 function GuestNavbar(props) {
     return (
-        <header>
-            <div className="headerMain">
-                <div className="wrapper clearfix">
-                    <div className="siteLogo fl">
-                        <Link to="/"><img src={require('../../assets/images/Sitelogo.png')} alt=""/></Link>
-                    </div>
-                    <a className="expandMenu"><i></i><i></i><i></i></a>
-                    <div className="siteNavigation fr">
-                        <ul className="parent">
-                            <li><Link to="/">HOME</Link></li>
-                            <li><a href="#_service_">SERVICES</a></li>
-                            <li><a href="#contact_us">CONTACT US</a></li>
-                            <li><Link to="/job_display">JOBS</Link></li>
-                            <li><Link to="/login"><strong id="quote">SIGN IN</strong></Link></li>
-                        </ul>
-                    </div>
-                </div>
+        <nav className="navbar navbar-expand-lg navbar-dark headerMain justify-content-between fixed-top px-5">
+            <div className="siteLogo fl">
+                <Link className="navbar-brand" to="/"><img src={require('../../assets/images/Sitelogo.png')} alt=""/></Link>
             </div>
-        </header>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul className="navbar-nav">
+                    <li className="nav-item active px-2">
+                        <Link className="nav-link" to="/">HOME</Link>
+                    </li>
+                    <li className="nav-item active px-2">
+                        <a className="nav-link" href="/#_service_">SERVICES</a>
+                    </li>
+                    <li className="nav-item active px-2">
+                        <a className="nav-link" href="/#contact_us">CONTACT US</a>
+                    </li>
+                    <li className="nav-item active px-2">
+                        <Link className="nav-link" to="/job_display">JOBS</Link>
+                    </li>
+                    <li className="nav-item active ml-5 border border-success rounded">
+                        <Link className="nav-link" to="/login"><strong id="quote">SIGN IN</strong></Link>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     );
 }
 

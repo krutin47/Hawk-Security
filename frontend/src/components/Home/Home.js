@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 function Home() {
   
@@ -30,8 +29,7 @@ function Home() {
             <h5>Healthcare</h5>
             <div className="p20-0">
               {/* //TODO :: Add content here */}
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <p>Our Healthcare officers are always eager to serve people. They are all equipped with the knowledge for emergency situation and also knows to use the defibrillator.</p>
             </div>
             <div className="button">
               <a href="javascript:void(0)">view more</a>
@@ -50,15 +48,14 @@ function Home() {
         <div className="wrapper">
           <div className="ib w50 pr15 mw100 mtop30 mobile-center mr0">
             {/* //TODO :: Add image here */}
-            <img src="https://images.squarespace-cdn.com/content/v1/56ae28f9cf80a1c462b624be/1481565679322-2MVB9GOCBZN3FM98WMNU/ke17ZwdGBToddI8pDm48kMS6Ag27B5PiNmuGKFL_Ya9Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PI4Jb8t-oE2cQnOjGBbWABngHbdRE5IN2-lFfoAl4DPcMKMshLAGzx4R3EDFOm1kBS/security-guard.jpg?format=1500w"/>
+            <img src={require('../../assets/images/guard.jpg')}/>
           </div>
           <div className="ib w50 pl15 wow fadeInLeft mw100 mr0">
             <h4>Security Guard</h4>
             <h5>Commercial</h5>
             <div className="p20-0">
               {/* //TODO :: Add content here */}
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <p>Our Security Guards provides 24/7 service to commercial buildings in various shifts. They are quick, strong and know how to use the taser gun when necessary.</p>
             </div>
             <div className="button">
               <a href="javascript:void(0)">view more</a>
@@ -99,36 +96,29 @@ function Home() {
                 <img src={require('../../assets/images/hospital.png')}/>
               </div>
               <h6 className="equalHeight fontWhite"> Healthcare </h6>
-              <div className="serviceContent pt20">
-                {/* //TODO :: Add content here */}
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                
-              </div>
+              
             </div>
             <div className="Column fl w33 rowHeight tabw100">
               <div className="ServiceImage">
                 <img src={require("../../assets/images/office-block.png")}/>
               </div>
               <h6 className="equalHeight fontWhite"> Commercial </h6>
-              <div className="serviceContent pt20">
-                {/* //TODO :: Add content here */}
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </div>
+              
             </div>
             <div className="Column fl w33 rowHeight tabw100">
               <div className="ServiceImage">
                 <img src={require("../../assets/images/crane.png")}/>
               </div>
               <h6 className="equalHeight fontWhite"> Infrastructure </h6>
-              <div className="serviceContent pt20">
-                {/* //TODO :: Add content here */}
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </div>
+              
             </div>
           </div>
+          <div className="p40-0 text-center fontWhite">
+          <p>We are all prepared to serve our clients with our security guards who are well-knowledged of using medical 
+            equipment and equipped with security weapons to control emergency situations. 
+            Their experience of working gives us the power to provide the best service.</p>
+            </div>
+          
         </div>
       </section>
 
@@ -214,11 +204,10 @@ function Home() {
             <h3>Let's Chat</h3>
             <div className="p40-0 forSmallWidth light">
               {/* //TODO :: Add content in the P tag */}
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <p>Interested for our services? Explore our plans and services. Adjust your requirements and get a ballpark quote of our services.</p>
             </div>
             <div className="button">
-              <a href="javascript:void(0)">Request a Quote</a>
+              <a href="/request">Request a Quote</a>
             </div>
           </div>
         </div>
