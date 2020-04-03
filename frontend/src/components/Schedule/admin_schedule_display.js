@@ -36,10 +36,7 @@ class Admin_schedule_display extends React.Component {
     this.setState({
       date: date
     })
-    console.log("i am calling it");
     
-    //this.onSubmitDate();    
-    console.log("i called it");
     
   }
 
@@ -47,7 +44,7 @@ class Admin_schedule_display extends React.Component {
     let cur_date = new Date().getDate();
     let cur_month = new Date().getMonth() + 1; //Current Month
     let cur_year = new Date().getFullYear();
-    console.log(cur_year + '-' + cur_month + '-' + cur_date);
+    
     let current_day = cur_year + '-' + cur_month + '-' + cur_date ;
 
     axios.get('http://localhost:5000/shift_details/' +  current_day)
@@ -96,10 +93,11 @@ class Admin_schedule_display extends React.Component {
           events.push(schedule);
         }
           this.setState({ shiftList: events })
-          // console.log(shiftList);
       })
-      .catch(err => console.log(err));
-      console.log("i am leaving...");
+      .catch(err => alert("There are not any shifts assigned on this date."));
+
+      
+      
       
   }
 
@@ -113,31 +111,32 @@ class Admin_schedule_display extends React.Component {
     
     return (
         <React.Fragment>
-          <div className="fullcalander__container">     
-          
-            <div className="container">
-              <div className="row justify-content-sm-center align-items-center">
-                  <div className="select_date_div col-sm-auto">
-                    <p>Select Date</p>
-                  </div>
-                  <div className="col-sm-auto">
-                    <DatePicker
-                      selected={this.state.date}
-                      onChange={this.onChangeDate}
-                    />
-                  </div>
-                  <div className="col-sm-auto">
-                    <button className="btn btn-primary btn-block padding_button" onClick = {this.onSubmitDate}  >Get Schedule</button>
-                  </div>
-              </div>
-            </div>
-            <section className="sectionBox__display">
+          <section class="pb50 sectionBox">
               
-                <div className="text-center uppercase pb10">
-                  <h5>Shifts Details of selected date</h5>
+          
+                <div className="container">
+                     <div className="row justify-content-sm-center align-items-center">
+                        <div className="select_date_div col-sm-auto">
+                            <p>Select Date</p>
+                        </div>
+                        <div className="col-sm-auto">
+                          <DatePicker
+                            selected={this.state.date}
+                            onChange={this.onChangeDate}
+                          />
+                        </div>
+                        <div className="col-sm-auto">
+                          <button className="btn btn-primary btn-block padding_button" onClick = {this.onSubmitDate}  >Get Schedule</button>
+                        </div>
+                      </div>
                 </div>
-              <div className="container">
-                <Table striped>
+                <section className="sectionBox__display">
+              
+                  <div className="text-center uppercase pb10">
+                    <h5>Shifts Details of selected date</h5>
+                  </div>
+                  <div className="container">
+                    <Table striped>
                 
                     <tr className="row text-left">
                         <th className="col">Name</th>
@@ -150,11 +149,11 @@ class Admin_schedule_display extends React.Component {
                     </tr>
                   
                     { this.tableData() }
-                </Table>
-              </div>
+                    </Table>
+                  </div>
+                </section>
             
-        </section>
-        </div>  
+          </section> 
         </React.Fragment>
     );
   }

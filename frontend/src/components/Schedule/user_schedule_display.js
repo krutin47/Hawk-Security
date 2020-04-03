@@ -88,7 +88,9 @@ class user_schedule_display extends React.Component {
   console.log(this.state.calendarEvents);
     return (
       <React.Fragment>
-        <div className="fullcalander__container">
+        <section class="pb50 sectionBox">
+          
+        
         <FullCalendar
             defaultView="dayGridMonth"
             header={{
@@ -114,7 +116,9 @@ class user_schedule_display extends React.Component {
                 shift: {this.state.calendarEvents.title}
               </ModalHeader>
               </Modal> */}
-        </div>
+      
+        
+        </section>
        
       </React.Fragment>
     )
