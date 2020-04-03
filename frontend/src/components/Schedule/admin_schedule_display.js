@@ -36,10 +36,7 @@ class Admin_schedule_display extends React.Component {
     this.setState({
       date: date
     })
-    console.log("i am calling it");
     
-    //this.onSubmitDate();    
-    console.log("i called it");
     
   }
 
@@ -47,7 +44,7 @@ class Admin_schedule_display extends React.Component {
     let cur_date = new Date().getDate();
     let cur_month = new Date().getMonth() + 1; //Current Month
     let cur_year = new Date().getFullYear();
-    console.log(cur_year + '-' + cur_month + '-' + cur_date);
+    
     let current_day = cur_year + '-' + cur_month + '-' + cur_date ;
 
     axios.get('http://localhost:5000/shift_details/' +  current_day)
@@ -96,10 +93,11 @@ class Admin_schedule_display extends React.Component {
           events.push(schedule);
         }
           this.setState({ shiftList: events })
-          // console.log(shiftList);
       })
-      .catch(err => console.log(err));
-      console.log("i am leaving...");
+      .catch(err => alert("There are not any shifts assigned on this date."));
+
+      
+      
       
   }
 
