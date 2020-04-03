@@ -21,29 +21,34 @@ class LoginForm extends React.Component {
           passwordValid: false,
           passwordTouch: false,
           formValid: false,
+          loginErrors: '',
         }
         
-        this.errors = false;
+        // this.errors = false;
         this.onSubmitForm = this.onSubmitForm.bind(this);
-        this.displayErrors = this.displayErrors(this);
+        this.displayErrors = this.displayErrors.bind(this);
+        //this.toChangeState = this.toChangeState.bind(this);
     }
     
     componentWillReceiveProps(nextProps) {
         console.log("nextProps ------> ", nextProps);
+        console.log("nextProps ------> ", this.state);
+        console.log("nextProps ------> ", this.props);
         if (nextProps.auth.isAuthenticated) {
             if(nextProps.auth.user.role === 1) {
                 this.props.history.push("/employee_dashboard"); // push user to Employee dashboard when Employee login
             } else if (nextProps.auth.user.role === 2){
                 this.props.history.push("/admin_dashboard"); // push user to Admin dashboard when Admin login
             }
-        } 
-
-        console.log("this.errors ----> ", this.errors);
-        
-        if(nextProps.errors) {
-            this.errors = true;
+        } else {
+            console.log("this.state.errors ----> ", this.state.loginErrors);
+            this.state.loginErrors = nextProps.errors;
+            //this.state.loginErrors = nextProps.errors;
+            console.log("this.state.errors ----> ", this.state.loginErrors);
         }
-        console.log("this.errors ----> ", this.errors);
+        // if(nextProps.errors) {
+        //     this.errors = true;
+        // }
     }
 
     componentDidMount() {
@@ -120,8 +125,8 @@ class LoginForm extends React.Component {
     }
 
     displayErrors() {
-        console.log("this.errors", this.errors)
-        if(this.errors) {
+        console.log("this.state.loginErrors ----> ", this.state.loginErrors)
+        if(this.state.loginErrors.length > 0) {
             return (<div className='col-md-12'>
                         <div className="">
                             <div className='bg-color--red p-2'>
@@ -133,10 +138,19 @@ class LoginForm extends React.Component {
     }
 
     render(){
+        const error = (this.state.loginErrors) 
+            ?   <div className='col-md-12'>
+                    <div className="">
+                        <div className='bg-color--red p-2'>
+                            <p>Could not authenticate you. Either your Email ID or password is wrong.!</p>
+                        </div>
+                    </div>
+                </div>
+            : '' ;
         return(
             <form>
                 <div className="row">
-                    {this.displayErrors}
+                    {error}
                     <div className="col-md-12">
                         <div className="form-label-group">
                             <div>
