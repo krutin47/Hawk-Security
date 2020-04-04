@@ -9,6 +9,7 @@ import PropTypes from "prop-types";
 import './NavHeader.css'
 
 
+
 function UserNavbar(props) {
     console.log("props ----------> ", props);
     function onClickLogout(e) {
@@ -225,6 +226,8 @@ class NavHeader extends Component {
         }
     }
 }
+
+
 
 NavHeader.propTypes = {
     logoutUser: PropTypes.func.isRequired,

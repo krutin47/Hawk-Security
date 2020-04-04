@@ -1,8 +1,13 @@
+// @Author: Milap Bhanderi - B00823109
+// Page: Job_form
+
 import React from 'react';
 import '../../main.css';
 
 import axios from 'axios'; 
 import { Link } from 'react-router-dom';
+
+// Backend Connection 
 
 class Job_form extends React.Component {
     constructor(props) {
@@ -166,7 +171,7 @@ class Job_form extends React.Component {
 
 
 
-{/* <!--footer Section--> */}
+{/* footer Section */}
 <footer class="footerSection">
     <div class="footerTop p70-0 ">
         <div class="wrapper">
