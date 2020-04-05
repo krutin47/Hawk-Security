@@ -1,5 +1,12 @@
+/**
+ * @file Request a quote schema.
+ * @author Krutin Trivedi <krutin@dal.ca>
+ */
+
+//importing Components & required Modules
 const mongoose = require('mongoose');
 
+//importing mongoose Schema
 const Schema = mongoose.Schema;
 
 //defining the schema for the collection 'user request'

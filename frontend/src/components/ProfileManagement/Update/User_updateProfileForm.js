@@ -1,3 +1,9 @@
+/**
+ * @file User Update Profile Form component.
+ * @author Krutin Trivedi, Banner No: B00843515 <krutin@dal.ca>
+ */
+
+ //importing Components & required Modules
 import React from 'react';
 import { Button } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
@@ -6,7 +12,7 @@ import { connect } from "react-redux";
 import { updateUser } from "../../../actions/authActions";
 import Axios from 'axios';
 
-//TODO: Database connection and sending and requesting the info
+// ///TODO: Database connection and sending and requesting the info
 class UserUpdateProfileForm extends React.Component {
     constructor (props) {
         super(props);
@@ -134,7 +140,7 @@ class UserUpdateProfileForm extends React.Component {
                         <div className="form-label-group">
                             <div>
                                 <label htmlFor="firstName">First Name</label>
-                                {/* // TODO: change class dynamically to manipulate the border of the input */}
+                                {/* // ///TODO: change class dynamically to manipulate the border of the input */}
                                 <input type="text" required className="form-control" name="firstName"
                                     placeholder={this.state.firstName}
                                     value={this.state.firstName}  
@@ -147,7 +153,7 @@ class UserUpdateProfileForm extends React.Component {
                         <div className="form-label-group">
                             <div>
                                 <label htmlFor="lastName">Last Name</label>
-                                {/* // TODO: change class dynamically to manipulate the border of the input */}
+                                {/* // ///TODO: change class dynamically to manipulate the border of the input */}
                                 <input type="text" required className="form-control" name="lastName"
                                     placeholder="Please Enter Your Last Name"
                                     value={this.state.lastName}  
@@ -160,7 +166,7 @@ class UserUpdateProfileForm extends React.Component {
                         <div className="form-label-group">
                             <div>
                                 <label htmlFor="address">Address</label>
-                                {/* // TODO: change class dynamically to manipulate the border of the input */}
+                                {/* // ///TODO: change class dynamically to manipulate the border of the input */}
                                 <input className={'form-control ' + (this.errorClass(this.state.formErrors.address))} 
                                     type="text" 
                                     name="address"
@@ -176,7 +182,7 @@ class UserUpdateProfileForm extends React.Component {
                         <div className="form-label-group">
                             <div>
                                 <label htmlFor="phone">phone</label>
-                                {/* // TODO: change class dynamically to manipulate the border of the input */}
+                                {/* // ///TODO: change class dynamically to manipulate the border of the input */}
                                 <input className={`form-control ${this.errorClass(this.state.formErrors.phone)}`} 
                                     type="text" 
                                     name="phone"
@@ -192,7 +198,7 @@ class UserUpdateProfileForm extends React.Component {
                         <div className="form-label-group">
                             <div>
                                 <label htmlFor="gender">Gender</label>
-                                {/* // TODO: change class dynamically to manipulate the border of the input */}
+                                {/* // ///TODO: change class dynamically to manipulate the border of the input */}
                                 <input className={`form-control ${this.errorClass(this.state.formErrors.gender)}`} 
                                     type="text"
                                     name="gender"

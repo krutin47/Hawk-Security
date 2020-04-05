@@ -1,24 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { withRouter } from 'react-router-dom';
+
 import axios from 'axios';
-import '../../main.css';
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Link, withRouter } from 'react-router-dom';
+import PropTypes from "prop-types";
+
+import '../../main.css';
 
 class availability_form extends React.Component{
     constructor(props) {
         super(props);
-    
-        this.onSubmit = this.onSubmit.bind(this);
-        
+
         this.state = {
-          first_name: '',
-          last_name: '',
-          id: '',
-          date: '',
-          start: [],
-          end: []
+            first_name: '',
+            last_name: '',
+            id: '',
+            date: '',
+            start: [],
+            end: []
         }
+
+        this.onSubmit = this.onSubmit.bind(this);
     }      
 
     componentDidMount() {
@@ -93,7 +95,6 @@ class availability_form extends React.Component{
             }
             
         }
-        
 
         if(flag === 0){
             const avail_data = {
@@ -107,10 +108,16 @@ class availability_form extends React.Component{
             console.log(avail_data);
         
         axios.post('http://localhost:5000/availability_display/add', avail_data)
-            .then(res => console.log(res.data));
+            .then(res => {
+                alert("Availability data updated");
+                window.location = '/employee_dashboard';
+                console.log(res.data);
+            })
+            .catch(err => {
+                window.location = '/errorCode400';
+                console.log(err.data);
+            });
     
-        alert("Availability data updated");
-        window.location = '/';
         }
     }
 
@@ -139,12 +146,6 @@ class availability_form extends React.Component{
                                     </div>
                                 </div>
                                 <div>
-                                    {/* <div class="ib vt w50 mw100">
-                                        <div class="field">
-                                            <label for="emId">Employee Id</label>
-                                            <input type="text" name="emId" disabled placeholder={this.state.id}></input>
-                                        </div>
-                                    </div> */}
                                     <div class="ib vt w50 mw100">
                                         <div class="field">
                                             <label for="efDate">Effective Date</label>
@@ -219,17 +220,13 @@ class availability_form extends React.Component{
     
 
 availability_form.propTypes = {
-
     auth: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired
-  };
+};
   
-  const mapStateToProps = state => ({
+const mapStateToProps = state => ({
     auth: state.auth,
     errors: state.errors
-  });
+});
   
 export default connect(mapStateToProps)(withRouter(availability_form));
-
-
-// export default availability_form

@@ -1,3 +1,9 @@
+/**
+ * @file Manages the configuration of JWT-session & routes of the Application.
+ * @author Krutin Trivedi <krutin@dal.ca>
+ */
+
+ //importing required Modules
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route , Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -8,11 +14,13 @@ import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
 
-//import all your components
+//import all Components
 import NavHeader from './components/Navbar/NavHeader';
 import Footer from './components/Footer/Footer'
 
 import Home from './components/Home/Home';
+import RequestQuote from "./components/RequestQuote/RequestQuote";
+import JobDisplay from "./components/Career/job_display";
 
 import Login from './components/ProfileManagement/Login/login';
 import Register from './components/ProfileManagement/Registration/register'
@@ -21,24 +29,29 @@ import Forgot_password from './components/ProfileManagement/ForgotPassword/Forgo
 import EmpDashboard from './components/EmployeeDashboard/EmpDashboard';
 import User_schedule_display from './components/Schedule/user_schedule_display';
 import User_update_profile from './components/ProfileManagement/Update/User_updateProfile';
+import Availability_form from './components/Availability/availability_form';
 
 import AdminDashboard from './components/AdminDashboard/AdminDashboard'
 import Admin_update_profile from './components/ProfileManagement/Update/Admin_updateProfile';
 import Admin_schedule_form from './components/Schedule/admin_schedule_form';
 import Admin_schedule_display from './components/Schedule/admin_schedule_display';
+import Add_location from './components/Location/Add_location';
+import JobForm from "./components/Career/job_form";
 
+// Remove profile (common for admin and Employees)
 import Remove_profile from './components/ProfileManagement/Update/RemoveProfile';
 
+//For Reseting Password
 import resetPassword from './components/ProfileManagement/ForgotPassword/resetPassword';
 
-import Availability_form from './components/Availability/availability_form';
 import Availability_display from './components/Availability/availability_display';
 
+//Private route : that will examine wheater you are eligible to view current page or not.
 import PrivateRoute from "./components/private-route/PrivateRoute";
 
-import Add_location from './components/Location/Add_location';
-
-import RequestQuote from "./components/RequestQuote/RequestQuote";
+//Error pages
+import error400 from "./components/error/error400";
+import error404 from "./components/error/error404";
 
 //importing CSS
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -95,8 +108,8 @@ class App extends Component{
 					
 					{/* Home Component */}
 					<Route exact path='/' component={Home} />
-
-					<Route exact path='/request' component={RequestQuote} />
+					<Route path='/request' component={RequestQuote} />
+					<Route path='/job_display' component={JobDisplay} />
 					
 					{/* Authentication Components */}
 					<Route path='/login' component={Login} />
@@ -107,27 +120,31 @@ class App extends Component{
 					<Switch>
 						{/* Employee Dashboard Component */}
               			<PrivateRoute exact path="/employee_dashboard" component={EmpDashboard} />
-						<PrivateRoute path='/employee_dashboard' component={EmpDashboard} />
-						<PrivateRoute path='/user_schedule_display' component={User_schedule_display} />
-						<PrivateRoute path='/User_update_profile' component={User_update_profile} />
+						<PrivateRoute exact path='/user_schedule_display' component={User_schedule_display} />
+						<PrivateRoute exact path='/User_update_profile' component={User_update_profile} />
 						
 						{/* Admin Dashboard Components */}
-						<PrivateRoute path='/admin_dashboard' component={AdminDashboard} />
-						<PrivateRoute path='/admin_schedule_display' component={Admin_schedule_display} />
-						<PrivateRoute path='/admin_schedule_form' component={Admin_schedule_form} />
-						<PrivateRoute path='/Admin_update_profile' component={Admin_update_profile} />
+						<PrivateRoute exact path='/admin_dashboard' component={AdminDashboard} />
+						<PrivateRoute exact path='/admin_schedule_display' component={Admin_schedule_display} />
+						<PrivateRoute exact path='/admin_schedule_form' component={Admin_schedule_form} />
+						<PrivateRoute exact path='/Admin_update_profile' component={Admin_update_profile} />
+						<PrivateRoute exact path='/job_form' component={JobForm} />
 						
 						{/* This will be common Component for Admin and Employee */}
-						<PrivateRoute path='/Remove_profile' component={Remove_profile} />
+						<PrivateRoute exact path='/Remove_profile' component={Remove_profile} />
 
 						{/* I don't have Knowledge regurding this thus in last(Misc) */}
-						<PrivateRoute path='/availability_form' component={Availability_form} />
-						<PrivateRoute path='/availability_display' component={Availability_display}/>
-						<PrivateRoute path='/Add_location' component={Add_location} />
+						<PrivateRoute exact path='/availability_form' component={Availability_form} />
+						<PrivateRoute exact path='/availability_display' component={Availability_display}/>
+						<PrivateRoute exact path='/Add_location' component={Add_location} />
             		</Switch>
 
 					{/* This will the reset Password route */}
 					<Route path='/reset_password' component={resetPassword} />
+					
+					{/* This are the Error Pages for the application */}
+					<Route path='/errorCode400' component={error400} />
+					<Route path='/errorCode404' component={error404} />
 
 					{/* This will load the Footer To all Components */}
 					<Footer />

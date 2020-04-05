@@ -1,3 +1,9 @@
+/**
+ * @file Actions for redux. 
+ * @use it will hit the API of the Application and dispatch the actions to reducer.
+ * @author Krutin Trivedi <krutin@dal.ca>
+ */
+
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";

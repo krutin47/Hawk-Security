@@ -1,3 +1,8 @@
+/**
+ * @file Main server file for the Application.
+ * @Modified Krutin Trivedi <krutin@dal.ca>
+ */
+
 // var createError = require('http-errors');
 var express = require('express');
 const cors = require('cors');

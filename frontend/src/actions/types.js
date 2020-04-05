@@ -1,3 +1,8 @@
+/**
+ * @file Types for reducers in redux.
+ * @author Krutin Trivedi <krutin@dal.ca>
+ */
+
 export const GET_ERRORS = "GET_ERRORS";
 export const GET_SUCCESS = "GET_SUCCESS";
 export const USER_LOADING = "USER_LOADING";

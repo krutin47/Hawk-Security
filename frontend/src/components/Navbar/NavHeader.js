@@ -1,3 +1,8 @@
+/**
+ * @file Dynamic Navbar component.
+ * @author Krutin Trivedi, Banner No: B00843515 <krutin@dal.ca>
+ */
+
 //importing Components & required Modules
 import React, { Component } from 'react';
 import { Link, withRouter } from "react-router-dom";
@@ -83,7 +88,7 @@ function AdminNavbar(props) {
                         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <Link className="dropdown-item" to="/admin_schedule_form">SHIFTS</Link>
                             <Link className="dropdown-item" to="/add_location">LOCATION</Link>
-                            <Link className="dropdown-item" to="/job_create">JOB</Link>
+                            <Link className="dropdown-item" to="/job_form">JOB</Link>
                         </div>
                     </li>
                     <li className="nav-item active dropdown ml-2">

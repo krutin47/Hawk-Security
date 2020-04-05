@@ -1,7 +1,13 @@
-import React, { Component } from 'react';
+/**
+ * @file User Update Profile component.
+ * @author Krutin Trivedi, Banner No: B00843515 <krutin@dal.ca>
+ */
 
+//importing Components & required Modules
+import React, { Component } from 'react';
 import UserUpdateProfileForm from "./User_updateProfileForm";
 
+//importing CSS
 import './updateProfile.css';
 
 class UserUpdateProfile extends Component {

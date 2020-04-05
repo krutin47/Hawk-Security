@@ -1,10 +1,16 @@
+/**
+ * @file Employee schema.
+ * @author Krutin Trivedi <krutin@dal.ca>
+ */
+
+//importing Components & required Modules
 const mongoose = require('mongoose');
 
+//importing mongoose Schema
 const Schema = mongoose.Schema;
 
-//defining the schema for the collection 'users'
+//defining the schema for the collection 'employees'
 const empSchema = new Schema({
-    //_id: mongoose.Schema.Types.ObjectId, // mongoose Type objectId is used for generating unique ID's
     firstName:{
         type: String,
         required: true,
