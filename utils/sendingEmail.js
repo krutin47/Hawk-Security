@@ -3,6 +3,11 @@
  * @author Krutin Trivedi <krutin@dal.ca>
  */
 
+// Code taken from this: https://www.w3schools.com/nodejs/nodejs_email.asp
+// I have used this code to fasten the work of sending mail to clients.
+// This is code is the boilerplate for sending mail using nodemailer from Node.js. 
+// I created my own logic to perform the task.
+
 //importing Components & required Modules
 var nodemailer = require('nodemailer');
 

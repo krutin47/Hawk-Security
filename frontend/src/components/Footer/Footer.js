@@ -3,6 +3,10 @@
  * @author Krutin Trivedi, Banner No: B00843515 <krutin@dal.ca>
  */
 
+// Boilerplate code is taken from : https://mdbootstrap.com/docs/jquery/navigation/footer/  Named as: Purple Panel footer
+// I have used this code to fasten the work of development. As footer will consume more time developing.
+// I only take this code as boilerplate logic and the modifications are done by me. 
+
 //importing Components & required Modules
 import React, { Component } from 'react';
 
