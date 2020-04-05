@@ -183,7 +183,7 @@ function job_display() {
   <p>$19.99</p>
   <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
   <p><button>Add to Cart</button></p>
-</div>
+  </div>
 
         </React.Fragment>    
     )
