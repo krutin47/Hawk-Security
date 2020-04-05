@@ -58,14 +58,14 @@ class Job_form extends React.Component {
     
         const job = {
             JOB_ID: this.state.JOB_ID,
-          JOB_ROLE: this.state.JOB_ROLE,          
-          JOB_DESC: this.state.JOB_DESC,
-          JOB_QUAL: this.state.JOB_QUAL           
+            JOB_ROLE: this.state.JOB_ROLE,          
+            JOB_DESC: this.state.JOB_DESC,
+            JOB_QUAL: this.state.JOB_QUAL           
         }
     
         console.log(job);
     
-        axios.post('http://localhost:5000/jobs/add', job)
+        axios.post('/jobs/add', job)
           .then(res => console.log(res.data));
     
        // window.jobs = '/';
@@ -75,25 +75,6 @@ class Job_form extends React.Component {
     return (
         <React.Fragment>
 
-
-<header class="altBg">
-    <div class="headerMain">
-        <div class="wrapper clearfix">
-            <div class="siteLogo fl">
-                <a href="home.html"><img src="./images/Sitelogo.png" alt=""/></a>
-            </div>
-            <a class="expandMenu"><i></i><i></i><i></i></a>
-           <div class="siteNavigation fr">
-                <ul class="parent">
-                    <li><a href="profile.html">PROFILE</a></li>
-                    <li><a href="availablity.html">SHIFT SCHEDULES</a></li>
-                    <li><a href="paystub.html">PAYSTUB</a></li>
-                    <li><a href="jobs.html">JOB POSTING</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</header>
 
 {/* JOB Form */}
 
@@ -167,8 +148,8 @@ class Job_form extends React.Component {
     </div>
 </section>
 
-        </React.Fragment>    
-    )
+</React.Fragment>    
+)
 }
 }
 
