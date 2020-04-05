@@ -73,7 +73,7 @@ class UserUpdateProfileForm extends React.Component {
                 this.setState({
                     phoneTouch: true  
                 });
-                phoneValid = value.length == 10;
+                phoneValid = value.length === 10;
                 fieldValidationErrors.phone = 
                     phoneValid 
                         ? <p className="isValid">Awesome! phone number is valid</p>
