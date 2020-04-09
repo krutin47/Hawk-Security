@@ -24,7 +24,6 @@ router.route('/empshifts/:empid').get((req, res) => {
       .catch(err => res.status(400).json('Error: ' + err));
   });
 
-
 /*  API for fatching shifts data based on date */
 router.route('/:date').get((req, res) => {
 

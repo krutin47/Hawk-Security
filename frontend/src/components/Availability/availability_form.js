@@ -1,7 +1,6 @@
 // @Author: Milap Bhanderi - B00823109
 // Page: availability_form
 
-
 import React, { Component } from 'react';
 import axios from 'axios';
 import '../../main.css';
