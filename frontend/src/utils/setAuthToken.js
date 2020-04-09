@@ -1,3 +1,7 @@
+/**
+ * @author Krutin Trivedi <krutin@dal.ca>
+ */
+
 import axios from "axios";
 
 const setAuthToken = token => {

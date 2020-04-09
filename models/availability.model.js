@@ -1,7 +1,13 @@
-const mongoose = require('mongoose');
+/**
+ * @file Availability schema.
+ * @author Nikita Patel & Yash Shah
+ */
 
+//importing required Modules
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+//defining availability schema for the collection "avail_details"
 const availSchema = new Schema({
   eid: {
     type: String,

@@ -1,24 +1,28 @@
+/**
+ * @file Admin Schedule Form page of the Application.
+ * @author Yash Shah
+*/
+
+//importing Components & required Modules
 import React, { Component } from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import '../../main.css';
 import "react-datepicker/dist/react-datepicker.css";
 
-
+//defining the main class to display content on the page
 class admin_schedule_form extends React.Component {
     constructor(props) {
         super(props);
     
         this.onChangeEmpName = this.onChangeEmpName.bind(this);
         this.onChangeEmpID = this.onChangeEmpID.bind(this);
-        this.onChangeEffective = this.onChangeEffective.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.onChangeDate = this.onChangeDate.bind(this);
         
         this.state = {
           emp_name: '',
           emp_id: '',
-          effective: '',
           start: [],
           end: [],
           location: [],
@@ -28,7 +32,8 @@ class admin_schedule_form extends React.Component {
           date : ""
         }
       }      
-    
+
+    //React Lifecycle method which is called on page load
     componentDidMount() {
         axios.get('/shift_upload/')
           .then(response => {
@@ -57,19 +62,21 @@ class admin_schedule_form extends React.Component {
         })  
     }
 
+    //method to be called when the date is changed
     onChangeDate(date) {
         this.setState({
           date: date
         })
     }
     
+    //allowing admin to select only Monday
     isMonday(date){
         const day = new Date(date).getDay();
         return day == 1;
     }
 
+    //method to be called when the employee name is changed
     onChangeEmpName(e) {
-        
         axios.get('/shift_upload/' + e.target.value)
           .then(res => {
             console.log(res.data[0]._id);  
@@ -84,18 +91,14 @@ class admin_schedule_form extends React.Component {
         })
     }
     
+    //method to be called when the employee id is changed
     onChangeEmpID(id) {
         this.setState({
             emp_id: id
         })
     }
     
-    onChangeEffective(e) {
-        this.setState({
-            effective: e.target.value
-        })
-    }
-
+    //method to be called when the submit button is pressed
     onSubmit(e) {
         e.preventDefault();
     
@@ -146,32 +149,32 @@ class admin_schedule_form extends React.Component {
             
         }
         
-
         if(flag === 0){
         
-        const date = new Date(this.state.date);
-        // const formattedDate = date.getFullYear() + '-' + (date.getUTCMonth()+1) + '-' +date.getDate();
-        // console.log(formattedDate);
+            const date = new Date(this.state.date);
+            // const formattedDate = date.getFullYear() + '-' + (date.getUTCMonth()+1) + '-' +date.getDate();
+            // console.log(formattedDate);
 
-        const shift_data = {
-            emp_name: this.state.emp_name,
-            emp_id: this.state.emp_id,
-            start: this.state.start,
-            end: this.state.end,
-            location: this.state.location,
-            date: date
-        }
+            const shift_data = {
+                emp_name: this.state.emp_name,
+                emp_id: this.state.emp_id,
+                start: this.state.start,
+                end: this.state.end,
+                location: this.state.location,
+                date: date
+            }
+        
+            console.log(shift_data);
     
-        console.log(shift_data);
-    
-        axios.post('/shift_upload/add', shift_data)
-          .then(res => console.log(res.data));
-    
-        alert("Schedule detail for " + this.state.emp_name + " have been uploaded");
-        window.location = '/admin_schedule_form';
+            axios.post('/shift_upload/add', shift_data)
+            .then(res => console.log(res.data));
+        
+            alert("Schedule detail for " + this.state.emp_name + " have been uploaded");
+            window.location = '/admin_schedule_form';
         }
     }
   
+    //rendering method of the page
     render(){
         return (
             <React.Fragment>

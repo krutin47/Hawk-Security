@@ -1,16 +1,21 @@
-const router = require('express').Router();
+/**
+ * @file APIs for features related to shift details in the Application.
+ * @author Yash Shah
+ */
 
+//importing the Components and required Modules
+const router = require('express').Router();
 let Empdetails = require('../models/employee.model');
 let Shift_data = require('../models/shift_details.model');
 
-
+//returns all entires from the Employee table
 router.route('/').get((req, res) => {
     Empdetails.find({role: 1})
     .then(Empdetails => res.json(Empdetails))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-
+//returns all the details about an employee whose name is passed
 router.route('/:name').get((req, res) => {
     const name_string = req.params.name.split(" ");
     const first = name_string[0];
@@ -20,7 +25,7 @@ router.route('/:name').get((req, res) => {
       .catch(err => res.status(400).json('Error: ' + err));
 });
 
-
+//updates the shift details for a particular user whose name and id is passed
 router.route('/add').post((req, res) => {
     const name = req.body.emp_name;
     const id = req.body.emp_id;
@@ -55,10 +60,6 @@ router.route('/add').post((req, res) => {
           .then(() => res.json('Shift added.........!  ' + shift_temp));
       }
     }
-
-
-    // console.log(newlocation);
-    // newlocation.save()
   
 });
 

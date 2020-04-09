@@ -1,7 +1,13 @@
-const mongoose = require('mongoose');
+/**
+ * @file Shift schema.
+ * @author Nikita Patel and Yash Shah
+ */
 
+//importing required Modules
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+//defining the schema for the collection "shifts"
 const shiftdetailSchema = new Schema({
   id: {
     type: String,

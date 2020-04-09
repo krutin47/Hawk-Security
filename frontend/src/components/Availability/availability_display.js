@@ -1,10 +1,14 @@
-// @Author: Milap Bhanderi - B00823109
-// Page: availability_display
+/**
+ * @file Availability Display page of the Application.
+ * @author Yash Shah
+*/
 
+//importing Components & required Modules
 import React, { Component } from 'react';
 import { Table } from 'reactstrap';
 import axios from 'axios';
 
+//defining props to display the data from the database inside the HTML tags
 const AvailDetails = props => (
     <span>
     <tr className="row">
@@ -30,6 +34,7 @@ const AvailDetails = props => (
     </span>
 );
   
+//defining the main class to display content on the page
 class availability_display extends Component {
     constructor(props) {
       super(props);
@@ -37,6 +42,7 @@ class availability_display extends Component {
       this.state = {availList: []};
     }
   
+    //React Lifecycle method which is called on page load
     componentDidMount() {
       axios.get('/avail_disp')
         .then(response => {
@@ -47,12 +53,14 @@ class availability_display extends Component {
         })
     }
     
+    //method to be called the table data inside the HTML tags
     tableData() {
       return this.state.availList.map(currentdata => {
         return <AvailDetails avail={currentdata}/>;
       })
     }
   
+    //rendering method of the page
     render(){
         return (
             <React.Fragment>

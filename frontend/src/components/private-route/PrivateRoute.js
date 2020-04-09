@@ -1,3 +1,9 @@
+/**
+ * @file Private route page which redirects user to login page if they access a webpage directly through URL
+ * @author Krutin Trivedi <krutin@dal.ca>
+*/
+
+//importing the required Modules
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";

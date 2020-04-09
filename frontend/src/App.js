@@ -1,3 +1,9 @@
+/**
+ * @file The root file for calling all the React Components
+ * @authors Milap Bhaderi, Nikita Patel, Yash Shah and Krutin Trivedi
+*/
+
+
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route , Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -6,7 +12,6 @@ import store from "./store";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
-
 
 //importing the required components
 import NavHeader from './components/Navbar/NavHeader';
@@ -39,17 +44,14 @@ import RequestQuote from "./components/RequestQuote/RequestQuote";
 
 import PrivateRoute from "./components/private-route/PrivateRoute";
 
-
 //Error pages
 import error400 from "./components/error/error400";
 import error404 from "./components/error/error404";
-
 
 //importing CSS
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import './main.css'
-
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -64,8 +66,7 @@ if (localStorage.jwtToken) {
 	// Decode token and get user info and exp
 	const decoded = jwt_decode(token);
 	console.log("App.js -> localStorage.jwtToken -> decoded ------> ", decoded);
-	
-	
+		
 	// Set user and isAuthenticated
 	store.dispatch(setCurrentUser(decoded));
 	

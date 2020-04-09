@@ -1,9 +1,9 @@
 /**
- * @file combined reducer. helper of Redux implementation.
- * @author Krutin Trivedi <krutin@dal.ca>
- */
+ * @file The root file for starting the frontend
+ * @authors Milap Bhaderi, Nikita Patel, Yash Shah and Krutin Trivedi
+*/
 
-//importing Components & required Modules
+//importing Component & required Modules
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';

@@ -1,5 +1,10 @@
-const router = require('express').Router();
+/**
+ * @file API for location feature of the Application.
+ * @author Mialp Bhanderi
+*/
 
+//importing the Components and required Modules
+const router = require('express').Router();
 let Location = require('../models/location.model.js'); 
 
 // Get locations' listing

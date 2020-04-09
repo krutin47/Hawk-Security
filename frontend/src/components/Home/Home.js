@@ -1,3 +1,9 @@
+/**
+ * @file Home page of the Application.
+ * @author Milap Bhanderi, Nikita Patel, Yash Shah & Krutin Trivedi
+ */
+
+//importing the required Module
 import React from 'react';
 
 function Home() {

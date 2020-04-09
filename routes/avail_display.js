@@ -1,14 +1,21 @@
-const router = require('express').Router();
+/**
+ * @file APIs related to the availability feature of the application
+ * @author Nikita Patel & Yash Shah
+ */
 
+//importing Components & required Modules
+const router = require('express').Router();
 let Empdetails = require('../models/employee.model');
 let Availability = require('../models/availability.model'); 
 
+//returns all the entires in the availability table
 router.route('/').get((req, res) => {
   Availability.find()
     .then(Availability => res.json(Availability))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
+//returns all the details of a particular employee whose id is passed
 router.route('/:id').get((req, res) => {
   const id = req.params.id;
   Empdetails.find({_id: id})
@@ -16,6 +23,7 @@ router.route('/:id').get((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
+//updates the details of an existing user or adds the details of a new user whose id is passed
 router.route('/add').post((req, res) => {
   const emp_id = req.body.id;
   const name = req.body.first_name + " " + req.body.last_name;

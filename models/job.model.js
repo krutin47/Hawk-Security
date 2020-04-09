@@ -1,7 +1,13 @@
-const mongoose = require('mongoose');
+/**
+ * @file Job schema.
+ * @author Yash Shah
+ */
 
+//importing required Modules
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+//defining the schema for the collectio "job_details"
 const jobSchema = new Schema({
   JOB_ID: {
     type: String,
