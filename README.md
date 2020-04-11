@@ -33,7 +33,7 @@ This application is built using the following frameworks and libraries :package:
 
 ### Front End
 4. Navigate to front-end workspace using `cd Frontend`
-5. Run `npm install` to install all the packages that are require to run the fornt-end of the project. (in case you are having problem run `npm install @material-ui/core @fullcalendar/list react-bootstrap bootstrap react-datepicker reactstrap axios classnames jwt-decode react-redux react-router-dom redux redux-thunk react-toastify` and `npm install --save react-router-dom @fullcalendar/react @fullcalendar/core @fullcalendar/daygrid`)
+5. Run `npm install` to install all the packages that are require to run the front-end of the project. (in case you are having problem run `npm install @material-ui/core @fullcalendar/list react-bootstrap bootstrap react-datepicker reactstrap axios classnames jwt-decode react-redux react-router-dom redux redux-thunk react-toastify` and `npm install --save react-router-dom @fullcalendar/react @fullcalendar/core @fullcalendar/daygrid`)
 6. Launch the app using `npm start`
 7. Now the application will open in your default browser in following URL [localhost:3000](http://localhost:3000/).
 
@@ -101,8 +101,10 @@ Now let us go for around to visit the above pages.
 [Image of JOB_DISPLAY](https://i.imgur.com/aYvlSbB.png)
 
 ### Profile Managemnet(Admin/Employee) - Krutin Trivedi 
-* login page you can log in as an employee of the firm. if you are not registered you can create your account from the registration page. if you forgot your password you can click the link forgot password then you will get a mail to reset the password this whole application runs on jwt session and passwords are hashed using 256SHA hashing method to provide security. after receiving mail it will authenticate you with the jwt session and then you will be able to reset your password. 
-* From update profile you will be able to update your profile and if you no longer want to be a part of this application you can use remove the profile. if you want to close your session you only need to do logout.
+* Initially, the Employee will have to create an account to use this web application. The creation of the account can be easily done through the email address and a password with some basic details like first name, last name. Once you are registered you will be able to login to the application using your email address and password. The system is built in such a manner that it will detect you and redirect to respectively whether you are an admin or employee.
+**Note** Admin credentials will directly add through Database to provide security.
+* Once you are logged into the system as an employee or as admin you will be able to update your profile the same way you register, remove your profile. The system will be having a feature of forgetting and resetting your password, through which the user will be able to change the password. All this feature will provide users with the feasibility and flexibility in their hands.
+* This whole system runs on JWT (JSON Web Tokens) so, it can provide some protection from XSS and CSRF attacks to the application. We also stored the password using the 256SHA hashing method to provide security in case the system gets compromised in any manner. If you forgot your password, you could go to forgot password then you will get an e-mail on your email address register with the application to reset the password. As this whole application runs on the JWT session and after receiving mail, it will authenticate you with the JWT session and then you will be able to reset your password.
 
 ## Other references
 
