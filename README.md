@@ -32,8 +32,8 @@ This application is built using the following frameworks and libraries :package:
 3. Run `npm install` to install all the packages that are require to run the backend of the project. (in case you are having problem run `npm i bcryptjs express is-empty jsonwebtoken mongoose passport passport-jwt validator cors dotenv nodemailer`)
 
 ### Front End
-4. Navigate to front workspace using `cd Frontend`
-5. Run `npm install` to install all the packages that are require to run the backend of the project. (in case you are having problem run `npm install @material-ui/core @fullcalendar/list react-bootstrap bootstrap react-datepicker reactstrap axios classnames jwt-decode react-redux react-router-dom redux redux-thunk react-toastify` and `npm install --save react-router-dom @fullcalendar/react @fullcalendar/core @fullcalendar/daygrid`)
+4. Navigate to front-end workspace using `cd Frontend`
+5. Run `npm install` to install all the packages that are require to run the fornt-end of the project. (in case you are having problem run `npm install @material-ui/core @fullcalendar/list react-bootstrap bootstrap react-datepicker reactstrap axios classnames jwt-decode react-redux react-router-dom redux redux-thunk react-toastify` and `npm install --save react-router-dom @fullcalendar/react @fullcalendar/core @fullcalendar/daygrid`)
 6. Launch the app using `npm start`
 7. Now the application will open in your default browser in following URL [localhost:3000](http://localhost:3000/).
 
