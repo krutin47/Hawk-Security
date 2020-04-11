@@ -23,48 +23,47 @@ This application is built using the following frameworks and libraries :package:
 
 ## What are the prerequisite required ?
  * Node JS - [Install](https://nodejs.org/en/download/)
- * React Js - run npm install on root folder and frontend folder separately 
+ * React JS - [Install](https://reactjs.org/docs/add-react-to-a-website.html)
+ * Express JS - [Install](https://expressjs.com/en/starter/installing.html)
 
 ## How to run the application ?
 1. Clone the repo to your local machine using `https://git.cs.dal.ca/nvpatel/hawk_security.git`
-2. Run the folowing commands to install plugins and modules if required. 
-        * npm install @material-ui/core @fullcalendar/list react-bootstrap bootstrap    react-datepicker reactstrap
-        * npm install --save react-router-dom @fullcalendar/react @fullcalendar/core @fullcalendar/daygrid
-        * npm i axios classnames jwt-decode react-redux react-router-dom redux redux-thunk
-        * npm i nodemailer
-3. For Backend
-        * npm i bcryptjs express is-empty jsonwebtoken mongoose passport passport-jwt validator cors dotenv react-toastify
+2. Navigate to the workspace folder using `cd hawk_security`
+3. Run `npm install` to install all the packages that are require to run the backend of the project. (in case you are having problem run `npm i bcryptjs express is-empty jsonwebtoken mongoose passport passport-jwt validator cors dotenv nodemailer`)
 
 ### Front End
-1. Navigate to front workspace using `cd Frontend`
-2. Launch the app using `npm start`
-3. Now the application will open in your default browser in following URL [localhost:3000](http://localhost:3000/).
+4. Navigate to front workspace using `cd Frontend`
+5. Run `npm install` to install all the packages that are require to run the backend of the project. (in case you are having problem run `npm install @material-ui/core @fullcalendar/list react-bootstrap bootstrap react-datepicker reactstrap axios classnames jwt-decode react-redux react-router-dom redux redux-thunk react-toastify` and `npm install --save react-router-dom @fullcalendar/react @fullcalendar/core @fullcalendar/daygrid`)
+6. Launch the app using `npm start`
+7. Now the application will open in your default browser in following URL [localhost:3000](http://localhost:3000/).
 
 ### Back End
-1. Run the server by using `node app.js` in separte terminal. 
-2. Now the server will be up in following URL [localhost:5000](http:\\localhost:5000/).
+8. Run the server by using `node app.js` in separte terminal. 
+9. Now the server will be up in following URL [localhost:5000](http://localhost:5000/).
 
 **Note** The above steps will succeed only if the prerequisite platforms are installed in your local machine.
 
 ## What you can expect to see in here ?
 
 Credetials to accsess developed feature. 
-* Admin login credetials:  email:  admin@gmail.com |  Password: admin123
-* Employee login credentials:  email: user@gmail.com |  Password: user123
+Admin login credetials - email:  admin@gmail.com - Password: admin123
+Employee login credentials - email: user@gmail.com - Password: user123
 
 ### Feature Owner - Nikita Patel
 1. **Employee Shift Display** - This page, allows employees to view their shifts in calendar format. The employee can view their shifts after logging into the system. They can select different options like a week, list and month to view shifts. 
 2. **Admin Shifts display** - This page will allow admin to view shifts assigned on each day. Admins can log in to the system and they will be redirected to this page where they can select the date and view all the shifts assigned on that date. 
 
 ### Feature Owner - Milap Bhanderi 
-1. **Job_form** - With the help of this page, the admin can post the vacant position of the Hawk Security on the Jobs page of website. It will be a simple form where the admin will provide information such as Job ID, Job Role, Job Description, and Job Qualification.
-2. **Job_display** - With this page, the general public can get information about the current openings of Hawk Security by vising "JOBS" section on the website.
+3. **Job_form** - With the help of this page, the admin can post the vacant position of the Hawk Security on the Jobs page of website. It will be a simple form where the admin will provide information such as Job ID, Job Role, Job Description, and Job Qualification.
+4. **Job_display** - With this page, the general public can get information about the current openings of Hawk Security by vising "JOBS" section on the website.
 
 ### Feature Owner - Yash Shah 
-1. **Add Shifts** - This page, allows the admins to add the shifts for the employees. The admin can select the employee from the drop-down menu and select the starting date of the week. He can then enter all the details in the format given on the page and in case of any invalid data entry, he/she will be prompted with an error message. After successful entry, the admin is alerted with a success message and then these shift details are stored in the database using the API written by me.
-2. **Check Availabilities** - This page will render the employee availabilities stored in the database. The admin can check out all the timings for all the days on this page.
+5. **Add Shifts** - This page, allows the admins to add the shifts for the employees. The admin can select the employee from the drop-down menu and select the starting date of the week. He can then enter all the details in the format given on the page and in case of any invalid data entry, he/she will be prompted with an error message. After successful entry, the admin is alerted with a success message and then these shift details are stored in the database using the API written by me.
+6. **Check Availabilities** - This page will render the employee availabilities stored in the database. The admin can check out all the timings for all the days on this page.
 
 ### Feature Owner - Krutin Trivedi
+7. **Profile Managemnet For Employee** - This feature will allow employee to create new profile, log into their profile, view it, edit it, remove it's profile. if employee forgots it's password it can change it also. it has the below pages that provides the full functionality.
+
 `Login`: http://hawk-security.herokuapp.com/login.
 `Register`: http://hawk-security.herokuapp.com/register.
 `Remove Profile`: http://hawk-security.herokuapp.com/Remove_profile.
@@ -72,9 +71,17 @@ Credetials to accsess developed feature.
 `Forgot Password`: http://hawk-security.herokuapp.com/Forgot_password.
 `Reset Password`: http://hawk-security.herokuapp.com/job_form.
 
+8. **Profile Managemnet For Admin** - This feature will allow employee to log into their profile, view it, edit it, remove it's profile. if employee forgots it's password it can change it also. it has the below pages that provides the full functionality.
 
+`Login`: http://hawk-security.herokuapp.com/login.
+`Remove Profile`: http://hawk-security.herokuapp.com/Remove_profile.
+`Update Profile`: http://hawk-security.herokuapp.com/User_update_profile.
+`Forgot Password`: http://hawk-security.herokuapp.com/Forgot_password.
+`Reset Password`: http://hawk-security.herokuapp.com/job_form.
 
+9. **Request a quote** - This feature will allow general user to connect to Hawk security services in case they want their services.
 
+`Request a quote`: http://hawk-security.herokuapp.com/request.
 
 ## Application tour :
 Now let us go for around to visit the above pages.
@@ -93,7 +100,7 @@ Now let us go for around to visit the above pages.
 * This page is for the general public so anyone can access it by just visiting our website. Once the admin adds the job posts, everyone can see the job openings on this page.
 [Image of JOB_DISPLAY](https://i.imgur.com/aYvlSbB.png)
 
-### Profile Managemnet - Krutin Trivedi 
+### Profile Managemnet(Admin/Employee) - Krutin Trivedi 
 * login page you can log in as an employee of the firm. if you are not registered you can create your account from the registration page. if you forgot your password you can click the link forgot password then you will get a mail to reset the password this whole application runs on jwt session and passwords are hashed using 256SHA hashing method to provide security. after receiving mail it will authenticate you with the jwt session and then you will be able to reset your password. 
 * From update profile you will be able to update your profile and if you no longer want to be a part of this application you can use remove the profile. if you want to close your session you only need to do logout.
 
